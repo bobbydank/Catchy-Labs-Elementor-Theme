@@ -1,0 +1,92 @@
+
+.b3-circle-graphic {display:flex; flex-direction:row-reverse}
+.b3-circle-graphic .b3-cg-left,
+.b3-circle-graphic .b3-cg-right {width:50%; position:relative; margin:2%;}
+
+.b3-circle-graphic .content > div {display:none; padding-right:100px; }
+.b3-circle-graphic .content > .active {display:block;}
+
+.b3-circle-graphic h3,
+.b3-circle-graphic .title {
+  color: #2D6FB7;
+  font-family: "lft-etica", Sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+.b3-circle-graphic h3 {
+  margin-bottom:80px;
+  padding-bottom:40px;
+  position: relative;
+  padding-top:30px;
+}
+.b3-circle-graphic h3:after {
+  background:#CADF04;
+  content:"";
+  display:block;
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:5px;
+  max-width:150px;
+}
+.b3-circle-graphic .title {font-size: 24px;}
+
+.b3-circle-graphic .b3-cg-right .inside {position:relative;}
+
+.b3-circle-graphic .circle-graphic {width:100%; position:relative; z-index:10; display:block;}
+
+.b3-circle-graphic .b3-cg-right span {position:absolute; top:50%; left:0; transform:translateY(-50%); transition:all 0.5s; height:30px; z-index:20;}
+.b3-circle-graphic .b3-cg-right span:before,
+.b3-circle-graphic .b3-cg-right span:after {
+  content:"";
+  display:block;
+  background:#CADF04;
+  position: absolute;
+}
+.b3-circle-graphic .b3-cg-right span:before {
+  height:2px;
+  width:100%;
+  top:50%;
+  left:0;
+  margin-top:-1px;
+}
+.b3-circle-graphic .b3-cg-right span:after {
+  border-radius:50%;
+  height:100%;
+  width:30px;
+  top:0;
+  right:0;
+}
+.b3-circle-graphic .b3-cg-right span.one {width:2%;}
+.b3-circle-graphic .b3-cg-right span.two {width:15.5%;}
+.b3-circle-graphic .b3-cg-right span.three {width:29%}
+
+.b3-circle-graphic .b3-cg-right a {
+  width:100%;
+  height:100%;
+  opacity:0;
+  border-radius:50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  z-index:30;
+  position:absolute;
+  display:block;
+}
+.b3-circle-graphic .b3-cg-right a.one {background:lightgray;}
+.b3-circle-graphic .b3-cg-right a.two {background:gray; z-index:40; height:75%; width:75%;}
+.b3-circle-graphic .b3-cg-right a.three {background:darkgray; z-index:50; width:48%; height:48%;}
+
+@media (max-width:1050px) {
+  .b3-circle-graphic h3 {
+    margin-bottom:30px;
+  }
+}
+
+@media (max-width:950px) {
+  .b3-circle-graphic {display:block;}
+  .b3-circle-graphic .b3-cg-left,
+  .b3-circle-graphic .b3-cg-right {width:100%;}
+  .b3-circle-graphic .b3-cg-right span {display:none !important;}
+}

@@ -1,0 +1,22 @@
+# OS X
+.DS_Store
+
+# Dreamweaver I think
+_notes/
+
+# composer
+lib/composer/vendor/
+
+# acf
+wp-content/plugins/acf-flexible-content
+wp-content/plugins/acf-options-page
+wp-content/plugins/acf-repeater
+
+# cuz
+.ftpconfig
+.vscode/*
+.htaccess
+index.php
+
+#wordpress
+wp-config.php

@@ -1,0 +1,35 @@
+.brand-window {position:relative; z-index:400; overflow:hidden; /*max-height:800px; min-height:500px;*/ height:600px; width:100%;}
+.brand-window.full-height {height:100vh;}
+.brand-window .brand-image {position:absolute; top:0; left:0; height:100%; width:100%;  display:none; cursor:pointer; }
+.brand-window .brand-image .brand-image-img {transition:transform 25s; background-position:bottom center; background-size:cover; height:100%; width:100%; background-repeat:no-repeat; top:0; left:0; position:absolute;}
+.brand-window .brand-image.active {display:block;}
+.brand-window .brand-caption {display:inline-block; position:absolute; bottom:0; right:0; background-color:rgba(55,55,55,0.5); width:100%; text-align:center; padding:15px 0px 15px 0px; color:#fff; font-size:14px;}
+
+.brand-controls {padding:30px 0;}
+.brand-controls ul {text-align:right;}
+.brand-controls li {height:25px; display:inline-block; width:15px; position:relative; margin-right:2px; cursor:pointer;}
+.brand-controls li:after {display:block; content:""; width:1px; height:100%; top:0; left:50%; background-color:#000; position:absolute;}
+.brand-controls li.active {background-color:#000;}
+
+.brand-statement {position:absolute; top:25%; right:5%; z-index:800; color:white; text-align:right; display:inline-block; width:90%; max-width:600px;}
+.brand-statement h1 {font-size:350%; margin-bottom:0; font-family: 'Oswald', sans-serif; font-weight:200;}
+.brand-statement h1 strong {}
+
+.brand-window.zooming .brand-image .brand-image-img {
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+@media (max-width:1250px) {
+	.brand-window {height:600px;}
+}
+
+@media (max-width:1000px) {
+	.brand-statement h1 {font-size:250%;}
+}
+
+@media (max-width:800px) {
+	.brand-window.full-height {height:auto;}
+	.brand-statement {position:relative; top:unset; right:unset; width:100%; margin:0 auto; padding:50px 20px 150px; display:block; background:rgba(0,0,0,0.2);}
+	.brand-statement h1 {text-align:center;}
+}

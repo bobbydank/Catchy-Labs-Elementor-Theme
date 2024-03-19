@@ -1,0 +1,58 @@
+#page-contact-footer {position:fixed; bottom:0; right:0; z-index: 999998;}
+#page-contact-footer.load {z-index:1;}
+#page-contact-button {position:absolute; bottom:0; right:50px; cursor:pointer;}
+.page-contact-button-inner {
+	background-color: #F36F21;
+    color: black;
+    padding: 20px 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: "Fjalla One", Sans-serif !important;
+	width: 220px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+	font-size:18px;
+    text-align: center;
+}
+.page-contact-button-inner .icon {width:25px; float:left; padding-right:20px;}
+.page-contact-button-inner .icon img {width:100%;}
+.page-contact-button-inner .text { text-transform:uppercase; /*font-weight:700;*/ color:black;}
+#page-contact-footer.left {left:0; right:auto;}
+#page-contact-footer.left #page-contact-button {right:auto; left:50px;}
+#page-contact-form, #watson-box {box-shadow: 0 0 0.688em 0 rgba(0,0,0,0.5); font-size: 16px;transform: translateZ(0px);position: fixed; height: 31.75em; width: 24.25em; right:20px; float: right; bottom:20px;  -webkit-overflow-scrolling: touch;}
+#watson-box {height: 31.75em;}
+#watson-box a {color:#fff;}
+#message-container {height: 322pt;}
+#message-container #messages .watson-message, #watson-box #watson-header, #watson-fab {background-color: #F36F21;}
+#page-contact-form {overflow:hidden;}
+#page-contact-footer.left #page-contact-form {float:left; right:auto; left:20px;}
+#page-contact-footer #header {height:auto;}
+#page-contact-form #header-desktop,
+#watson-box #watson-header {height:47px; overflow:hidden; width:100%; line-height:2.8125em; position:relative; background-color: black;color: #ffffff;font-weight: normal;}
+#watson-box #watson-header {height:auto; position:relative;}
+#watson-box #watson-header:after {content:"Powered by Watson"; position:absolute; top:-2px; left:36px;}
+#watson-box #watson-header:before {content:""; background:url("images/watson.png") center no-repeat; background-size:cover; width:22px; height:22px; position:absolute; top:5px; left:10px;}
+#page-contact-form #icon-custom, #page-contact-form #icon-minimize, #page-contact-form #icon-close {cursor: pointer;display: inline-block;position: absolute;margin: 0 0.625em; top: 50%;-webkit-transform: translateY(-50%);-ms-transform: translateY(-50%);transform: translateY(-50%);}
+#page-contact-form #icon-custom {left:0; top: 30px;}
+#page-contact-form #icon-minimize {right: 2em;}
+#page-contact-form #icon-close {right: 0;}
+#icon-custom > svg {width: 1.875em;height: 1.875em;}
+#icon-close > svg, #icon-minimize > svg {cursor: pointer;width: 1.25em;height: 1.25em;}
+#page-contact-form #header-text {display: inline-block;width:100%;text-align: center;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font-size:17px; line-height: 2.8125em;}
+#page-contact-form #the-page-form {height:calc(100% - 90px); overflow-y:scroll;padding: 1.25em; background-color:#FBFBFB;}
+
+.elementor-60 .elementor-element.elementor-element-90d1ebb > .elementor-widget-container {background:transparent !important;}
+
+@media (max-width:775px) {
+    #page-contact-footer {position:relative; }
+    #page-contact-button {right:50%; transform:translateX(50%);}
+    
+    .search-form {max-width: 400px; margin: 0 auto; width: 100%;} 
+    
+    .search-form input[type=search] {width: 69% !important;}
+    .search-form button[type=submit] {width: 25%;}
+}

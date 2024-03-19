@@ -1,0 +1,298 @@
+
+.elementor-toggle .elementor-tab-title {padding-top:0 !important;}
+.elementor-toggle .elementor-toggle-icon {margin-top:8px}
+
+.elementor-widget-image a {
+   display: block !important;
+}
+
+.mxw-50 {max-width:50px;}
+.mxw-100 {max-width:100px;}
+.mxw-150 {max-width:150px;}
+.mxw-200 {max-width:200px;}
+.mxw-300 {max-width:300px;}
+.mxw-400 {max-width:400px;}
+.mxw-500 {max-width:500px;}
+.mxw-600 {max-width:600px;}
+.mxw-700 {max-width:700px;}
+.mxw-800 {max-width:800px;}
+
+/* Element manipulation
+   ========================================================================== */
+
+.sm\:br-remove br,
+.md\:br-remove br,
+.lg\:br-remove br,
+.xl\:br-remove br,
+.\2xl\:br-remove br {display:none;}
+
+@media (min-width:640px) {
+   .sm\:br-remove br {display:initial;}
+}
+
+@media (min-width:767px) {
+   .md\:br-remove br {display:initial;}
+}
+
+@media (min-width:1024px) {
+   .lg\:br-remove br {display:initial;}
+}
+
+@media (min-width:1280px) {
+   .xl\:br-remove br {display:initial;}
+}
+
+@media (min-width:1536px) {
+   .\2xl\:br-remove br {display:initial;}
+}
+
+/* Box
+   ========================================================================== */
+
+.box-top-right:after,
+.box-top-left:after,
+.box-bottom-right:after,
+.box-bottom-left:after {
+   display:block;
+   content:"";
+   background-color:var(--primary);
+   width:100%;
+   height:100%;
+   z-index: 1;
+   position: absolute;
+}
+.box-top-right .elementor-widget-container,
+.box-top-left .elementor-widget-container,
+.box-bottom-right .elementor-widget-container,
+.box-bottom-left .elementor-widget-container {position:relative; z-index:10;}
+.box-top-right:after {top:-30px; right:-30px;}
+.box-top-left:after {top:-30px; left:-30px;}
+.box-bottom-right:after {bottom:-30px; right:-30px;}
+.box-bottom-left:after {bottom:-30px; left:-30px;}
+
+/* Column Alignment in Sections
+   ========================================================================== */
+
+.elementor-section.cols-end > .elementor-container {justify-content: flex-end;}
+.elementor-section.cols-start > .elementor-container {justify-content: flex-start;}
+.elementor-section.cols-center > .elementor-container {justify-content: center;}
+
+@media (min-width:640px) {
+   .elementor-section.sm\:cols-end > .elementor-container {justify-content: flex-end;}
+   .elementor-section.sm\:cols-start > .elementor-container {justify-content: flex-start;}
+   .elementor-section.sm\:cols-center > .elementor-container {justify-content: center;}
+}
+
+@media (min-width:767px) {
+   .elementor-section.md\:cols-end > .elementor-container {justify-content: flex-end;}
+   .elementor-section.md\:cols-start > .elementor-container {justify-content: flex-start;}
+   .elementor-section.md\:cols-center > .elementor-container {justify-content: center;}
+}
+
+@media (min-width:1024px) {
+   .elementor-section.lg\:cols-end > .elementor-container {justify-content: flex-end;}
+   .elementor-section.lg\:cols-start > .elementor-container {justify-content: flex-start;}
+   .elementor-section.lg\:cols-center > .elementor-container {justify-content: center;}
+}
+
+@media (min-width:1280px) {
+   .elementor-section.xl\:cols-end > .elementor-container {justify-content: flex-end;}
+   .elementor-section.xl\:cols-start > .elementor-container {justify-content: flex-start;}
+   .elementor-section.xl\:cols-center > .elementor-container {justify-content: center;}
+}
+
+@media (min-width:1536px) {
+   .elementor-section.\2xl\:cols-end > .elementor-container {justify-content: flex-end;}
+   .elementor-section.\2xl\:cols-start > .elementor-container {justify-content: flex-start;}
+   .elementor-section.\2xl\:cols-center > .elementor-container {justify-content: center;}
+}
+
+/* Column Widths
+   ========================================================================== */
+
+body.elementor-editor-active .elementor-column {min-width:50px !important;}
+
+.elementor-column.width-auto {width:auto !important;}
+
+@media (min-width:767px) {
+   .elementor-column.md\:width-auto {width:auto !important;}
+}
+
+/* 2 Column Holds 
+   ========================================================================== */
+
+.elementor-section.cols-w-auto > .elementor-container > .elementor-column,
+.elementor-element.cols-w-auto > .e-con-inner > .elementor-element {width:auto !important;}
+body.elementor-editor-active .elementor-element.cols-w-auto > .e-con-inner > .elementor-element {min-width:75px;}
+
+.elementor-section.hold-50 > .elementor-container > .elementor-column {width:50% !important;}
+
+.elementor-section.hold-75-25 > .elementor-container > .elementor-column:first-child {width:75% !important;}
+.elementor-section.hold-75-25 > .elementor-container > .elementor-column:last-child {width:25% !important;}
+
+.elementor-section.hold-25-75 > .elementor-container > .elementor-column:first-child {width:25% !important;}
+.elementor-section.hold-25-75 > .elementor-container > .elementor-column:last-child {width:75% !important;}
+
+.elementor-section.hold-60-40 > .elementor-container > .elementor-column:first-child {width:60% !important;}
+.elementor-section.hold-60-40 > .elementor-container > .elementor-column:last-child {width:40% !important;}
+
+.elementor-section.hold-40-60 > .elementor-container > .elementor-column:first-child {width:40% !important;}
+.elementor-section.hold-40-60 > .elementor-container > .elementor-column:last-child {width:60% !important;}
+
+.elementor-section.hold-65-45 > .elementor-container > .elementor-column:first-child {width:65% !important;}
+.elementor-section.hold-65-45 > .elementor-container > .elementor-column:last-child {width:45% !important;}
+
+.elementor-section.hold-45-65 > .elementor-container > .elementor-column:first-child {width:45% !important;}
+.elementor-section.hold-45-65 > .elementor-container > .elementor-column:last-child {width:65% !important;}
+
+@media (min-width:767px) {
+   .elementor-section.md\:cols-w-auto > .elementor-container > .elementor-column {width:auto !important;}
+
+   .elementor-section.md\:hold-50 > .elementor-container > .elementor-column {width:50% !important;}
+
+   .elementor-section.md\:hold-75-25 > .elementor-container > .elementor-column:first-child,
+   .elementor-element.md\:hold-75-25 > .e-con-inner > .elementor-element:first-child {width:75% !important;}
+   .elementor-section.md\:hold-75-25 > .elementor-container > .elementor-column:last-child,
+   .elementor-element.md\:hold-75-25 > .e-con-inner > .elementor-element:last-child {width:25% !important;}
+
+   .elementor-section.md\:hold-25-75 > .elementor-container > .elementor-column:first-child {width:25% !important;}
+   .elementor-section.md\:hold-25-75 > .elementor-container > .elementor-column:last-child {width:75% !important;}
+
+   .elementor-section.md\:hold-60-40 > .elementor-container > .elementor-column:first-child {width:60% !important;}
+   .elementor-section.md\:hold-60-40 > .elementor-container > .elementor-column:last-child {width:40% !important;}
+
+   .elementor-section.md\:hold-40-60 > .elementor-container > .elementor-column:first-child {width:40% !important;}
+   .elementor-section.md\:hold-40-60 > .elementor-container > .elementor-column:last-child {width:60% !important;}
+
+   .elementor-section.md\:hold-65-45 > .elementor-container > .elementor-column:first-child {width:65% !important;}
+   .elementor-section.md\:hold-65-45 > .elementor-container > .elementor-column:last-child {width:45% !important;}
+
+   .elementor-section.md\:hold-45-65 > .elementor-container > .elementor-column:first-child {width:45% !important;}
+   .elementor-section.md\:hold-45-65 > .elementor-container > .elementor-column:last-child {width:65% !important;}
+}
+
+/* 3 Column Holds %
+   ========================================================================== */
+
+.elementor-section.hold-5p-90p-5p > .elementor-container > .elementor-column {width:90% !important;}
+.elementor-section.hold-5p-90p-5p > .elementor-container > .elementor-column:first-child {width:5% !important;}
+.elementor-section.hold-5p-90p-5p > .elementor-container > .elementor-column:last-child {width:5% !important;}
+
+.elementor-section.hold-10p-80p-10p > .elementor-container > .elementor-column {width:80% !important;}
+.elementor-section.hold-10p-80p-10p > .elementor-container > .elementor-column:first-child {width:10% !important;}
+.elementor-section.hold-10p-80p-10p > .elementor-container > .elementor-column:last-child {width:10% !important;}
+
+.elementor-section.hold-15p-70p-15p > .elementor-container > .elementor-column {width:70% !important;}
+.elementor-section.hold-15p-70p-15p > .elementor-container > .elementor-column:first-child {width:15% !important;}
+.elementor-section.hold-15p-70p-15p > .elementor-container > .elementor-column:last-child {width:15% !important;}
+
+.elementor-section.hold-20p-60p-20p > .elementor-container > .elementor-column {width:60% !important;}
+.elementor-section.hold-20p-60p-20p > .elementor-container > .elementor-column:first-child {width:20% !important;}
+.elementor-section.hold-20p-60p-20p > .elementor-container > .elementor-column:last-child {width:20% !important;}
+
+.elementor-section.hold-25p-50p-25p > .elementor-container > .elementor-column {width:50% !important;}
+.elementor-section.hold-25p-50p-25p > .elementor-container > .elementor-column:first-child {width:25% !important;}
+.elementor-section.hold-25p-50p-25p > .elementor-container > .elementor-column:last-child {width:25% !important;}
+
+@media (min-width:767px) {
+   .elementor-section.md\:hold-10p-80p-10p > .elementor-container > .elementor-column {width:80% !important;}
+   .elementor-section.md\:hold-10p-80p-10p > .elementor-container > .elementor-column:first-child {width:10% !important;}
+   .elementor-section.md\:hold-10p-80p-10p > .elementor-container > .elementor-column:last-child {width:10% !important;}
+
+   .elementor-section.md\:hold-15p-70p-15p > .elementor-container > .elementor-column {width:70% !important;}
+   .elementor-section.md\:hold-15p-70p-15p > .elementor-container > .elementor-column:first-child {width:15% !important;}
+   .elementor-section.md\:hold-15p-70p-15p > .elementor-container > .elementor-column:last-child {width:15% !important;}
+
+   .elementor-section.md\:hold-20p-60p-20p > .elementor-container > .elementor-column {width:60% !important;}
+   .elementor-section.md\:hold-20p-60p-20p > .elementor-container > .elementor-column:first-child {width:20% !important;}
+   .elementor-section.md\:hold-20p-60p-20p > .elementor-container > .elementor-column:last-child {width:20% !important;}
+
+   .elementor-section.md\:hold-25p-50p-25p > .elementor-container > .elementor-column {width:50% !important;}
+   .elementor-section.md\:hold-25p-50p-25p > .elementor-container > .elementor-column:first-child {width:25% !important;}
+   .elementor-section.md\:hold-25p-50p-25p > .elementor-container > .elementor-column:last-child {width:25% !important;}
+}
+
+/* BTN (shortcode in functions)
+   ========================================================================== */
+
+.btn {
+   display:inline-block; 
+   padding:7px 25px; 
+   font-size:1.2rem; 
+   background:var(--primary, #333);
+   color:white; 
+   border-radius:5px; 
+   transition: 0.5s all;
+   border:solid thin var(--primary, #333); 
+}
+.btn:hover {
+   background:transparent;
+   color:var(--primary, #333); 
+}
+.btn i {
+   margin-left:17px; 
+   color: var(--primary, #333);
+}
+
+/* Widget Toggle
+   ========================================================================== */
+
+.elementor-widget-toggle .elementor-toggle-title {line-height:1.5;}
+.elementor-widget-toggle .elementor-toggle-title:focus {outline:none;}
+.elementor-widget-toggle .elementor-toggle-title:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+.elementor-widget-toggle .elementor-toggle-title strong {float:left; margin-right:10px;}
+.elementor-widget-toggle .elementor-toggle-title span {float:left;}
+
+.wide-btn a {display:block;}
+.wide-btn.elementor-align-left a .elementor-button-text {text-align:left; color:#333 !important;}
+
+/* Icons
+   ========================================================================== */
+
+.video-icon .elementor-widget-container,
+.share-icon .elementor-widget-container {position:relative; cursor: pointer; }
+.video-icon .elementor-widget-container a:after,
+.share-icon .elementor-widget-container a:after {content:""; display:block; width:100px; height:100px; position:absolute; background:url('../images/circle-play.svg') center no-repeat; background-size:contain; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); transition:all 0.5s ease;}
+.share-icon .elementor-widget-container a:after {background-image:url('../images/share-arrow.svg');}
+.video-icon:hover .elementor-widget-container a:after,
+.share-icon:hover .elementor-widget-container a:after {width:150px; height:150px;}
+
+.fa-icon-hover .elementor-widget-container {position:relative;}
+.fa-icon-hover .elementor-widget-container a:after {
+   color:white;
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   opacity: 0;
+   width: 100%;
+   transition:all 0.5s;
+   background-color:rgba(0,0,0,0.6);
+   position: absolute;
+   top:0;
+   font-weight: 900;
+   font-size:50px;
+   right:0;
+   left:0;
+   bottom:0;
+   height:100%;
+   font-family:"Font Awesome 5 Free";
+}
+.fa-icon-hover:hover .elementor-widget-container a:after {opacity:1;}
+
+/* https://fontawesome.com/ */
+.fa-icon-hover.play .elementor-widget-container a:after {content:"\f04b";}
+.fa-icon-hover.search-plus .elementor-widget-container a:after {content:"\f00e";}
+
+/* Effects
+   ========================================================================== */
+
+.flip-horizontal {-webkit-transform: scaleX(-1); transform: scaleX(-1);}
+
+/* Fixes
+   ========================================================================== */
+
+.elementor-social-icon {
+   display: -webkit-inline-box !important;
+   display: -ms-inline-flexbox !important;
+   display: inline-flex !important;
+}

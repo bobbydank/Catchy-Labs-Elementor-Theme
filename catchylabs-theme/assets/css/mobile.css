@@ -1,0 +1,5 @@
+header {position:relative; top:unset !important; left:unset;}
+#header-main {padding:20px 0;}
+.header-logo img {width:85px !important;}
+
+main {padding-top:0;}

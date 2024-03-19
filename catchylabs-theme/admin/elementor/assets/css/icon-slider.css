@@ -1,0 +1,15 @@
+.cl-icon-sliders {width:100%;}
+.cl-icon-sliders .cl-icon-slider img {height:60px; width:auto; margin:0 auto 30px; display:block;}
+.cl-icon-sliders .cl-icon-slider p {text-align:center; font-weight:bold;}
+
+.cl-icon-sliders .cl-icon-slider-controls {text-align:center;}
+.cl-icon-sliders .cl-icon-slider-controls i {color:#bae1f3; font-size:30px; cursor:pointer; margin:0 10px;}
+.cl-icon-sliders .cl-icon-slider-controls i:hover {color:#199ad6}
+
+/*
+.cl-icon-sliders .cl-icon-slider-container {width:100000px;}
+.cl-icon-sliders .cl-icon-slider {float:left; width:500px;}
+
+
+
+*/

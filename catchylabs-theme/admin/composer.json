@@ -1,0 +1,21 @@
+{
+  "name": "catchylabs/cl-elementor",
+  "description": "The elementor theme starter",
+  "type": "project",
+  "require": {
+    "ignitekit/wp-option-builder": "^1.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "catchylabs",
+      "email": "bobby@catchylabs.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "CL\\Elementor\\Core\\": "core/",
+      "CL\\Elementor\\Theme\\": "elementor/"
+    }
+  }
+}

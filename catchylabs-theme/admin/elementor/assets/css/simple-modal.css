@@ -1,0 +1,149 @@
+/* ------------------------------------
+   Simple Modal */
+
+.cl-simple-modal {
+  visibility: hidden;
+  position: fixed;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.cl-simple-modal:target {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  z-index: 8999;
+
+}
+
+.cl-simple-modal div.container {
+  left: 0% !important;
+  margin-top: 0 !important;
+  position: relative !important;
+  margin: 0 auto !important;
+	overflow:hidden;
+}
+
+.cl-simple-modal section {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding:35px;
+  border-radius:10px;
+}
+
+
+@media (max-width: 800px) {
+  .cl-simple-modal div.container {
+    top: 0;
+  }
+}
+
+.cl-simple-modal div .select {
+  margin: inherit !important;
+}
+
+.cl-simple-modal .modal-close {
+  color: black;
+  width: 70px;
+  text-decoration: none;
+}
+
+.cl-simple-modal .modal-close:hover {
+
+}
+
+.cl-simple-modal a.close {
+    top:10px;
+    position: absolute !important;
+    right:20px;
+    color:white;
+    font-size:30px;
+}
+
+.cl-simple-modal .modal-background {
+  background-size: cover;
+  background-position: 50% 0;
+  width: 85vw;
+  max-width: 1400px;
+  /*height:85vh;*/
+  background-blend-mode: multiply;
+}
+
+.cl-simple-modal .modal-background .inner {max-height:85vh; overflow-y:scroll;}
+/* width */
+.cl-simple-modal .modal-background .inner::-webkit-scrollbar {width: 5px;}
+/* Track */
+.cl-simple-modal .modal-background .inner::-webkit-scrollbar-track {background: transparent;}
+/* Handle */
+.cl-simple-modal .modal-background .inner::-webkit-scrollbar-thumb {background: white;}
+/* Handle on hover */
+.cl-simple-modal .modal-background .inner::-webkit-scrollbar-thumb:hover {background: #555;}
+
+.cl-simple-modal h2.modal-title {
+  font-size: 45px;
+  text-align: center;
+  padding: 57px 0 75px;
+  color: #ffde00;
+}
+
+.cl-simple-modal .modal-background section {width:100%; display:flex; align-items:flex-start;}
+.cl-simple-modal .image {width:35%; margin-right:5%;}
+.cl-simple-modal .image img {width:100%;}
+.cl-simple-modal .content {width:60%;}
+.cl-simple-modal .content.lone {width:100%;}
+.cl-simple-modal .content h3 {margin-bottom:20px; color:white; font-size:200%;}
+.cl-simple-modal .content p.position {text-transform:uppercase; margin-bottom:50px; letter-spacing:3px;}
+.cl-simple-modal .content p {color:white;}
+.cl-simple-modal .content a {color:white;}
+
+/* -------------------------------------------
+   Edit mode */
+
+body.elementor-editor-active .cl-simple-modal {
+    visibility: visible;
+    position: relative;
+    top: unset;
+    right: unset;
+    bottom: unset;
+    left: unset;
+    opacity:1;
+    padding:50px 0;
+}
+
+body.elementor-editor-active .cl-simple-modal div.container {
+    top: unset;
+    transform: none;
+    left: unset !important;
+}
+
+/* -------------------------------------------
+   Responsive mode */
+
+@media (max-width: 875px) {
+  .cl-simple-modal div {
+    /* width: 80% !important; */
+    height: 100vh;
+  }
+
+  .cl-simple-modal a.close {
+    width: auto;
+    position: absolute !important;
+    float: right;
+    right: 20px;
+    top: 20px;
+  }
+}
+
+@media (max-width:650px) {
+  .cl-simple-modal .image {display:none;}
+  .cl-simple-modal .content {width:100%;}
+}

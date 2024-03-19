@@ -1,0 +1,27 @@
+:root {
+	/* Colors */
+	--primary: #BF1D2C;
+	--secondary: #000000;
+	--teritary: #231F20;
+
+	--text: #231F20;
+
+	--grey: #475053;
+	--light-grey: #F0FBFF;
+
+    /* Fonts*/
+	--base-font: 'Open Sans', sans-serif;;
+	--base-font-strong : 'Open Sans', sans-serif;;
+	--base-font-w : 400;
+	--base-font-strong-w: 700;
+
+	--accent-font: 'Open Sans', sans-serif;;
+	--accent-font-strong : 'Open Sans', sans-serif;;
+	--accent-font-w: 500;
+	--accent-font-strong-w: 700;
+
+	--base-font-size: 20px;
+
+	/* Animation Speed */
+	--default-transition: all 300ms ease-in-out;
+}

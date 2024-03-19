@@ -1,0 +1,49 @@
+{
+    "packages": [
+        {
+            "name": "ignitekit/wp-option-builder",
+            "version": "1.0.4",
+            "version_normalized": "1.0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IgniteKit/wp-option-builder.git",
+                "reference": "cb2ccd64df46f23db8f6cf23596ade160d151117"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/IgniteKit/wp-option-builder/zipball/cb2ccd64df46f23db8f6cf23596ade160d151117",
+                "reference": "cb2ccd64df46f23db8f6cf23596ade160d151117",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "time": "2022-03-27T07:47:34+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "IgniteKit\\WP\\OptionBuilder\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Darko Gjorgjijoski",
+                    "email": "dg@darkog.com"
+                }
+            ],
+            "description": "Easy to use Options and Metabox framework for WordPress",
+            "support": {
+                "issues": "https://github.com/IgniteKit/wp-option-builder/issues",
+                "source": "https://github.com/IgniteKit/wp-option-builder/tree/1.0.4"
+            },
+            "install-path": "../ignitekit/wp-option-builder"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

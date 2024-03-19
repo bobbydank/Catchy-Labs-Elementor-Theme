@@ -1,0 +1,77 @@
+/* CSS Document */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+.b3-sliders {
+    padding-bottom:75px;
+}
+
+.b3-sliders-quote {width:5%;}
+.b3-sliders-quote img {width:100%;}
+
+.b3-sliders {width:100%; overflow:hidden;}
+.b3-slider-container {
+    width:100%;
+    text-align: center;
+    color:white;
+}
+.b3-slider {
+    float:left;
+    width:100%;
+}
+.b3-slider p {font-size:110%;}
+.b3-slider h4 {
+    font-family: var(--accent-font);
+    font-weight: var(--accent-strong-w);
+    padding-top:15px; 
+    margin-top:15px; 
+    display:inline-block; 
+    font-size:180%;
+    margin-bottom:70px;
+    line-height:1.5;
+}
+
+@media (max-width:900px) {
+    .b3-slider h4 {font-size:120%;}
+}
+
+.slick-dots {margin-top:50px; text-align:center;}
+.slick-dots li {display:inline-block; margin:5px;}
+.slick-dots li button {width:15px; height:15px; border-radius:50%; background-color:white; opacity:0.5; color:white; border:none;}
+.slick-dots li.slick-active button {opacity:1;}
+
+.b3-sliders .slick-list {z-index:5;}
+.b3-sliders .slick-arrow {z-index:10;}
+
+.b3-sliders button.slick-arrow {
+    display:block !important;
+    color:transparent;
+    position:absolute;
+    bottom:0;
+    background:none;
+    border:none;
+}
+.b3-sliders button.slick-prev {left:0;}
+.b3-sliders button.slick-next {right:0;}
+.b3-sliders button.slick-prev:before,
+.b3-sliders button.slick-next:after {
+    color:white; 
+    background-color:black; 
+    font-family: 'Font Awesome 6 Free'; 
+    font-weight: 900;
+    padding:5px 15px;
+    border-radius:50%;
+    overflow:hidden;
+    font-size:35px;
+    opacity:0.5;
+    transition: var(--default-transition);
+}
+.b3-sliders button.slick-prev:hover:before,
+.b3-sliders button.slick-next:hover:after {opacity: 1;}
+.b3-sliders button.slick-prev:before {content:"\f104";}
+.b3-sliders button.slick-next:after {content:"\f105";}
+
+.b3-sliders button:focus {
+    border: none;
+    outline: none;
+}

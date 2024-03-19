@@ -1,0 +1,21 @@
+/*________________________________
+Universal */
+
+.cl-submenu {width:100%; margin:0; }
+.cl-submenu ul {text-align:center; display:inline-block;}
+.cl-submenu li {display:inline-block;}
+.cl-submenu li:last-child:after {display:none;}
+.cl-submenu li a {text-decoration: none;}
+.cl-submenu li a:hover,
+.cl-submenu li.active a {}
+.cl-submenu.red li a:hover,
+.cl-submenu.red li.active a {}
+
+.submenu-select {display:none; width:92% !important; max-width:600px; margin:0 auto;}
+
+@media (max-width:1000px) {
+	.cl-submenu.sub-level {display:none;}
+	.cl-submenu.second-level ul {display:none;}
+	.cl-submenu.second-level {padding-bottom:20px;}
+	.cl-submenu-select {display:block;}
+}
