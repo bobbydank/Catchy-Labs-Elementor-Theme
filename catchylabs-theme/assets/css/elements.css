@@ -23,36 +23,6 @@
 .section-triangle.blue:after {border-top-color: var(--blue);}
 .section-triangle.super-light-grey:after {border-top-color:#F6F6F6;}
 
-/* link */
-.planck-button a {
-	border-radius:5px;
-	display:inline-flex;
-	align-items: stretch;
-	overflow: hidden;
-}
-.planck-button a .title {
-	background-color:#F5740E;
-	text-align: left;
-	padding:5px 13px;
-	color:black;
-	font-size:80%;
-	min-width:150px;
-	text-transform: uppercase;
-	font-family: 'open_sans_condensedbold';
-	transition: var(--default-transition);
-}
-.planck-button a:hover .title {
-	background-color:black;
-	color:#F5740E;
-}
-.planck-button a .arrow {
-	background-color:black;
-	color:white;
-	padding:0 10px;
-	display: flex;
-    align-items: center;
-}
-
 /* triangle joiner */
 .triangle-joiner .elementor-container {position:relative; z-index:5;}
 .triangle-joiner:after {
@@ -172,9 +142,18 @@ header.fixed {
     top:0;
     left:0;
     right:0;
+	padding-top:30px;
+	padding-bottom: 30px;
+	transition: all 0.5s ease;
     z-index: 1000;
 }
+header.fixed.scrolled {padding-top: 0; padding-bottom: 0; background-color: rgba(51,51,51,0.75);}
 body.admin-bar header.fixed {top:32px;}
+
+header.fixed .logo img {transition: all 0.2s;}
+header.fixed.scrolled .logo img {
+	width:150px;
+}
 
 #header-main {padding-top:40px; padding-bottom:40px;}
 #header-main.small {padding-top:0; padding-bottom:0;}
