@@ -16,7 +16,7 @@ wp-content/plugins/acf-repeater
 .ftpconfig
 .vscode/*
 .htaccess
-index.php
+/index.php
 
 #wordpress
 wp-config.php
