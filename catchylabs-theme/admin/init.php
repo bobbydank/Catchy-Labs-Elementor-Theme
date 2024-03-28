@@ -1,5 +1,7 @@
 <?php
 
+add_theme_support( 'post-thumbnails' );
+
 define( 'CL_ELEMENTOR_VERSION', '1.0.0' );
 define( 'CL_ELEMENTOR_PATH', trailingslashit( get_template_directory() ) . 'admin/' );
 define( 'CL_ELEMENTOR_URI', trailingslashit( get_template_directory_uri() ) . 'admin/' );
