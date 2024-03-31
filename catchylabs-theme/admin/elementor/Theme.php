@@ -61,8 +61,8 @@ class Theme extends Base {
 		$this->add_elementor_widget( Before_After_Image::class );
 		$this->add_elementor_widget( Review_Slider::class );
 
-		$this->add_frontend_script( CL_ELEMENTOR_PREFIX . '-slick', CL_ELEMENTOR_URI . 'elementor/assets/js/slick-js/slick.min.js', [ 'jquery' ], filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/js/slick-js/slick-min.js' ), true );
-		$this->add_frontend_style( CL_ELEMENTOR_PREFIX . '-slick', CL_ELEMENTOR_URI . 'elementor/assets/js/slick-js/slick.css', [], filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/js/slick-js/slick.css' ) );
+		$this->add_frontend_script( CL_ELEMENTOR_PREFIX . '-slick', CL_ELEMENTOR_URI . 'elementor/assets/js/slick-js/slick.min.js', [ 'jquery' ], 1.0, true );
+		$this->add_frontend_style( CL_ELEMENTOR_PREFIX . '-slick', CL_ELEMENTOR_URI . 'elementor/assets/js/slick-js/slick.css', [], 1.0 );
 
 		// Register styles
 		$styles = array(
