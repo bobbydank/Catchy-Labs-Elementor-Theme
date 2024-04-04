@@ -6,6 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Group_Control_Typography;
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
 use Elementor\Utils;
@@ -138,6 +140,209 @@ class Simple_Modal extends Widget_Base {
       ]
     );
 
+	$this->add_control(
+		'button_text', [
+		  'label' => __( 'Button Text', 'plugin-domain' ),
+		  'type' => Controls_Manager::TEXT,
+		  'default' => __( '' , 'plugin-domain' ),
+		  'label_block' => true,
+		]
+	  );
+  
+
+	$this->add_control(
+		'button_link',
+		[
+			'label' => __( 'Button Link', 'plugin-domain' ),
+			'type' => \Elementor\Controls_Manager::URL,
+			'placeholder' => __( '', 'plugin-domain' ),
+			'show_external' => true,
+			'default' => [
+				'url' => '',
+				'is_external' => true,
+				'nofollow' => true,
+			],
+		]
+	);
+
+	$this->end_controls_section();
+
+	$this->start_controls_section(
+		'style_section',
+		[
+			'label' => __( 'Settings', 'cl-elementor' ),
+			'tab'   => Controls_Manager::TAB_STYLE,
+		]
+	);
+
+	$this->add_control(
+		'close_color',
+		[
+			'label'     => __( 'Close color', 'cl-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'std'       => '#000',
+			'selectors' => [
+				'{{WRAPPER}} .cl-simple-modal .close .fa-times-circle' => 'color: {{VALUE}};',
+			],
+		]
+	);
+
+	$this->add_control(
+		'background_color',
+		[
+			'label'     => __( 'Background color', 'cl-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'std'       => '#000',
+			'selectors' => [
+				'{{WRAPPER}} .cl-simple-modal section' => 'background-color: {{VALUE}};',
+			],
+		]
+	);
+
+	$this->add_group_control(
+		Group_Control_Typography::get_type(),
+		[
+			'name'     => 'name_typography',
+			'label'    => 'Name Type',
+			'global'   => [
+				'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+			],
+			'selector' => '{{WRAPPER}} .cl-simple-modal .content h3',
+		]
+	);
+
+	$this->add_control(
+		'name_color',
+		[
+			'label'     => __( 'Name color', 'cl-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'std'       => '#000',
+			'selectors' => [
+				'{{WRAPPER}} .cl-simple-modal .content h3' => 'color: {{VALUE}};',
+			],
+		]
+	);
+
+	$this->add_responsive_control(
+		'name_margin',
+		[
+			'label'      => __( 'Name Margin', 'elementor' ),
+			'type'       => Controls_Manager::DIMENSIONS,
+			'size_units' => [ 'px', 'em', '%', 'rem' ],
+			'selectors'  => [
+				'{{WRAPPER}} .cl-simple-modal .content h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			],
+		]
+	);
+
+	$this->add_group_control(
+		Group_Control_Typography::get_type(),
+		[
+			'name'     => 'position_typography',
+			'label'    => 'Position Type',
+			'global'   => [
+				'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+			],
+			'selector' => '{{WRAPPER}} .cl-simple-modal .content p.position',
+		]
+	);
+
+	$this->add_control(
+		'position_color',
+		[
+			'label'     => __( 'Position color', 'cl-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'std'       => '#000',
+			'selectors' => [
+				'{{WRAPPER}} .cl-simple-modal .content p.position' => 'color: {{VALUE}};',
+			],
+		]
+	);
+
+	$this->add_responsive_control(
+		'position_margin',
+		[
+			'label'      => __( 'Position Margin', 'elementor' ),
+			'type'       => Controls_Manager::DIMENSIONS,
+			'size_units' => [ 'px', 'em', '%', 'rem' ],
+			'selectors'  => [
+				'{{WRAPPER}} .cl-simple-modal .content p.position' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			],
+		]
+	);
+
+	$this->add_group_control(
+		Group_Control_Typography::get_type(),
+		[
+			'name'     => 'content_typography',
+			'label'    => 'Content Type',
+			'global'   => [
+				'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+			],
+			'selector' => '{{WRAPPER}} .cl-simple-modal  .content p',
+		]
+	);
+
+	$this->add_control(
+		'content_color',
+		[
+			'label'     => __( 'Content color', 'cl-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'std'       => '#000',
+			'selectors' => [
+				'{{WRAPPER}} .cl-simple-modal .content p' => 'color: {{VALUE}};',
+			],
+		]
+	);
+
+	$this->add_group_control(
+		Group_Control_Typography::get_type(),
+		[
+			'name'     => 'button_typography',
+			'label'    => 'Button Type',
+			'global'   => [
+				'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+			],
+			'selector' => '{{WRAPPER}} .cl-simple-modal  .content a.btn',
+		]
+	);
+
+	$this->add_control(
+		'button_color',
+		[
+			'label'     => __( 'Button color', 'cl-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'std'       => '#000',
+			'selectors' => [
+				'{{WRAPPER}} .cl-simple-modal .content a.btn' => 'color: {{VALUE}};',
+			],
+		]
+	);
+
+	$this->add_control(
+		'button_bg_color',
+		[
+			'label'     => __( 'Button BG color', 'cl-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'std'       => '#000',
+			'selectors' => [
+				'{{WRAPPER}} .cl-simple-modal .content a.btn' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
+			],
+		]
+	);
+
+	$this->add_responsive_control(
+		'button_margin',
+		[
+			'label'      => __( 'Button Margin', 'elementor' ),
+			'type'       => Controls_Manager::DIMENSIONS,
+			'size_units' => [ 'px', 'em', '%', 'rem' ],
+			'selectors'  => [
+				'{{WRAPPER}} .cl-simple-modal .content a.btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			],
+		]
+	);
+
     $this->end_controls_section();
   }
 
@@ -179,6 +384,10 @@ class Simple_Modal extends Widget_Base {
 						<p class="position"><?php echo $settings['position'] ?></p>
 					<?php endif; ?>
 					<?php echo $settings['content'] ?>
+					<?php if ( ! empty( $settings['button_link']['url'] ) ) {
+						$this->add_link_attributes( 'website_link', $settings['button_link'] );
+						echo $button = '<a class="read-more btn" '. $this->get_render_attribute_string( 'website_link' ) .'>'.$settings['button_text'].'</a>';
+					} ?>
 				</div>
 		  	</section>
 		</div>
