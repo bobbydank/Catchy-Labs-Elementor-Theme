@@ -57,10 +57,6 @@
     text-decoration: none;
   }
   
-  .cl-simple-modal .modal-close:hover {
-  
-  }
-  
   .cl-simple-modal a.close {
       top:10px;
       position: absolute !important;

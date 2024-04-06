@@ -21,6 +21,7 @@ use CL\Elementor\Theme\Widgets\Popup_Gallery;
 use CL\Elementor\Theme\Widgets\Dropper_Title;
 use CL\Elementor\Theme\Widgets\Before_After_Image;
 use CL\Elementor\Theme\Widgets\Review_Slider;
+use CL\Elementor\Theme\Widgets\Post_Feed;
 
 /**
  * Class Theme
@@ -60,6 +61,7 @@ class Theme extends Base {
 		$this->add_elementor_widget( Dropper_Title::class );
 		$this->add_elementor_widget( Before_After_Image::class );
 		$this->add_elementor_widget( Review_Slider::class );
+		$this->add_elementor_widget( Post_Feed::class );
 
 		$this->add_frontend_script( CL_ELEMENTOR_PREFIX . '-slick', CL_ELEMENTOR_URI . 'elementor/assets/js/slick-js/slick.min.js', [ 'jquery' ], 1.0, true );
 		$this->add_frontend_style( CL_ELEMENTOR_PREFIX . '-slick', CL_ELEMENTOR_URI . 'elementor/assets/js/slick-js/slick.css', [], 1.0 );
@@ -70,7 +72,8 @@ class Theme extends Base {
 			'simple-modal',
 			'review-slider',
 			'video-popup',
-			'brand-window'
+			'brand-window',
+			'post-feed'
 		);
 		$this->register_styles( $styles );
 
