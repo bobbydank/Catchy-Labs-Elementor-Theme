@@ -50,7 +50,7 @@ class Theme extends Base {
 		$this->add_elementor_widget( Video_Popup::class );
 		//$this->add_elementor_widget( Icon_Slider::class );
 		//$this->add_elementor_widget( Image_Title_Hover::class );
-		$this->add_elementor_widget( Brand_Window::class );
+		//$this->add_elementor_widget( Brand_Window::class );
 		//$this->add_elementor_widget( Submenu::class );
 		//$this->add_elementor_widget( Team_Slider::class );
 		//$this->add_elementor_widget( Circle_Graphic::class );
@@ -62,27 +62,6 @@ class Theme extends Base {
 		$this->add_elementor_widget( Before_After_Image::class );
 		$this->add_elementor_widget( Review_Slider::class );
 		$this->add_elementor_widget( Post_Feed::class );
-
-		$this->add_frontend_script( CL_ELEMENTOR_PREFIX . '-slick', CL_ELEMENTOR_URI . 'elementor/assets/js/slick-js/slick.min.js', [ 'jquery' ], 1.0, true );
-		$this->add_frontend_style( CL_ELEMENTOR_PREFIX . '-slick', CL_ELEMENTOR_URI . 'elementor/assets/js/slick-js/slick.css', [], 1.0 );
-
-		// Register styles
-		$styles = array(
-			'theme',
-			'simple-modal',
-			'review-slider',
-			'video-popup',
-			'brand-window',
-			'post-feed'
-		);
-		$this->register_styles( $styles );
-
-		// Register scripts
-		$scripts = array(
-			'theme',
-			'brand-window'
-		);
-		$this->register_scripts( $scripts );
 
 		// Register shortcodes
 		$this->add_shortcode( 'year', array( $this, 'do_shortcode_year' ) );
@@ -129,15 +108,3 @@ class Theme extends Base {
 		}
 	}
 }
-
-//$this->add_frontend_style( CL_ELEMENTOR_PREFIX . '-icon-slider', CL_ELEMENTOR_URI . 'elementor/assets/css/icon-slider.css', [], filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/css/icon-slider.css' ) );
-//$this->add_frontend_style( CL_ELEMENTOR_PREFIX . '-image-title-hover', CL_ELEMENTOR_URI . 'elementor/assets/css/image_title_hover.css', [], filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/css/image_title_hover.css' ) );
-//$this->add_frontend_style( CL_ELEMENTOR_PREFIX . '-submenu', CL_ELEMENTOR_URI . 'elementor/assets/css/submenu.css', [], filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/css/submenu.css' ) );
-//$this->add_frontend_style( CL_ELEMENTOR_PREFIX . '-team-slider', CL_ELEMENTOR_URI . 'elementor/assets/css/team-slider.css', [], filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/css/team-slider.css' ) );
-//$this->add_frontend_style( CL_ELEMENTOR_PREFIX . '-circle-graphic', CL_ELEMENTOR_URI . 'elementor/assets/css/circle-graphic.css', [], filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/css/circle-graphic.css' ) );
-//$this->add_frontend_style( CL_ELEMENTOR_PREFIX . '-drop-list', CL_ELEMENTOR_URI . 'elementor/assets/css/drop-list.css', [], filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/css/drop-list.css' ) );
-//$this->add_frontend_style( CL_ELEMENTOR_PREFIX . '-slider', CL_ELEMENTOR_URI . 'elementor/assets/css/slider.css', [], filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/css/slider.css' ) );
-
-//$this->add_frontend_script( CL_ELEMENTOR_PREFIX . '-slick', CL_ELEMENTOR_URI . 'elementor/assets/js/slick-js/slick.min.js', [ 'jquery' ], 1.0, filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/js/slick-js/slick.min.js' ) );
-//$this->add_frontend_script( CL_ELEMENTOR_PREFIX . '-slider-icon', CL_ELEMENTOR_URI . 'elementor/assets/js/icon-slider.js', [ 'jquery' ], filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/js/icon-slider.js' ), true );
-//$this->add_frontend_script( CL_ELEMENTOR_PREFIX . '-team-slider', CL_ELEMENTOR_URI . 'elementor/assets/js/team-slider.js', [ 'jquery' ], filemtime( CL_ELEMENTOR_PATH . 'elementor/assets/js/team-slider.js' ), true );
