@@ -370,7 +370,7 @@ abstract class Base {
 			array(
 				'id'           => 'css_tailwind',
 				'label'        => __( 'Tailwind CSS', 'cl-elementor' ),
-				'desc'         => sprintf( __( 'Would you like to load Tailwind CSS?', 'cl-elementor' ) ),
+				'desc'         => sprintf( __( 'Our theme comes with a scoped Tailwind file. Any styles inside the container with the selector .cl-tailwind-container will be subject to TailwindCSS rules. Would you like to load this Scoped Tailwind CSS file?', 'cl-elementor' ) ),
 				'std'          => 'off',
 				'type'         => 'on-off',
 				'section'      => 'libraries',
