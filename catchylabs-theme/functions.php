@@ -80,8 +80,8 @@ function cl_load_scripts () {
 		/***************************** 
 		 * css
 		 */
-		wp_enqueue_style( 'cl_reset', get_template_directory_uri().'/assets/css/reset.css', array(), 1.0, false );
-		wp_enqueue_style( 'cl_variables', get_template_directory_uri().'/assets/css/variables.css', array(), $ver, false );
+		wp_enqueue_style( 'cl_reset', get_template_directory_uri().'/assets/css/reset.css', false );
+		wp_enqueue_style( 'cl_variables', get_template_directory_uri().'/assets/css/variables.css', false );
 		
 		//css libs
 		if (cl_elementor_get_theme_option('css_tailwind') === 'on') {
@@ -160,7 +160,7 @@ function cl_check_for_theme_update($checked_data) {
     }
 
     $data = json_decode(wp_remote_retrieve_body($request));
-    if (version_compare($data->version, $checked_data->checked['catchylabs-theme'], '>')) {
+    if (isset($data->version) && version_compare($data->version, $checked_data->checked['catchylabs-theme'], '>')) {
         $checked_data->response['catchylabs-theme'] = array(
             'theme'       => 'catchylabs-theme',
             'new_version' => $data->version,
