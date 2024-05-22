@@ -48,22 +48,22 @@ $(document).ready(function () {
 	});
     
     //resizes the main nav on scroll
-	main_nav_resizing();
+	if ($('header.fixed').length) {
+		main_nav_resizing();
+	}
 });
     
 function main_nav_resizing() {
 	$('header.fixed').data('size','big');
 
 	$(window).scroll(function () {
-		if ($(window).width() > 1000) {
-			if($(document).scrollTop() > 50){
-				if($('header.fixed').data('size') == 'big'){
-					$('header.fixed').data('size','small').addClass('scrolled');
-				}
-			} else {
-				if($('header.fixed').data('size') == 'small'){
-					$('header.fixed').data('size','big').removeClass('scrolled');
-				}
+		if($(document).scrollTop() > 50){
+			if($('header.fixed').data('size') == 'big'){
+				$('header.fixed').data('size','small').addClass('scrolled');
+			}
+		} else {
+			if($('header.fixed').data('size') == 'small'){
+				$('header.fixed').data('size','big').removeClass('scrolled');
 			}
 		}
 	});
