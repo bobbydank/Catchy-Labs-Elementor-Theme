@@ -4,6 +4,14 @@ A simple, lightweight Wordpress theme built perfect for Elementor.
 
 TODO: A proper readme.md
 
+## Zipping commands
+
+```
+cd wp-content/themes/
+zip -r catchylabs-theme.zip catchylabs-theme/ -x "catchylabs-theme/.git/*" -x "*.DS_Store"
+zip -r catchylabs-theme-child.zip catchylabs-theme-child/ -x "catchylabs-theme-child/.git/*" -x "*.DS_Store"
+```
+
 ## How to install
 
 Well, here's how I do it:
