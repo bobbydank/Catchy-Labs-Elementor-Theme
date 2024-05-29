@@ -30,6 +30,19 @@ $(document).ready(function () {
 			$(this).addClass('open');
 		}
 	});
+	$('#full-menu ul.menu > li.menu-item-has-children > a[href="#"]').click(function (e) {
+		e.preventDefault();
+		var $submenu = $(this).parent().find('> ul');
+		var $plus = $(this).parent().find('.plus');
+
+		if ($plus.hasClass('open')) {
+			$submenu.slideUp();
+			$plus.removeClass('open');
+		} else {
+			$submenu.slideDown();
+			$plus.addClass('open');
+		}
+	});
 
 	//https://dimsemenov.com/plugins/magnific-popup/documentation.html
 	$('.popup-video').magnificPopup({
@@ -71,10 +84,10 @@ function main_nav_resizing() {
 
 //functions
 function cl_create_fullsubmenus() {
-	$('#full-menu ul.menu > li').each(function(index, element) {
-		if ($(element).find('ul.sub-menu').length) {
+	$('#full-menu ul.menu li.menu-item-has-children').each(function(index, element) {
+		//if ($(element).find('ul.sub-menu').length) {
 			$(element).append('<div class="plus"><span></span><span></span></div>');
-		}
+		//}
     });
 }
 
