@@ -173,25 +173,36 @@ class Search extends Widget_Base {
         );
 
         $this->add_control(
-			'icon_size',
+			'icon_width',
 			[
-				'label' => esc_html__( 'Icon Size', 'plugin-name' ),
-				'type' => \Elementor\Controls_Manager::SLIDER,
-				'size_units' => [ 'rem', 'em' ],
-				'range' => [
-					'rem' => [
-						'min' => 0,
-						'max' => 5,
-						'step' => 0.1,
-                    ],
-                    'em' => [
-						'min' => 0,
-						'max' => 5,
-						'step' => 0.1,
-					]
+				'label'          => __( 'Icon Width', 'elementor' ),
+				'type'           => \Elementor\Controls_Manager::SLIDER,
+				'default'        => [
+					'unit' => '%',
 				],
-				'selectors' => [
-					'{{WRAPPER}} .cl-search-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+				'tablet_default' => [
+					'unit' => '%',
+				],
+				'mobile_default' => [
+					'unit' => '%',
+				],
+				'size_units'     => [ '%', 'px', 'vw' ],
+				'range'          => [
+					'%'  => [
+						'min' => 1,
+						'max' => 100,
+					],
+					'px' => [
+						'min' => 1,
+						'max' => 1000,
+					],
+					'vw' => [
+						'min' => 1,
+						'max' => 100,
+					],
+				],
+				'selectors'      => [
+					'{{WRAPPER}} .cl-search-icon' => 'width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => array(
 					'search_type' => 'icon',

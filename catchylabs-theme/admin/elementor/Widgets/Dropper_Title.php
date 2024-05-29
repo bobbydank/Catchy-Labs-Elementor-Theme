@@ -112,6 +112,27 @@ class Dropper_Title extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'line',
+			[
+				'label' => __( 'Center line?', 'plugin-domain' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'On', 'your-plugin' ),
+				'label_off' => __( 'Off', 'your-plugin' ),
+				'return_value' => 'on',
+				'default' => 'off',
+			]
+		);
+		
+		$this->add_control(
+			'icon',
+			[
+				'name' => 'icon',
+				'label' => __('Icon', 'plugin-name'),
+				'type' => \Elementor\Controls_Manager::ICONS,
+			],
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -122,10 +143,10 @@ class Dropper_Title extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'width',
+		$this->add_responsive_control(
+			'icon_width',
 			[
-				'label'          => __( 'Width', 'elementor' ),
+				'label'          => __( 'Icon Width', 'elementor' ),
 				'type'           => \Elementor\Controls_Manager::SLIDER,
 				'default'        => [
 					'unit' => '%',
@@ -152,22 +173,34 @@ class Dropper_Title extends Widget_Base {
 					],
 				],
 				'selectors'      => [
-					'{{WRAPPER}} .cl-dropper-title .text' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .cl-dropper-title .icon' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
 
 		$this->add_control(
+			'bg_color',
+			[
+				'label'     => __( 'BG Color', 'cl-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'std'       => '#fff',
+				'selectors' => [
+					'{{WRAPPER}} .cl-dropper-title' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
 			'line_position',
 			[
-				'label' => esc_html__( 'Special Last Item', 'plugin-name' ),
+				'label' => esc_html__( 'Positioning', 'plugin-name' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Between', 'your-plugin' ),
 				'label_off' => esc_html__( 'Next to', 'your-plugin' ),
 				'return_value' => 'yes',
 				'default' => '',
 				'selectors'      => [
-					'{{WRAPPER}} .cl-dropper-title .text' => 'justify-content: space-between',
+					'{{WRAPPER}} .cl-dropper-title' => 'justify-content: space-between',
 				],
 			]
 		);
@@ -179,7 +212,42 @@ class Dropper_Title extends Widget_Base {
 				'global'   => [
 					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
 				],
-				'selector' => '{{WRAPPER}} .cl-dropper-title .text p',
+				'selector' => '{{WRAPPER}} .cl-dropper-title p',
+			]
+		);
+
+		$this->add_responsive_control(
+			'width',
+			[
+				'label'          => __( 'Text Width', 'elementor' ),
+				'type'           => \Elementor\Controls_Manager::SLIDER,
+				'default'        => [
+					'unit' => '%',
+				],
+				'tablet_default' => [
+					'unit' => '%',
+				],
+				'mobile_default' => [
+					'unit' => '%',
+				],
+				'size_units'     => [ '%', 'px', 'vw' ],
+				'range'          => [
+					'%'  => [
+						'min' => 1,
+						'max' => 100,
+					],
+					'px' => [
+						'min' => 1,
+						'max' => 1000,
+					],
+					'vw' => [
+						'min' => 1,
+						'max' => 100,
+					],
+				],
+				'selectors'      => [
+					'{{WRAPPER}} .cl-dropper-title p' => 'width: {{SIZE}}{{UNIT}};',
+				],
 			]
 		);
 
@@ -190,22 +258,23 @@ class Dropper_Title extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .cl-dropper-title .text' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .cl-dropper-title p' => 'color: {{VALUE}};',
 				],
 			]
 		);
 
         $this->add_control(
-			'text_bd_color',
+			'text_bg_color',
 			[
 				'label'     => __( 'Text BG Color', 'cl-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .cl-dropper-title .text' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .cl-dropper-title p' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
+
 
 		$this->add_control(
 			'line_color',
@@ -219,6 +288,33 @@ class Dropper_Title extends Widget_Base {
 			]
 		);
 
+		$this->add_responsive_control(
+			'line_size',
+			[
+				'label'          => __( 'Line Size', 'elementor' ),
+				'type'           => \Elementor\Controls_Manager::SLIDER,
+				'default'        => [
+					'unit' => 'px',
+				],
+				'tablet_default' => [
+					'unit' => 'px',
+				],
+				'mobile_default' => [
+					'unit' => 'px',
+				],
+				'size_units'     => [ 'px' ],
+				'range'          => [
+					'px' => [
+						'min' => 1,
+						'max' => 100,
+					],
+				],
+				'selectors'      => [
+					'{{WRAPPER}} .cl-dropper-title .line' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->add_control(
 			'dropper_color',
 			[
@@ -226,12 +322,12 @@ class Dropper_Title extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#000',
 				'selectors' => [
-					'{{WRAPPER}} .cl-dropper-title .text i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .cl-dropper-title i' => 'color: {{VALUE}};',
 				],
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'dropper_size',
 			[
 				'label'          => __( 'Dropper Size', 'elementor' ),
@@ -261,7 +357,31 @@ class Dropper_Title extends Widget_Base {
 					],
 				],
 				'selectors'      => [
-					'{{WRAPPER}} .cl-dropper-title .text i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .cl-dropper-title i' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'padding',
+			[
+				'label'      => __( 'Padding', 'elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .cl-dropper-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'border-radius',
+			[
+				'label'      => __( 'Border Radius', 'elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .cl-dropper-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -280,11 +400,15 @@ class Dropper_Title extends Widget_Base {
         ?>
 		
         <div class="cl-dropper-title <?php echo $settings['starting_position'] ?>" data-id="<?php echo $settings['dropper_id']; ?>">
-            <div class="text">
-                <p><?php echo $settings['title']; ?></p>
-                <i class="fa-solid fa-angle-down"></i>
-            </div>
-            <div class="line"></div>
+            <p><?php echo $settings['title']; ?></p>
+			<?php if ($settings['line'] === 'on') : ?>
+				<div class="line"></div>
+			<?php endif; ?>
+			<?php if ($settings['icon']) : ?>
+				<span class="icon"><?php echo \Elementor\Icons_Manager::render_icon($settings['icon'], ['aria-hidden' => 'true']); ?></span>
+			<?php else: ?>
+				<i class="fa-solid fa-angle-down"></i>
+			<?php endif; ?>
         </div>
 		
 		<?php 

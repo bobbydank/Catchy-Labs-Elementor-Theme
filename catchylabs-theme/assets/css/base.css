@@ -1361,10 +1361,17 @@ footer .default-footer .social li a:hover {
     padding:0 0 10px;
     border-bottom:solid thin #fff;
 }
+#full-menu .menu li:last-child {
+    border-bottom-color: transparent;
+}
 #full-menu .menu li .sub-menu {
     display:none;
+	margin-top:10px;
     padding-top:10px;
     border-top:solid thin #fff;
+}
+#full-menu .menu li .sub-menu li {
+	padding:10px 0 10px 20px;
 }
 #full-menu .menu li a {
     z-index:100001;
@@ -1660,6 +1667,7 @@ Intertek badge
    ========================================================================== */
 
 .cl-search-icon {cursor:pointer;}
+.cl-search-icon svg {width:100%;}
 
 .search-overlay {height: 100vh; width: 100%; display: none; position: fixed; z-index: 100000; top: 0; left: 0; background-color: rgba(51,51,51, 0.8);}
 .search-overlay-content {position: relative;top: 46%;  width: 50%;  text-align: center;  margin: auto;}

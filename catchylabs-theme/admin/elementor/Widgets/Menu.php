@@ -162,7 +162,7 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current_page_item > a,
+					'{{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current_page_item > a, {{WRAPPER}} .nav-menu li.current_page_ancestor > a,
 					{{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current-menu-parent > a' => 'color: {{VALUE}};',
 				],
 			]
@@ -175,8 +175,10 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current_page_item > a,
-					{{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current-menu-parent > a' => 'border-bottom-color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu a:hover, 
+					{{WRAPPER}} .nav-menu li.current_page_item > a,
+					{{WRAPPER}} .nav-menu a:hover, 
+					{{WRAPPER}} .nav-menu li.current-menu-parent > a' => 'border-bottom-color: {{VALUE}};',
 				],
 			]
 		);
@@ -200,7 +202,7 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#000',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current-menu-item > a,
+					'{{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current-menu-item > a, {{WRAPPER}} .nav-menu li.current_page_ancestor > a,
 					 {{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current-menu-parent > a' => 'background-color: {{VALUE}};',
 				],
 			]
