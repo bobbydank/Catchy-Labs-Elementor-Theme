@@ -139,7 +139,7 @@ class Menu extends Widget_Base {
 				'global'   => [
 					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
 				],
-				'selector' => '{{WRAPPER}} .nav-menu a',
+				'selector' => '{{WRAPPER}} .nav-menu .menu > li > a',
 			]
 		);
 
@@ -150,7 +150,7 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu .menu > li > a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -162,8 +162,11 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current_page_item > a, {{WRAPPER}} .nav-menu li.current_page_ancestor > a,
-					{{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current-menu-parent > a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu .menu > li a:hover, 
+					 {{WRAPPER}} .nav-menu .menu > li.current_page_item > a, 
+					 {{WRAPPER}} .nav-menu .menu > li.current_page_ancestor > a,
+					 {{WRAPPER}} .nav-menu .menu > li a:hover, 
+					 {{WRAPPER}} .nav-menu .menu > li.current-menu-parent > a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -175,10 +178,10 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu a:hover, 
-					{{WRAPPER}} .nav-menu li.current_page_item > a,
-					{{WRAPPER}} .nav-menu a:hover, 
-					{{WRAPPER}} .nav-menu li.current-menu-parent > a' => 'border-bottom-color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu .menu > li a:hover, 
+					 {{WRAPPER}} .nav-menu .menu > li.current_page_item > a,
+					 {{WRAPPER}} .nav-menu .menu > li > a:hover, 
+					 {{WRAPPER}} .nav-menu .menu > li.current-menu-parent > a' => 'border-bottom-color: {{VALUE}};',
 				],
 			]
 		);
@@ -202,8 +205,11 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#000',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current-menu-item > a, {{WRAPPER}} .nav-menu li.current_page_ancestor > a,
-					 {{WRAPPER}} .nav-menu a:hover, {{WRAPPER}} .nav-menu li.current-menu-parent > a' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu .menu > li > a:hover, 
+					 {{WRAPPER}} .nav-menu .menu > li.current-menu-item > a, 
+					 {{WRAPPER}} .nav-menu .menu > li.current_page_ancestor > a,
+					 {{WRAPPER}} .nav-menu .menu > li > a:hover, 
+					 {{WRAPPER}} .nav-menu .menu > li.current-menu-parent > a' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -291,7 +297,7 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu .navbar .menu.line li:after' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu .navbar .menu.line > li:after' => 'background-color: {{VALUE}};',
 				]
 			]
 		);
@@ -333,7 +339,7 @@ class Menu extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}} .nav-menu .navbar .menu li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .nav-menu .navbar .menu > li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -345,8 +351,18 @@ class Menu extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}} .nav-menu .navbar .menu li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .nav-menu .navbar .menu > li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'special_button_section',
+			[
+				'label' => __( 'Special Last', 'cl-elementor' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -369,7 +385,7 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu .navbar.special-last li:last-child a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu .navbar.special-last .menu > li:last-child a' => 'color: {{VALUE}};',
 				],
 				'condition' => array(
 					'special_last' => 'yes',
@@ -384,7 +400,7 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu .navbar.special-last li:last-child:hover a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu .navbar.special-last .menu > li:last-child:hover a' => 'color: {{VALUE}};',
 				],
 				'condition' => array(
 					'special_last' => 'yes',
@@ -399,7 +415,7 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu .navbar.special-last li:last-child' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu .navbar.special-last .menu > li:last-child' => 'background-color: {{VALUE}};',
 				],
 				'condition' => array(
 					'special_last' => 'yes',
@@ -414,7 +430,7 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu .navbar.special-last li:last-child:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu .navbar.special-last .menu > li:last-child:hover' => 'background-color: {{VALUE}};',
 				],
 				'condition' => array(
 					'special_last' => 'yes',
@@ -429,11 +445,244 @@ class Menu extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}} .nav-menu .navbar .menu li:last-child a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .nav-menu .navbar .menu > li:last-child a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => array(
 					'special_last' => 'yes',
 				),
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'sub_menu_section',
+			[
+				'label' => __( 'Submenu', 'cl-elementor' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_responsive_control(
+			'submenu_width',
+			[
+				'label'          => __( 'Submenu Width', 'elementor' ),
+				'type'           => \Elementor\Controls_Manager::SLIDER,
+				'default'        => [
+					'unit' => '%',
+				],
+				'tablet_default' => [
+					'unit' => '%',
+				],
+				'mobile_default' => [
+					'unit' => '%',
+				],
+				'size_units'     => [ '%', 'px', 'vw' ],
+				'range'          => [
+					'%'  => [
+						'min' => 1,
+						'max' => 100,
+					],
+					'px' => [
+						'min' => 1,
+						'max' => 1000,
+					],
+					'vw' => [
+						'min' => 1,
+						'max' => 100,
+					],
+				],
+				'selectors'      => [
+					'{{WRAPPER}} .nav-menu .sub-menu ' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'submenu_typography',
+				'global'   => [
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				],
+				'selector' => '{{WRAPPER}} .nav-menu .sub-menu > li > a',
+			]
+		);
+
+		$this->add_control(
+			'submenu_text_color',
+			[
+				'label'     => __( 'Text color', 'cl-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'std'       => '#fff',
+				'selectors' => [
+					'{{WRAPPER}} .nav-menu .sub-menu > li > a' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'submenu_hover_color',
+			[
+				'label'     => __( 'Hover color', 'cl-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'std'       => '#fff',
+				'selectors' => [
+					'{{WRAPPER}} .nav-menu .sub-menu > li a:hover, 
+					 {{WRAPPER}} .nav-menu .sub-menu > li.current_page_item > a, 
+					 {{WRAPPER}} .nav-menu .sub-menu > li.current_page_ancestor > a,
+					 {{WRAPPER}} .nav-menu .sub-menu > li a:hover, 
+					 {{WRAPPER}} .nav-menu .sub-menu > li.current-menu-parent > a' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'submenu_hover_underline',
+			[
+				'label'     => __( 'Hover underline color', 'cl-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'std'       => '#fff',
+				'selectors' => [
+					'{{WRAPPER}} .nav-menu .sub-menu > li a:hover, 
+					 {{WRAPPER}} .nav-menu .sub-menu > li.current_page_item > a,
+					 {{WRAPPER}} .nav-menu .sub-menu > li > a:hover, 
+					 {{WRAPPER}} .nav-menu .sub-menu > li.current-menu-parent > a' => 'border-bottom-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'submenu_background_color',
+			[
+				'label'     => __( 'Background color', 'cl-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'std'       => '#000',
+				'selectors' => [
+					'{{WRAPPER}} .nav-menu .sub-menu > li > a' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'submenu_hover_background_color',
+			[
+				'label'     => __( 'Hover Background color', 'cl-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'std'       => '#000',
+				'selectors' => [
+					'{{WRAPPER}} .nav-menu .sub-menu > li > a:hover, 
+					 {{WRAPPER}} .nav-menu .sub-menu > li.current-menu-item > a, 
+					 {{WRAPPER}} .nav-menu .sub-menu > li.current_page_ancestor > a,
+					 {{WRAPPER}} .nav-menu .sub-menu > li > a:hover, 
+					 {{WRAPPER}} .nav-menu .sub-menu > li.current-menu-parent > a' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'submenu_margin',
+			[
+				'label'      => __( 'Submenu Margin', 'elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .nav-menu .navbar .sub-menu > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'submenu_padding',
+			[
+				'label'      => __( 'Submenu Padding', 'elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .nav-menu .navbar .sub-menu > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				]
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'hamburger_section',
+			[
+				'label' => __( 'Hamburger', 'cl-elementor' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_responsive_control( 
+			'hamburger_text_align', 
+			[
+				'label'     => __( 'Hamburger Alignment', 'elementor' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'left'   => [
+						'title' => __( 'Left', 'elementor' ),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'elementor' ),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'right'  => [
+						'title' => __( 'Right', 'elementor' ),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .nav-menu .navbar-toggle' => 'text-align: {{VALUE}};',
+				],
+			] 
+		);
+
+		$this->add_responsive_control(
+			'hamburger_width',
+			[
+				'label'          => __( 'Submenu Width', 'elementor' ),
+				'type'           => \Elementor\Controls_Manager::SLIDER,
+				'default'        => [
+					'unit' => '%',
+				],
+				'tablet_default' => [
+					'unit' => '%',
+				],
+				'mobile_default' => [
+					'unit' => '%',
+				],
+				'size_units'     => [ '%', 'px', 'vw' ],
+				'range'          => [
+					'%'  => [
+						'min' => 1,
+						'max' => 100,
+					],
+					'px' => [
+						'min' => 1,
+						'max' => 1000,
+					],
+					'vw' => [
+						'min' => 1,
+						'max' => 100,
+					],
+				],
+				'selectors'      => [
+					'{{WRAPPER}} .nav-menu .navbar-toggle i' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'hamburger_text_color',
+			[
+				'label'     => __( 'Text color', 'cl-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'std'       => '#fff',
+				'selectors' => [
+					'{{WRAPPER}} .nav-menu .navbar-toggle i' => 'color: {{VALUE}};',
+				],
 			]
 		);
 
@@ -456,11 +705,11 @@ class Menu extends Widget_Base {
 				
 				<?php if ($settings['menu_type'] === 'mobile') : ?>
 					<a class="navbar-toggle always-on">
-						Menu <i class="fa-solid fa-bars"></i>
+						<i class="fa-solid fa-bars"></i>
 					</a>
 				<?php elseif ($settings['menu_type'] === 'hybrid') : ?>
 					<a class="navbar-toggle">
-						Menu <i class="fa-solid fa-bars"></i>
+						<i class="fa-solid fa-bars"></i>
 					</a>
 					<nav class="navbar <?php echo ('yes' === $settings['special_last']) ? 'special-last' : ''; ?>">
 						<?php wp_nav_menu( array(

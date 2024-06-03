@@ -84,7 +84,7 @@
     top:50%;
     transform:translateY(-50%);
 }
-.nav-menu .navbar .menu.line li:after {
+.nav-menu .navbar .menu.line > li:after {
     content: '';
     height:100%;
     width:1px;
@@ -95,7 +95,7 @@
     top:50%;
     transform:translateY(-50%);
 }
-.nav-menu .navbar .menu li:last-child:after {
+.nav-menu .navbar .menu > li:last-child:after {
     content:"";
     display:none;
 }
