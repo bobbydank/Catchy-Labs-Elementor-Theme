@@ -430,3 +430,60 @@ body.elementor-editor-active .cl-drop-down:not(.active) {
 #catchy-player .swp_player_top {
    height:auto;
 }
+
+/* Hover FAQ
+   ========================================================================== */
+
+.cl-hover-faq {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+}
+
+.cl-hover-faq .question {
+	opacity: 1;
+	transition: all 0.25s ease-in;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	position: absolute;
+	z-index: 501;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding:0 20px;
+}
+
+.cl-hover-faq:hover .question,
+.cl-hover-faq.show .question {
+	opacity: 0;
+}
+
+.cl-hover-faq .question .content {
+	margin:0 auto;
+	width:100%;
+}
+
+.cl-hover-faq .answer {
+	position: relative;
+	z-index: 500;
+	width: 100%;
+}
+
+.cl-hover-faq > div > *:last-child {
+	margin-bottom:0;
+}
+
+.cl-hover-faq > .question > * {
+	margin:0;
+}
+
+@media (max-width:768px) {
+	.cl-hover-faq .answer {
+		height: auto !important;
+	}
+}
