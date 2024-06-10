@@ -9,5 +9,52 @@ Version: 1.0.0
 Text Domain: cl-elementor
 */
 
+:root {
+   --clet-primary: #BF1D2C;
+	--clet-text: #333333;
+}
+
 /* Put all custom styles here
    ========================================================================== */
+
+
+
+/* WP Forms styles
+   ========================================================================== */
+
+div.wpforms-container-full input[type="text"], div.wpforms-container-full input[type="date"], div.wpforms-container-full input[type="email"], div.wpforms-container-full input[type="number"], div.wpforms-container-full input[type="password"], div.wpforms-container-full input[type="search"], div.wpforms-container-full input[type="tel"], div.wpforms-container-full input[type="url"], div.wpforms-container-full select, div.wpforms-container-full select option, div.wpforms-container-full textarea {
+   width: 100%;
+   border: none;
+   border-radius: 3px;
+   padding: 0.5rem 1rem;
+   -webkit-transition: all .3s;
+   -o-transition: all .3s;
+   background-color:#F3F3F3;
+   transition: all .3s;
+}
+
+div.wpforms-container-full input[type=submit]:not(:hover):not(:active), div.wpforms-container-full button[type=submit]:not(:hover):not(:active), div.wpforms-container-full .wpforms-page-button:not(:hover):not(:active), .wp-core-ui div.wpforms-container-full input[type=submit]:not(:hover):not(:active), .wp-core-ui div.wpforms-container-full button[type=submit]:not(:hover):not(:active), .wp-core-ui div.wpforms-container-full .wpforms-page-button:not(:hover):not(:active), div.wpforms-container-full input[type=submit]:hover, div.wpforms-container-full input[type=submit]:active, div.wpforms-container-full button[type=submit]:hover, div.wpforms-container-full button[type=submit]:active, div.wpforms-container-full .wpforms-page-button:hover, div.wpforms-container-full .wpforms-page-button:active, .wp-core-ui div.wpforms-container-full input[type=submit]:hover, .wp-core-ui div.wpforms-container-full input[type=submit]:active, .wp-core-ui div.wpforms-container-full button[type=submit]:hover, .wp-core-ui div.wpforms-container-full button[type=submit]:active, .wp-core-ui div.wpforms-container-full .wpforms-page-button:hover, .wp-core-ui div.wpforms-container-full .wpforms-page-button:active {
+   background-color:var(--clet-primary, #333);
+   text-transform:uppercase;
+   letter-spacing:2px;
+   padding:20px;
+   height:auto;
+   border:solid thin var(--clet-primary, #333);
+   color:white;
+   margin-top:10px;
+}
+
+.wpforms-container .wpforms-field, .wp-core-ui div.wpforms-container .wpforms-field {
+   padding:10px 0;
+}
+
+div.wpforms-container-full .wpforms-confirmation-container-full, div[submit-success]>.wpforms-confirmation-container-full:not(.wpforms-redirection-message) {
+   border:solid thin var(--clet-primary, #333);
+   background:white;
+   padding:20px;
+   text-align:center;
+}
+
+div.wpforms-container-full .wpforms-confirmation-container-full, div[submit-success]>.wpforms-confirmation-container-full:not(.wpforms-redirection-message) {
+   color: var(--clet-text, #333);
+}
