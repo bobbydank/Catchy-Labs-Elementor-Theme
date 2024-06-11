@@ -7,7 +7,7 @@
     //$this->add_render_attribute('wrapper', 'class', ['b3-posts-list clearfix b3-posts']);
 ?>
   
-<div class="b3-posts-list clearfix b3-posts">
+<div class="b3-posts-list clearfix b3-posts <?php echo $settings['list_layout']; ?>">
     <div class="b3-content-items"> 
     <?php
     global $post;
@@ -21,7 +21,7 @@
 
             <div class="post post-block-small">      
                 <div class="post-content">
-                    <?php if ( has_post_thumbnail() ) : ?>
+                    <?php if ( has_post_thumbnail() && $settings['show_featured_image'] == 'yes' ) : ?>
                         <div class="post-thumbnail">
                             <a class="link-image-content" href="<?php the_permalink(); ?>">
                                 <?php the_post_thumbnail('medium'); ?>
@@ -29,18 +29,26 @@
                         </div>
                     <?php endif; ?>
                     <div class="content-inner">
-                        <h3 class="entry-title">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php the_title(); ?>
+                        <?php if ($settings['show_title'] == 'yes') : ?>
+                            <h3 class="entry-title">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </h3> 
+                        <?php endif; ?>
+                        <?php if ($settings['show_date'] == 'yes') : ?>
+                            <div class="entry-meta">
+                                <p>Published on: <?php the_time('M d, Y'); ?> | <?php echo cl_calculate_reading_time( get_the_ID() ); ?></p>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($settings['show_content'] == 'yes') : ?>
+                            <?php echo '<p class="the-excerpt">'.cl_custom_excerpt(get_the_content(), $settings['excerpt_length']['size']).'</p>'; ?>
+                        <?php endif; ?>
+                        <?php if ($settings['show_read_more'] == 'yes') : ?>
+                            <a class="btn" href="<?php the_permalink(); ?>">
+                                Read More &raquo;
                             </a>
-                        </h3> 
-                        <div class="entry-meta">
-                            <p>Published on: <?php the_time('M d, Y'); ?> | <?php echo cl_calculate_reading_time( get_the_ID() ); ?></p>
-                        </div>
-                        <?php the_excerpt(); ?>
-                        <a class="btn" href="<?php the_permalink(); ?>">
-                            Read More &raquo;
-                        </a>
+                        <?php endif; ?>
                     </div>    
                 </div>   
             </div>

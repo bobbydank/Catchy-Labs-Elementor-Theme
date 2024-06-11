@@ -42,16 +42,16 @@
 }
 
 @media (min-width:767px) {
-    .b3-posts-list .post-content {
+    .b3-posts-list.side .post-content {
         display:flex;
     }
 
-    .b3-posts-list .post-content .post-thumbnail {
+    .b3-posts-list.side .post-content .post-thumbnail {
         width:30%;
         padding-right:3%;
     }
 
-    .b3-posts-list .post-content .content-inner {
+    .b3-posts-list.side .post-content .content-inner {
         width:62%;   
     }
 

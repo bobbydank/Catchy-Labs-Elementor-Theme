@@ -94,11 +94,27 @@ class Post_Feed extends Widget_Base {
                 'type'    => Controls_Manager::SELECT,
                 'default' => 'list',
                 'options' => [
-                    'list'    => __( 'List', 'cl-elementor' ),
-                    'grid'    => __( 'Grid', 'cl-elementor' ),
-                    'full'    => __( 'Full Article(s)', 'cl-elementor' ),
-                    'titles'  => __( 'Title Only', 'cl_elementor' )
+                    'list'       => __( 'List', 'cl-elementor' ),
+                    'grid'       => __( 'Grid', 'cl-elementor' ),
+                    'full'       => __( 'Full Article(s)', 'cl-elementor' ),
+                    'titles'     => __( 'Title Only', 'cl_elementor' )
                 ]
+            ]
+        );
+
+        $this->add_control(
+            'list_layout',
+            [
+                'label'   => __( 'List Layout', 'cl-elementor' ),
+                'type'    => Controls_Manager::SELECT,
+                'default' => 'side',
+                'options' => [
+                    'side'       => __( 'Side by Side', 'cl-elementor' ),
+                    'top'        => __( 'Image Top', 'cl-elementor' ),
+                ],
+                'condition' => [
+                    'layout' => 'list',
+                ],
             ]
         );
         
@@ -212,6 +228,69 @@ class Post_Feed extends Widget_Base {
 
         $this->end_controls_section();
 
+        $this->start_controls_section(
+            'section_content',
+            [
+                'label' => __('Content', 'cl-elementor'),
+                'tab'   => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control( // xx Layout
+            'show_heading',
+            [
+                'label'   => __( 'What to show:', 'cl-elementor' ),
+                'type'    => Controls_Manager::HEADING,
+            ]
+        );
+
+        $this->add_control(
+            'show_featured_image',
+            [
+                'label'     => __('Featured Image', 'cl-elementor'),
+                'type'      => Controls_Manager::SWITCHER,
+                'default'   => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_title',
+            [
+                'label'     => __('Title', 'cl-elementor'),
+                'type'      => Controls_Manager::SWITCHER,
+                'default'   => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_date',
+            [
+                'label'     => __('Date', 'cl-elementor'),
+                'type'      => Controls_Manager::SWITCHER,
+                'default'   => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_content',
+            [
+                'label'     => __('Content', 'cl-elementor'),
+                'type'      => Controls_Manager::SWITCHER,
+                'default'   => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_read_more',
+            [
+                'label'     => __('Read More', 'cl-elementor'),
+                'type'      => Controls_Manager::SWITCHER,
+                'default'   => 'yes',
+            ]
+        );
+
+        $this->end_controls_section();
+
         // Styling
         $this->start_controls_section(
             'section_styling_blog_sticky',
@@ -288,6 +367,36 @@ class Post_Feed extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'excerpt_length',
+            [
+                'label' => __( 'Excerpt Length', 'text-domain' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'num' => [
+                        'min' => 1,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'num',
+                    'size' => 50,
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'excerpt_typography',
+				'global'   => [
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				],
+				'selector' => '{{WRAPPER}} .b3-posts .content-inner p.the-excerpt',
+			]
+		);
+
         $this->add_responsive_control(
             'post_box_padding',
             [
@@ -295,7 +404,7 @@ class Post_Feed extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .b3-posts .entry-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .b3-posts .content-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -307,8 +416,55 @@ class Post_Feed extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .b3-posts .entry-content' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .b3-posts .content-inner' => 'background-color: {{VALUE}};',
                 ]
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Styling Posts Grid & Carousel
+        $this->start_controls_section(
+            'section_styling_featured_image',
+            [
+                'label' => __( 'Feature Image', 'cl-elementor' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'post_box_featured_margin',
+            [
+                'label' => __( 'Margin Featured Image', 'cl-elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts .post-thumbnail' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'post_box_featured_padding',
+            [
+                'label' => __( 'Padding Featured Image', 'cl-elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts .post-thumbnail' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'post_box_featured_border_radius',
+            [
+                'label' => __( 'Featured Image Border Radius', 'cl-elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts .post-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 

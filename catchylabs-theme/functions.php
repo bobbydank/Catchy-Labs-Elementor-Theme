@@ -18,11 +18,12 @@ define( 'CL_THEME_URL', get_template_directory_uri() );
 /*
  * Theme requires
  */
+require_once CL_THEME_DIR . '/inc/funcs.php';
+require_once CL_THEME_DIR . '/inc/shortcodes.php';
+
 require_once CL_THEME_DIR . '/admin/init.php';
 require_once CL_THEME_DIR . '/admin/hooks/elementor.php';
 require_once CL_THEME_DIR . '/admin/hooks/content-types.php';
-
-require_once CL_THEME_DIR . '/inc/shortcodes.php';
 
 /*
  *
