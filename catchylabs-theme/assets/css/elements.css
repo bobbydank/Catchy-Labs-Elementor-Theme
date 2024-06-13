@@ -487,3 +487,12 @@ body.elementor-editor-active .cl-drop-down:not(.active) {
 		height: auto !important;
 	}
 }
+
+/* Breadcrumbs
+   ========================================================================== */
+
+.cl-breadcrumbs .seperator {
+	display:inline-block;
+	padding-left:0;
+	padding-right:0;
+}

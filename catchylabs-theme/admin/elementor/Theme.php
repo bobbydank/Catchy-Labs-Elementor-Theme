@@ -23,6 +23,7 @@ use CL\Elementor\Theme\Widgets\Before_After_Image;
 use CL\Elementor\Theme\Widgets\Review_Slider;
 use CL\Elementor\Theme\Widgets\Post_Feed;
 use CL\Elementor\Theme\Widgets\Hover_FAQ;
+use CL\Elementor\Theme\Widgets\Breadcrumbs;
 
 /**
  * Class Theme
@@ -64,6 +65,7 @@ class Theme extends Base {
 		$this->add_elementor_widget( Review_Slider::class );
 		$this->add_elementor_widget( Post_Feed::class );
 		$this->add_elementor_widget( Hover_FAQ::class );
+		$this->add_elementor_widget( Breadcrumbs::class );
 
 		// Register shortcodes
 		$this->add_shortcode( 'year', array( $this, 'do_shortcode_year' ) );
