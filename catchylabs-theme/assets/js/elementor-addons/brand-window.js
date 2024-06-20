@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 //functions
 function tha_brandRotatorLoop(direction) {
-  var count = $(".brand-window .container").children(".brand-image").length;
+  	var count = $(".brand-window .container").children(".brand-image").length;
 	var active = $('.brand-window .active').index();
 	var next;
 
