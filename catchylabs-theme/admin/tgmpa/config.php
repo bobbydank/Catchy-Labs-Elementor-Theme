@@ -41,12 +41,12 @@ function cl_register_required_plugins() {
 		array(
 			'name'                     => esc_html__('SVG Support'), // The plugin name
 		   	'slug'                     => 'svg-support', // The plugin slug (typically the folder name)
-		   	'required'                 => true, // If false, the plugin is only 'recommended' instead of required
+		   	'required'                 => false, // If false, the plugin is only 'recommended' instead of required
 		),
 		array(
 			'name'                     => esc_html__('Classic Editor'), // The plugin name
 		   	'slug'                     => 'classic-editor', // The plugin slug (typically the folder name)
-		   	'required'                 => true, // If false, the plugin is only 'recommended' instead of required
+		   	'required'                 => false, // If false, the plugin is only 'recommended' instead of required
 		),
 		array(
 			'name'                     => esc_html__('Redirection'), // The plugin name
@@ -64,18 +64,28 @@ function cl_register_required_plugins() {
 		   	'required'                 => false, // If false, the plugin is only 'recommended' instead of required
 		),
 		array(
-			'name'                     => esc_html__('Contact Form 7'), // The plugin name
-		   	'slug'                     => 'contact-form-7', // The plugin slug (typically the folder name)
+			'name'                     => esc_html__('WPForms'), // The plugin name
+		   	'slug'                     => 'wpforms-lite', // The plugin slug (typically the folder name)
 		   	'required'                 => false, // If false, the plugin is only 'recommended' instead of required
 		),
 		array(
-			'name'                     => esc_html__('Contact Form 7 Database Addon'), // The plugin name
-			'slug'                     => 'contact-form-cfdb7', // The plugin slug (typically the folder name)
+			'name'                     => esc_html__('WPForms Datatbase Addon'), // The plugin name
+			'slug'                     => 'database-for-wpforms', // The plugin slug (typically the folder name)
 			'required'                 => false, // If false, the plugin is only 'recommended' instead of required
 		),
 		array(
 			'name'                     => esc_html__('Yoast SEO'), // The plugin name
 			'slug'                     => 'wordpress-seo', // The plugin slug (typically the folder name)
+			'required'                 => false, // If false, the plugin is only 'recommended' instead of required
+		),
+		array(
+			'name'                     => esc_html__('Wordfence'), // The plugin name
+			'slug'                     => 'wordfence', // The plugin slug (typically the folder name)
+			'required'                 => false, // If false, the plugin is only 'recommended' instead of required
+		),
+		array(
+			'name'                     => esc_html__('WP Fastest Cache'), // The plugin name
+			'slug'                     => 'wp-fastest-cache', // The plugin slug (typically the folder name)
 			'required'                 => false, // If false, the plugin is only 'recommended' instead of required
 		)
 	);
