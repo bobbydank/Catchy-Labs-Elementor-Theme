@@ -17,7 +17,6 @@ define( 'CL_ELEMENTOR_PREFIX', 'cl_elementor' );
  * @return mixed|null
  */
 function cl_elementor_get_meta( $key, $post_id = null, $single = true ) {
-
 	return \CL\Elementor\Core\Utils::get_meta( $key, $post_id, $single );
 }
 
@@ -93,7 +92,7 @@ add_action( 'elementor/elements/categories_registered', 'add_elementor_widget_ca
  */
 if ( file_exists( CL_ELEMENTOR_PATH . 'vendor/autoload.php' ) ) {
 	if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
-		if ( ! is_admin() ) {
+		if ( ! is_admin() && ! is_login() ) {
 			wp_die( 'Please install Elementor first.' );
 		}
 	} else {
