@@ -385,6 +385,8 @@ body.elementor-editor-active .cl-drop-down:not(.active) {
 	object-fit:cover;
 	object-position:center right;
 	display:block;
+	position: relative;
+	z-index: 10;
 }
 .cl-image-comparison .imageAfter {
 	position:absolute;
@@ -398,12 +400,49 @@ body.elementor-editor-active .cl-drop-down:not(.active) {
 	overflow:hidden;
 }
 .cl-image-comparison .before:hover ~ .imageAfter,
-.cl-image-comparison .before.on ~ .imageAfter{
+.cl-image-comparison .before.on ~ .imageAfter {
 	width:0;
 }
 .cl-image-comparison .after:hover ~ .imageAfter,
-.cl-image-comparison .after.on ~ .imageAfter{
+.cl-image-comparison .after.on ~ .imageAfter {
 	width:100%;
+}
+
+.cl-image-comparison h3 {
+	position: absolute;
+	top:20px;
+	display: inline-block;
+	margin:0;
+	z-index: 20;
+	padding: 10px;
+	background-color: white;
+	color:#333;
+	opacity: 1;
+	transition: all 0.5s;
+}
+.cl-image-comparison h3.before-title {
+	left:25%;
+	transform: translateX(-50%);
+}
+.cl-image-comparison h3.after-title {
+	right:25%;
+	transform: translateX(50%);
+}
+.cl-image-comparison:hover h3 {
+	opacity: 0;
+}
+
+.cl-image-comparison.bottom h3 {
+	bottom:20px;
+	top:unset;
+}
+.cl-image-comparison.center h3.before-title {
+	top:50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+.cl-image-comparison.center h3.after-title {
+	top:50%;
+	transform: translateX(50%) translateY(-50%);
 }
 
 /* Catchy MP3 Player (comes from an elementor plugin)
