@@ -13,7 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <main <?php post_class( 'site-main' ); ?> role="main" id="<?php echo is_front_page() ? '' : 'main'; ?>">
 	<div class="page-content">
+		<h1 class="page-title"><?php the_title(); ?></h1>
+		<p><time datetime="<?php echo get_the_date('c'); ?>" itemprop="datePublished">Posted on: <?php echo get_the_date('l, F j, Y'); ?></time></p>
+
+		<?php the_post_thumbnail( 'large', ['class' => 'post-thumbnail', 'title' => get_the_title()] ); ?>
+
 		<?php the_content(); ?>
+
 		<div class="post-tags">
 			<?php the_tags( '<span class="tag-links">' . __( 'Tagged ', 'cl-elementor' ), null, '</span>' ); ?>
 		</div>

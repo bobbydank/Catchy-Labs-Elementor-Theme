@@ -678,6 +678,7 @@ to override any of the settings in this section, add your styling code in the cu
  */
 /* Lists
    ========================================================================== */
+
 dl,
 dt,
 dd,
@@ -693,19 +694,21 @@ li {
     background: transparent;
 }
 
-.elementor-widget-text-editor ul {
+.elementor-widget-text-editor ul,
+body:not([class*="elementor-page-"]) main ul,
+.elementor-widget-text-editor ol,
+body:not([class*="elementor-page-"]) main ol {
     padding-left:25px;
+    margin-bottom:1rem;
 }
 
-.elementor-widget-text-editor ul li {
+.elementor-widget-text-editor ul li,
+body:not([class*="elementor-page-"]) main ul li {
     list-style: disc;
 }
 
-.elementor-widget-text-editor ol {
-    padding-left:25px;
-}
-
-.elementor-widget-text-editor ol li {
+.elementor-widget-text-editor ol li,
+body:not([class*="elementor-page-"]) main ol li {
     list-style:decimal;
 }
 
@@ -758,6 +761,12 @@ to override any of the settings in this section, add your styling code in the cu
  */
 /* General - https://codex.wordpress.org/CSS#WordPress_Generated_Classes
    ========================================================================== */
+
+.post-thumbnail {
+    width:100%;
+    margin-bottom:1rem;
+}
+
 .alignright {
     float: right;
     margin-left: 1rem;
@@ -900,6 +909,7 @@ to override any of the settings in this section, add your styling code in the cu
 
 /* Main Menu
    ========================================================================== */
+
 .site-navigation {
     grid-area: nav-menu;
     display: -webkit-box;
@@ -1324,8 +1334,8 @@ footer .default-footer .social li a:hover {
 /* 404
    ========================================================================== */
 
-   .four-oh-four {text-align:center;}
-   .four-oh-four section {padding:50px 0 150px;}
+.four-oh-four {text-align:center;}
+.four-oh-four section {padding:50px 0 150px;}
    
 /* Full Menu
     ========================================================================== */
@@ -1361,17 +1371,10 @@ footer .default-footer .social li a:hover {
     padding:0 0 10px;
     border-bottom:solid thin #fff;
 }
-#full-menu .menu li:last-child {
-    border-bottom-color: transparent;
-}
 #full-menu .menu li .sub-menu {
     display:none;
-	margin-top:10px;
     padding-top:10px;
     border-top:solid thin #fff;
-}
-#full-menu .menu li .sub-menu li {
-	padding:10px 0 10px 20px;
 }
 #full-menu .menu li a {
     z-index:100001;

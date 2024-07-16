@@ -109,7 +109,6 @@ function cl_load_scripts () {
 		wp_enqueue_style( 'cl_eleadds_post_feed', get_template_directory_uri().'/assets/css/elementor-addons/post-feed.css', array(), $ver, false );
 
 		wp_enqueue_style( 'cl_styles', get_stylesheet_uri(), array(), $ver, false );
-		wp_enqueue_style( 'cl_mobile', get_template_directory_uri().'/assets/css/mobile.css', array(), $ver, 'all and (max-width: 1024px)' );
   	}
 }
 add_action('wp_enqueue_scripts', 'cl_load_scripts');
