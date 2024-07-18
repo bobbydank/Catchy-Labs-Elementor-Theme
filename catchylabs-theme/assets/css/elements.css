@@ -535,3 +535,71 @@ body.elementor-editor-active .cl-drop-down:not(.active) {
 	padding-left:0;
 	padding-right:0;
 }
+
+/* Elementor Modal
+   ========================================================================== */
+
+.cl-elementor-modal {
+	visibility: hidden !important;
+    position: fixed !important;
+    display:flex !important;
+    align-items: center !important;
+    justify-content:center !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    -webkit-transition: all 0.3s !important;
+    transition: all 0.3s !important;
+}
+
+body.elementor-editor-active .cl-elementor-modal {
+	visibility: visible !important;
+	position: relative !important;
+	top: unset !important;
+	right: unset !important;
+	bottom: unset !important;
+	left: unset !important;
+	pointer-events: auto !important;
+	opacity:1 !important;
+	padding:50px 0 !important;
+}
+
+body.elementor-editor-active .cl-elementor-modal .e-con-inner {
+	top: unset !important;
+	transform: none !important;
+	left: unset !important;
+}
+
+.cl-elementor-modal:target {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    z-index: 8999 !important; 
+}
+
+@media (max-width:768px) {
+	.cl-elementor-modal {
+		display:none !important;
+		visibility: visible !important;
+		position: relative !important;
+		top: unset !important;
+		right: unset !important;
+		bottom: unset !important;
+		left: unset !important;
+		pointer-events: auto !important;
+		opacity:1 !important;
+	}
+	
+	.cl-elementor-modal:target {
+		display:flex !important;
+	}
+}
+
+body.elementor-editor-active header .cl-elementor-modal,
+body.elementor-editor-active footer .cl-elementor-modal {
+	display:none !important;
+}

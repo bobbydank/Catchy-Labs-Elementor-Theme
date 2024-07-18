@@ -45,11 +45,11 @@ $(document).ready(function () {
 	});
 
 	//https://dimsemenov.com/plugins/magnific-popup/documentation.html
-	$('.popup-video').magnificPopup({
+	$('.cl-video-popup a').magnificPopup({
 		type: 'iframe',
 		fixedContentPos: false
 	});
-	$('.popup-gallery').each(function (i,e) {
+	$('.cl-popup-gallery').each(function (i,e) {
 		$(e).magnificPopup({
 			delegate: 'a', // child items selector, by clicking on it popup will open
 			type: 'image',
@@ -64,6 +64,15 @@ $(document).ready(function () {
 	if ($('header.fixed').length) {
 		main_nav_resizing();
 	}
+
+	//modal opener
+	$('.cl-elementor-modal-opener a').on('click', function(event) {
+        event.preventDefault(); // Prevent the default action
+		
+        var hash = this.hash; // Get the hash from the clicked link
+        var currentUrl = window.location.href.split('#')[0]; // Get the current URL without any hash
+        window.location.href = currentUrl + hash; // Append the hash to the current URL and navigate
+    });
 });
     
 function main_nav_resizing() {
