@@ -56,6 +56,8 @@ $(document).ready(function () {
 			gallery: {
 				enabled: true,
 				navigateByImgClick: true,
+				tPrev: 'Previous (Left arrow key)', // title for left button
+  				tNext: 'Next (Right arrow key)', // title for right button
 			}
 		});
 	});

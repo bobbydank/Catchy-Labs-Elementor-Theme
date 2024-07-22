@@ -146,14 +146,14 @@ class Popup_Gallery extends Widget_Base {
    		$header_tag = empty($header_tag) ? 'p' : $header_tag;
 		?>
 
-        <div class="popup-gallery <?php echo $classes; ?>">
-            <?php foreach ( $settings['gallery'] as $image ) : ?>
-                <a href="<?php echo $image['url'] ?>">
-                    <?php echo wp_get_attachment_image( $image['id'], 'large' ); ?>
-					<?php if ('yes' === $settings['hover_effect']) : ?>
-						<div class="hover"><i class="fa-solid fa-share"></i></div>
-					<?php endif; ?>
-                </a>
+        <div class="cl-popup-gallery <?php echo $classes; ?>">
+			<?php foreach ( $gallery as $image ) : ?>
+				<a href="<?php echo esc_url( $image['url'] ); ?>" class="custom-magnific-popup">
+					<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['id'] ); ?>">
+				</a>
+				<?php if ('yes' === $settings['hover_effect']) : ?>
+					<div class="hover"><i class="fa-solid fa-share"></i></div>
+				<?php endif; ?>
             <?php endforeach; ?>
         </div>
 		<?php if ($settings['title']) : ?>

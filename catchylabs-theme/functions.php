@@ -154,7 +154,7 @@ function cl_check_for_theme_update($checked_data) {
     if (empty($checked_data->checked))
         return $checked_data;
 
-    $request = wp_remote_get('https://files.catchylabs.com/themes/catchylabs-theme/metadata.json');
+    $request = wp_remote_get('https://files.catchylabs.dev/themes/catchylabs-theme/metadata.json');
     if (is_wp_error($request) || wp_remote_retrieve_response_code($request) !== 200) {
         return $checked_data;
     }

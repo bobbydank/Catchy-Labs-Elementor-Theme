@@ -240,13 +240,17 @@ footer.fixed {
 /* Popup Gallery
    ========================================================================== */
 
-.popup-gallery a {
+.cl-popup-gallery a {
 	display:none;
 	position: relative;
 	z-index: 5;
 }
 
-.popup-gallery a:first-child {
+.cl-popup-gallery img {
+	display:block;
+}
+
+.cl-popup-gallery a:first-child {
 	display:block;
 }
 
@@ -255,7 +259,7 @@ footer.fixed {
 	right:0;
 }
 
-.popup-gallery .hover {
+.cl-popup-gallery .hover {
 	color:white;
 	opacity:0;
 	font-size:60px;
@@ -272,12 +276,21 @@ footer.fixed {
 	transition: all 0.5s;
 }
 
-.popup-gallery.hover-effect:hover .hover {
+.cl-popup-gallery.hover-effect:hover .hover {
 	opacity:1;
 }
 
-.popup-gallery-title {
+.cl-popup-gallery-title {
 	text-align:center;
+}
+
+.mfp-wrap figcaption {
+	color:white;
+}
+
+.mfp-wrap figcaption .mfp-counter {
+	font-size:1rem;
+	font-style:normal;
 }
 
 /* Dropper Title
