@@ -27,6 +27,14 @@
                                 <?php the_post_thumbnail('medium'); ?>
                             </a>
                         </div>
+                    <?php else : ?>
+                        <?php if (!empty($settings['placeholder_image']['id']) && $settings['show_featured_image'] == 'yes' ) : ?>
+                            <div class="post-thumbnail">
+                                <a class="link-image-content" href="<?php the_permalink(); ?>">
+                                    <?php echo wp_get_attachment_image( $settings['placeholder_image']['id'], 'medium' ); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
                     <div class="content-inner">
                         <?php if ($settings['show_title'] == 'yes') : ?>
@@ -45,9 +53,7 @@
                             <?php echo '<p class="the-excerpt">'.cl_custom_excerpt(get_the_content(), $settings['excerpt_length']['size']).'</p>'; ?>
                         <?php endif; ?>
                         <?php if ($settings['show_read_more'] == 'yes') : ?>
-                            <a class="btn" href="<?php the_permalink(); ?>">
-                                Read More &raquo;
-                            </a>
+                            <?php echo do_shortcode('[oma_button title="More" url="'.get_permalink().'"]') ?>
                         <?php endif; ?>
                     </div>    
                 </div>   

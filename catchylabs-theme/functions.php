@@ -25,6 +25,10 @@ require_once CL_THEME_DIR . '/admin/init.php';
 require_once CL_THEME_DIR . '/admin/hooks/elementor.php';
 require_once CL_THEME_DIR . '/admin/hooks/content-types.php';
 
+if (cl_elementor_get_theme_option('disable_comments') === 'on') {
+	require_once CL_THEME_DIR . '/inc/disable-comments.php';
+}
+
 /*
  *
  */
@@ -107,6 +111,7 @@ function cl_load_scripts () {
 		wp_enqueue_style( 'cl_eleadds_review_slider', get_template_directory_uri().'/assets/css/elementor-addons/review-slider.css', array(), $ver, false );
 		wp_enqueue_style( 'cl_eleadds_video_popup', get_template_directory_uri().'/assets/css/elementor-addons/video-popup.css', array(), $ver, false );
 		wp_enqueue_style( 'cl_eleadds_post_feed', get_template_directory_uri().'/assets/css/elementor-addons/post-feed.css', array(), $ver, false );
+		wp_enqueue_style( 'cl_eleadds_sitemap', get_template_directory_uri().'/assets/css/elementor-addons/sitemap.css', array(), $ver, false );
 
 		wp_enqueue_style( 'cl_styles', get_stylesheet_uri(), array(), $ver, false );
   	}

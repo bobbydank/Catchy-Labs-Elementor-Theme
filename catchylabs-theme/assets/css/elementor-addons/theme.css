@@ -77,7 +77,7 @@
     color: #4f4f4f;
 }
 
-.nav-menu .navbar .menu li:after {
+.nav-menu .navbar .menu > li:after {
     content: '\2022';
     position:absolute;
     right:0;

@@ -237,7 +237,7 @@ class Post_Feed extends Widget_Base {
         );
 
         $this->add_control( // xx Layout
-            'show_heading',
+            'layout_heading',
             [
                 'label'   => __( 'What to show:', 'cl-elementor' ),
                 'type'    => Controls_Manager::HEADING,
@@ -288,6 +288,17 @@ class Post_Feed extends Widget_Base {
                 'default'   => 'yes',
             ]
         );
+
+        $this->add_control(
+			'placeholder_image',
+			[
+			  'label' => __( 'Placeholder Featured Image', 'cl-elementor' ),
+			  'type' => \Elementor\Controls_Manager::MEDIA,
+			  'default' => [
+				'url' => \Elementor\Utils::get_placeholder_image_src(),
+			  ],
+			]
+		);
 
         $this->end_controls_section();
 
@@ -463,7 +474,7 @@ class Post_Feed extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .b3-posts .post-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .b3-posts .post-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );

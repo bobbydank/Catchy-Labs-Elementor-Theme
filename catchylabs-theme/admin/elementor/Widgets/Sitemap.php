@@ -86,6 +86,161 @@ class Sitemap extends Widget_Base {
         );
 
 		$this->end_controls_section();
+
+		// Styling post title
+        $this->start_controls_section(
+            'section_styling_post_title',
+            [
+                'label' => __( 'Post Title', 'cl-elementor' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'primary_color',
+            [
+                'label' => __( 'First Level Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul li a' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'primary_hover',
+            [
+                'label' => __( 'First Level Hover Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul li a:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'primary_text_color',
+            [
+                'label' => __( 'First Level Text', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul li a, {{WRAPPER}} #sitemapNav > ul > li > a:link:after, {{WRAPPER}} #sitemapNav > ul > li > a:visited:after' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'primary_text_hover',
+            [
+                'label' => __( 'First Level Text Hover', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul li a:hover, {{WRAPPER}} #sitemapNav > ul > li:hover > a:link:after, {{WRAPPER}} #sitemapNav > ul > li:hover > a:visited:after' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'secondary_color',
+            [
+                'label' => __( 'Second Level Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul ul li a' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'secondary_hover',
+            [
+                'label' => __( 'Second Level Hover Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul ul li a:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'secondary_text_color',
+            [
+                'label' => __( 'Second Level Text', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul ul li a, {{WRAPPER}} #sitemapNav ul ul > li > a:link:after, {{WRAPPER}} #sitemapNav ul ul > li > a:visited:after' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'secondary_text_hover',
+            [
+                'label' => __( 'Second Level Text Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul ul li a:hover, {{WRAPPER}} #sitemapNav ul ul > li:hover > a:link:after, {{WRAPPER}} #sitemapNav ul ul > li:hover > a:visited:after' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'third_color',
+            [
+                'label' => __( 'Third Level Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul ul ul li a' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'third_hover',
+            [
+                'label' => __( 'Third Level Hover Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul ul ul li a:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'third_text_color',
+            [
+                'label' => __( 'Third Level Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul ul ul li a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'third_text_hover',
+            [
+                'label' => __( 'Third Level Hover Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul ul ul li a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->end_controls_section();
 	}
 
 	/**
@@ -98,7 +253,7 @@ class Sitemap extends Widget_Base {
         ?>
         
         <nav id="sitemapNav">
-            <ul id="sitemap"><?php wp_list_pages('title_li=&child_of=0&depth=6&echo=0') ?></ul>
+            <ul id="sitemap"><?php echo wp_list_pages('title_li=&child_of=0&depth=6&echo=0') ?></ul>
         </nav>
 
 		<?php

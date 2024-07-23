@@ -605,6 +605,11 @@ body.elementor-editor-active .cl-elementor-modal .e-con-inner {
 		left: unset !important;
 		pointer-events: auto !important;
 		opacity:1 !important;
+		padding:0 !important;
+	}
+
+	body.elementor-editor-active .cl-elementor-modal {
+		display:block !important;
 	}
 	
 	.cl-elementor-modal:target {

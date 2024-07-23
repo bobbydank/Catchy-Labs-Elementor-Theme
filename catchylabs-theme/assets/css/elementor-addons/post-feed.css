@@ -11,8 +11,13 @@
     border-bottom:none
 }
 
+.b3-posts-list .post-content .post-thumbnail {
+    overflow: hidden;
+}
+
 .b3-posts-list .post-content .post-thumbnail img {
     width:100%;
+    display: block;
 }
 
 .b3-posts-list .entry-meta {
