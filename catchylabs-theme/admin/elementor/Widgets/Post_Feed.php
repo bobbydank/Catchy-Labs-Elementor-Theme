@@ -237,7 +237,7 @@ class Post_Feed extends Widget_Base {
         );
 
         $this->add_control( // xx Layout
-            'layout_heading',
+            'layout_heading2',
             [
                 'label'   => __( 'What to show:', 'cl-elementor' ),
                 'type'    => Controls_Manager::HEADING,
