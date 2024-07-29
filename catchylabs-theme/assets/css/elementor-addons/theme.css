@@ -29,6 +29,14 @@
     text-decoration: none;
 }
 
+.nav-menu.hover-underline .navbar .menu > li > a {
+    border-bottom:solid thin transparent;
+}
+
+.nav-menu.hover-underline .navbar .menu > li > a:hover {
+    border-bottom:solid thin #fff;
+}
+
 .nav-menu .navbar-expand {
     max-height: 20em;
 }

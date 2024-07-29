@@ -144,17 +144,19 @@ class Popup_Gallery extends Widget_Base {
 		$classes .= ('yes' === $settings['hover_effect']) ? ' hover-effect' : '';
 		$header_tag = $settings['header_tag'];
    		$header_tag = empty($header_tag) ? 'p' : $header_tag;
+
+		$gallery = $settings['gallery'];
 		?>
 
         <div class="cl-popup-gallery <?php echo $classes; ?>">
-			<?php foreach ( $gallery as $image ) : ?>
-				<a href="<?php echo esc_url( $image['url'] ); ?>" class="custom-magnific-popup">
-					<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['id'] ); ?>">
+			<?php for ( $x = 0; $x < count($gallery); $x++ ) : ?>
+				<a href="<?php echo esc_url( $gallery[$x]['url'] ); ?>" class="custom-magnific-popup" <?php echo ($x == 0) ? 'data-mfp-src="'.$gallery[1]['url'].'"' : ''; ?>>
+					<img src="<?php echo esc_url( $gallery[$x]['url'] ); ?>" alt="<?php echo esc_attr( $gallery[$x]['id'] ); ?>">
+					<?php if ('yes' === $settings['hover_effect']) : ?>
+						<div class="hover"><i class="fa-solid fa-share"></i></div>
+					<?php endif; ?>
 				</a>
-				<?php if ('yes' === $settings['hover_effect']) : ?>
-					<div class="hover"><i class="fa-solid fa-share"></i></div>
-				<?php endif; ?>
-            <?php endforeach; ?>
+            <?php endfor; ?>
         </div>
 		<?php if ($settings['title']) : ?>
 			<<?php echo esc_attr($header_tag) ?> class="popup-gallery-title">

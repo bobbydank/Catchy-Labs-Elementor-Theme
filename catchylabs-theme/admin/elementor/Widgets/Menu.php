@@ -151,6 +151,9 @@ class Menu extends Widget_Base {
 				'std'       => '#fff',
 				'selectors' => [
 					'{{WRAPPER}} .nav-menu .menu > li > a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu.hover-underline .navbar .menu > li > a:hover,
+					 {{WRAPPER}} .nav-menu.hover-underline .navbar .menu > li.current_page_item > a,
+					 {{WRAPPER}} .nav-menu.hover-underline .navbar .menu > li.current_page_ancestor > a' => 'border-bottom-color: {{VALUE}};'
 				],
 			]
 		);
@@ -302,35 +305,17 @@ class Menu extends Widget_Base {
 			]
 		);
 
-		/*$this->add_responsive_control( 'position', [
-			'label'     => __( 'Position', 'elementor' ),
-			'type'      => Controls_Manager::CHOOSE,
-			'options'   => [
-				'left'  => [
-					'title' => __( 'Left', 'elementor' ),
-					'icon'  => 'eicon-text-align-left',
-				],
-				'right' => [
-					'title' => __( 'Right', 'elementor' ),
-					'icon'  => 'eicon-text-align-right',
-				],
-			],
-			'selectors' => [
-				'{{WRAPPER}} .page-current-title' => 'float: {{VALUE}}; display:block;',
-			],
-		] );
-
-		$this->add_responsive_control(
-			'image_border_radius',
+		$this->add_control(
+			'main_underline',
 			[
-				'label'      => __( 'Border Radius', 'elementor' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%' ],
-				'selectors'  => [
-					'{{WRAPPER}} .page-current-title' => 'border-radius: {{SIZE}}{{UNIT}};',
-				],
+				'label' => esc_html__( 'Underline on hover/current?', 'plugin-name' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'your-plugin' ),
+				'label_off' => esc_html__( 'No', 'your-plugin' ),
+				'return_value' => 'no',
+				'default' => '',
 			]
-		);*/
+		);
 
 		$this->add_responsive_control(
 			'padding',
@@ -701,7 +686,7 @@ class Menu extends Widget_Base {
 		$theme        = isset( $settings['theme'] ) ? $settings['theme'] : 'light';
 		
 		if ( ! empty( $nav_menu_loc ) ): ?>
-			<div class="nav-menu nav-menu-<?php echo $theme; ?>">
+			<div class="nav-menu nav-menu-<?php echo $theme . ' ' . ($settings['main_underline'] ? 'hover-underline' : ''); ?>">
 				
 				<?php if ($settings['menu_type'] === 'mobile') : ?>
 					<a class="navbar-toggle always-on">
