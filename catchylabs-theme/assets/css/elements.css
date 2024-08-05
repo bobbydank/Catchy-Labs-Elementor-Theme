@@ -136,7 +136,8 @@
 /* Header
    ========================================================================== */
 
-header.fixed {
+header.fixed,
+header.absolute {
     position: fixed;
     width:100%;
     top:0;
@@ -147,6 +148,7 @@ header.fixed {
 	transition: all 0.5s ease;
     z-index: 1000;
 }
+header.absolute {position: absolute;}
 header.fixed.scrolled {padding-top: 0; padding-bottom: 0; background-color: rgba(51,51,51,0.75);}
 body.admin-bar header.fixed {top:32px;}
 body.elementor-editor-active header.fixed {

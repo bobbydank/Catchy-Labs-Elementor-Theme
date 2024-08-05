@@ -627,31 +627,23 @@ class Menu extends Widget_Base {
 		$this->add_responsive_control(
 			'hamburger_width',
 			[
-				'label'          => __( 'Submenu Width', 'elementor' ),
+				'label'          => __( 'Hamburger Size', 'elementor' ),
 				'type'           => \Elementor\Controls_Manager::SLIDER,
 				'default'        => [
-					'unit' => '%',
+					'unit' => 'px',
 				],
 				'tablet_default' => [
-					'unit' => '%',
+					'unit' => 'px',
 				],
 				'mobile_default' => [
-					'unit' => '%',
+					'unit' => 'px',
 				],
-				'size_units'     => [ '%', 'px', 'vw' ],
+				'size_units'     => [ 'px' ],
 				'range'          => [
-					'%'  => [
-						'min' => 1,
-						'max' => 100,
-					],
 					'px' => [
 						'min' => 1,
 						'max' => 1000,
-					],
-					'vw' => [
-						'min' => 1,
-						'max' => 100,
-					],
+					]
 				],
 				'selectors'      => [
 					'{{WRAPPER}} .nav-menu .navbar-toggle i' => 'font-size: {{SIZE}}{{UNIT}};',

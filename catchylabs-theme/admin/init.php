@@ -1,11 +1,7 @@
 <?php
 
-add_theme_support( 'post-thumbnails' );
-
-define( 'CL_ELEMENTOR_VERSION', '1.0.0' );
-define( 'CL_ELEMENTOR_PATH', trailingslashit( get_template_directory() ) . 'admin/' );
-define( 'CL_ELEMENTOR_URI', trailingslashit( get_template_directory_uri() ) . 'admin/' );
-define( 'CL_ELEMENTOR_PREFIX', 'cl_elementor' );
+require_once CL_ELEMENTOR_PATH . 'vendor/autoload.php';
+$theme = new \CL\Elementor\Theme\Theme();
 
 /**
  * Returns post meta
@@ -87,21 +83,4 @@ function add_elementor_widget_categories( $elements_manager ) {
 }
 add_action( 'elementor/elements/categories_registered', 'add_elementor_widget_categories' );
 
-/**
- * Include dependencies
- */
-if ( file_exists( CL_ELEMENTOR_PATH . 'vendor/autoload.php' ) ) {
-	if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
-		if ( ! is_admin() && ! is_login() ) {
-			wp_die( 'Please install Elementor first.' );
-		}
-	} else {
-		require_once CL_ELEMENTOR_PATH . 'vendor/autoload.php';
-		$theme = new \CL\Elementor\Theme\Theme();
-	}
-} else {
-	error_log( 'Please run composer install in wp-content/theme/includes.' );
-	if ( ! is_admin() ) {
-		wp_die( '<strong>Whoops!</strong><br/><br/>Please run <strong>composer install</strong> in ' . CL_ELEMENTOR_PATH . 'includes' );
-	}
-}
+

@@ -9,11 +9,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+define( 'CL_ELEMENTOR_VERSION', '1.0.0' );
+define( 'CL_ELEMENTOR_PATH', trailingslashit( get_template_directory() ) . 'admin/' );
+define( 'CL_ELEMENTOR_URI', trailingslashit( get_template_directory_uri() ) . 'admin/' );
+define( 'CL_ELEMENTOR_PREFIX', 'cl_elementor' );
+
+define( 'CL_THEME_DIR', get_template_directory() );
+define( 'CL_THEME_URL', get_template_directory_uri() );
+
 /*
  *
  */
-define( 'CL_THEME_DIR', get_template_directory() );
-define( 'CL_THEME_URL', get_template_directory_uri() );
+if ( file_exists( CL_ELEMENTOR_PATH . 'vendor/autoload.php' ) ) {
+	if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
+		if ( ! is_admin() && ! is_login() ) {
+			wp_die( 'Please install Elementor first.' );
+		}
+	}
+}
+
+add_theme_support( 'post-thumbnails' );
 
 /*
  * Theme requires
@@ -25,8 +40,10 @@ require_once CL_THEME_DIR . '/admin/init.php';
 require_once CL_THEME_DIR . '/admin/hooks/elementor.php';
 require_once CL_THEME_DIR . '/admin/hooks/content-types.php';
 
-if (cl_elementor_get_theme_option('disable_comments') === 'on') {
-	require_once CL_THEME_DIR . '/inc/disable-comments.php';
+if (function_exists('cl_elementor_get_theme_option')) {
+	if (cl_elementor_get_theme_option('disable_comments') === 'on') {
+		require_once CL_THEME_DIR . '/inc/disable-comments.php';
+	}
 }
 
 /*

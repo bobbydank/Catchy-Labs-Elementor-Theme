@@ -18,10 +18,11 @@ if ( is_singular( 'cl_header_footer' ) && $template_id > 0 ) {
 $site_name   = get_bloginfo( 'name' );
 $tagline     = get_bloginfo( 'description', 'display' );
 $fixed = cl_elementor_get_theme_option('header_fixed');
+$absolute = cl_elementor_get_theme_option('header_absolute');
 
 ?>
 
-<header id="masthead" class="<?php echo is_front_page() ? 'home' : ''; ?> <?php echo ($fixed === 'on') ? 'fixed' : ''; ?>">
+<header id="masthead" class="<?php echo is_front_page() ? 'home' : ''; ?> <?php echo ($fixed === 'on') ? 'fixed' : ''; ?> <?php echo ($absolute === 'on') ? 'absolute' : ''; ?>">
 	<?php if ( $template_id == -1 ) : ?>
 		<div class="default-header">
 			<div class="logo">
