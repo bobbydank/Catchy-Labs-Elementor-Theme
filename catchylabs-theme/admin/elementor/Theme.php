@@ -24,6 +24,7 @@ use CL\Elementor\Theme\Widgets\Review_Slider;
 use CL\Elementor\Theme\Widgets\Post_Feed;
 use CL\Elementor\Theme\Widgets\Hover_FAQ;
 use CL\Elementor\Theme\Widgets\Breadcrumbs;
+use CL\Elementor\Theme\Widgets\Button;
 
 /**
  * Class Theme
@@ -66,6 +67,7 @@ class Theme extends Base {
 		$this->add_elementor_widget( Post_Feed::class );
 		$this->add_elementor_widget( Hover_FAQ::class );
 		$this->add_elementor_widget( Breadcrumbs::class );
+		$this->add_elementor_widget( Button::class );
 
 		// Register shortcodes
 		$this->add_shortcode( 'year', array( $this, 'do_shortcode_year' ) );
