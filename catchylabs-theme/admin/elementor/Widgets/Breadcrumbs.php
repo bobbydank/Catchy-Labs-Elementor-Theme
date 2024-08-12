@@ -80,6 +80,19 @@ class Breadcrumbs extends \Elementor\Widget_Base {
         );
 
 		$this->add_control(
+			'type',
+			[
+				'label'   => __( 'Type', 'cl-elementor' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'default' => __( 'system' , 'plugin-domain' ),
+				'options' => array(
+					'system'  => 'System',
+					'custom'  => 'Custom',
+				),
+			]
+		);
+
+		$this->add_control(
 			'include_home', [
 				'label' => __( 'Include Home Page?', 'plugin-domain' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -87,6 +100,56 @@ class Breadcrumbs extends \Elementor\Widget_Base {
 				'label_off' => __( 'No', 'your-plugin' ),
 				'return_value' => 'yes',
 				'default' => 'no',
+				'condition' => [
+                    'type' => 'system',
+                ],
+			]
+		);
+
+		//https://developers.elementor.com/elementor-controls/repeater-control/
+		$repeater = new \Elementor\Repeater();
+	
+		$repeater->add_control(
+			'title', [
+				'label' => __( 'Title', 'plugin-domain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => __( '' , 'plugin-domain' ),
+				'label_block' => true,
+			]
+		);
+
+		$repeater->add_control(
+			'link',
+			[
+				'label' => esc_html__( 'Link', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'dynamic' => [
+					'active' => true,
+				],
+				'default' => [
+					'url' => '#',
+				]
+			]
+		);
+	
+		$this->add_control(
+			'custom_breadcrumb',
+			[
+				'label' => __( 'Custom Breadcrumb', 'plugin-domain' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+				[
+					'title' => __( 'Title #1', 'plugin-domain' ),
+				],
+				[
+					'title' => __( 'Title #2', 'plugin-domain' ),
+				],
+				],
+				'title_field' => '{{{ title }}}',
+				'condition' => [
+					'type' => 'custom',
+				],
 			]
 		);
 
@@ -158,8 +221,20 @@ class Breadcrumbs extends \Elementor\Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'std'       => '#333',
 				'selectors' => [
-					'{{WRAPPER}} .cl-breadcrumbs a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .cl-breadcrumbs a, {{WRAPPER}} .cl-breadcrumbs span' => 'color: {{VALUE}};',
 				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'typography',
+				'label'    => __( 'Overall Typography', 'cl-elementor' ),
+				'global'   => [
+					'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
+				],
+				'selector' => '{{WRAPPER}} .cl-breadcrumbs a',
 			]
 		);
 
@@ -175,14 +250,15 @@ class Breadcrumbs extends \Elementor\Widget_Base {
 			]
 		);
 
-        $this->add_group_control(
+		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name'     => 'typography',
+				'name'     => 'active_typography',
+				'label'    => __( 'Active Typography', 'cl-elementor' ),
 				'global'   => [
 					'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
 				],
-				'selector' => '{{WRAPPER}} .cl-breadcrumbs a',
+				'selector' => '{{WRAPPER}} .cl-breadcrumbs a:last-child',
 			]
 		);
 
@@ -202,33 +278,61 @@ class Breadcrumbs extends \Elementor\Widget_Base {
         global $post;
         $string = '';
         $separator = $settings['seperator'];
-    
-        // Initialize the home array if 'include_home' is set to 'Yes'
-        $home = array();
-        if ($settings['include_home'] == 'yes') {
-            $home = array(get_option('page_on_front'));
-        }
-    
-        // Initialize ancestors array and handle cases where $post->ancestors might not be set
-        $ancestors = array();
-        if (!empty($post->ancestors)) {
-            $ancestors = array_reverse($post->ancestors);
-        }
-    
-        // Merge home, ancestors, and the current post ID
-        $ancestors = array_merge($home, $ancestors, array($post->ID));
-    
-        // Build the breadcrumb string
-        foreach ($ancestors as $key => $ancestor) {
-            if ($key > 0) {
-                $string .= '<span class="seperator">'.$separator.'</span>';
-            }
-            $string .= '<a href="'.get_permalink($ancestor).'">'.get_the_title($ancestor).'</a>';
-        }
-    
-        // Output the breadcrumb
-        if (!empty($string)) {
-            echo '<p class="cl-breadcrumbs">' . $string . '</p>';
-        }
+
+		if ($settings['type'] == 'custom') {
+			$x = 0; 
+			?>
+			<p class="cl-breadcrumbs">
+
+				<?php
+				foreach ( $settings['custom_breadcrumb'] as $item ) {
+					if ($x > 0) {
+						echo '<span class="seperator">'.$separator.'</span>';
+					} else {
+						$x++;
+					}
+
+					$this->add_link_attributes( 'link', $item['link'] ); 
+					?>
+
+						<a <?php $this->print_render_attribute_string( 'link' ); ?>>
+							<?php echo $item['title'] ?>
+						</a>
+
+					<?php
+				}
+				?>
+
+			</p>
+			<?php
+		} else {
+			 // Initialize the home array if 'include_home' is set to 'Yes'
+			 $home = array();
+			 if ($settings['include_home'] == 'yes') {
+				 $home = array(get_option('page_on_front'));
+			 }
+		 
+			 // Initialize ancestors array and handle cases where $post->ancestors might not be set
+			 $ancestors = array();
+			 if (!empty($post->ancestors)) {
+				 $ancestors = array_reverse($post->ancestors);
+			 }
+		 
+			 // Merge home, ancestors, and the current post ID
+			 $ancestors = array_merge($home, $ancestors, array($post->ID));
+		 
+			 // Build the breadcrumb string
+			 foreach ($ancestors as $key => $ancestor) {
+				 if ($key > 0) {
+					 $string .= '<span class="seperator">'.$separator.'</span>';
+				 }
+				 $string .= '<a href="'.get_permalink($ancestor).'">'.get_the_title($ancestor).'</a>';
+			 }
+		 
+			 // Output the breadcrumb
+			 if (!empty($string)) {
+				 echo '<p class="cl-breadcrumbs">' . $string . '</p>';
+			 }
+		}   
     }
 }

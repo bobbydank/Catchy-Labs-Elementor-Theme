@@ -53,7 +53,9 @@
                             <?php echo '<p class="the-excerpt">'.cl_custom_excerpt(get_the_content(), $settings['excerpt_length']['size']).'</p>'; ?>
                         <?php endif; ?>
                         <?php if ($settings['show_read_more'] == 'yes') : ?>
-                            <?php echo do_shortcode('[oma_button title="More" url="'.get_permalink().'"]') ?>
+                            <a class="btn" href="<?php the_permalink(); ?>">
+                                Read More &raquo;
+                            </a>
                         <?php endif; ?>
                     </div>    
                 </div>   

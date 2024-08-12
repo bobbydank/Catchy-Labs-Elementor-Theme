@@ -158,6 +158,15 @@ class Menu extends Widget_Base {
 			]
 		);
 
+		$this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'label' => __( 'Text Shadow', 'cl-elementor' ),
+				'name' => 'drop_cap_shadow',
+				'selector' => '{{WRAPPER}} .nav-menu .menu > li a',
+			]
+		);
+
 		$this->add_control(
 			'hover_color',
 			[

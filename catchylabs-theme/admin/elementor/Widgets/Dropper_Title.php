@@ -357,7 +357,7 @@ class Dropper_Title extends Widget_Base {
 					],
 				],
 				'selectors'      => [
-					'{{WRAPPER}} .cl-dropper-title i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .cl-dropper-title i' => 'font-size: {{SIZE}}{{UNIT}};'
 				],
 			]
 		);
@@ -405,7 +405,7 @@ class Dropper_Title extends Widget_Base {
 				<div class="line"></div>
 			<?php endif; ?>
 			<?php if ($settings['icon']) : ?>
-				<span class="icon"><?php echo \Elementor\Icons_Manager::render_icon($settings['icon'], ['aria-hidden' => 'true']); ?></span>
+				<span class="icon"><?php \Elementor\Icons_Manager::render_icon($settings['icon'], ['aria-hidden' => 'true']); ?></span>
 			<?php else: ?>
 				<i class="fa-solid fa-angle-down"></i>
 			<?php endif; ?>

@@ -147,7 +147,6 @@ header.absolute {
     z-index: 1000;
 }
 header.absolute {position: absolute;}
-header.fixed.scrolled {background-color: rgba(51,51,51,0.75);}
 body.admin-bar header.fixed,
 body.admin-bar header.absolute {top:32px;}
 body.elementor-editor-active header.fixed
@@ -302,6 +301,15 @@ footer.fixed {
 .cl-dropper-title {
 	position: relative;
 	cursor: pointer;
+	display:flex;
+}
+
+.cl-dropper-title > p {
+	margin-bottom:0;
+}
+
+.cl-dropper-title span.icon {
+	display:block;
 }
 
 .cl-dropper-title .text {
@@ -315,7 +323,7 @@ footer.fixed {
 }
 
 .cl-dropper-title .text p {
-	margin:0 10px 0 0;
+	margin:0 0 10px 0;
 }
 
 .cl-dropper-title .line {
