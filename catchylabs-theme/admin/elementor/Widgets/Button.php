@@ -76,7 +76,7 @@ class Button extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'content', [
                 'label' => __( 'Content', 'cl-elementor' ),
-                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
 
@@ -204,7 +204,7 @@ class Button extends \Elementor\Widget_Base {
 			'style_section',
 			[
 				'label' => __( 'Settings', 'cl-elementor' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -571,7 +571,7 @@ class Button extends \Elementor\Widget_Base {
 			'icon_size',
 			[
 				'label'          => __( 'Icon Size', 'elementor' ),
-				'type'           => \Elementor\Controls_Manager::SLIDER,
+				'type'           => Controls_Manager::SLIDER,
 				'default'        => [
 					'unit' => 'px',
 				],
@@ -619,6 +619,20 @@ class Button extends \Elementor\Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .elementor-button-icon' => 'background-color: {{VALUE}};',
 				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'icon_padding',
+			[
+				'label' => esc_html__( 'Padding', 'elementor' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-button-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'before',
+				'condition' => $args['section_condition'],
 			]
 		);
 

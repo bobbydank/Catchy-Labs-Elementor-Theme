@@ -193,3 +193,10 @@
     display:block;
     text-align: left;
 }
+
+.nav-menu.no-submenu .menu ul.sub-menu {
+    display:none !important;
+    opacity: 0 !important;
+    height:0px !important;
+    width: 0px !important;
+}

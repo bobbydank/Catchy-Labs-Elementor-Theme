@@ -20,7 +20,14 @@
         ?>
                  
             <a href="<?php the_permalink(); ?>" class="post-link">
-                <?php the_post_thumbnail('medium'); ?>
+                <?php if ( has_post_thumbnail() && $settings['show_featured_image'] == 'yes' ) : ?>
+                    <?php the_post_thumbnail('medium'); ?>
+                <?php else : ?>
+                    <?php if (!empty($settings['placeholder_image']['id']) && $settings['show_featured_image'] == 'yes' ) : ?>
+                        <?php echo wp_get_attachment_image( $settings['placeholder_image']['id'], 'medium' ); ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+
                 <div class="post-content">
                     <h3 class="entry-title"><?php the_title(); ?></h3> 
                 </div>

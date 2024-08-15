@@ -83,7 +83,7 @@ class Menu extends Widget_Base {
 			'content_section',
 			[
 				'label' => __( 'Settings', 'cl-elementor' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
 
@@ -91,7 +91,7 @@ class Menu extends Widget_Base {
 			'nav_menu_loc',
 			[
 				'label'   => __( 'Menu Location', 'cl-elementor' ),
-				'type'    => \Elementor\Controls_Manager::SELECT,
+				'type'    => Controls_Manager::SELECT,
 				'options' => $locations,
 			]
 		);
@@ -100,7 +100,7 @@ class Menu extends Widget_Base {
 			'theme',
 			[
 				'label'   => __( 'Theme', 'cl-elementor' ),
-				'type'    => \Elementor\Controls_Manager::SELECT,
+				'type'    => Controls_Manager::SELECT,
 				'options' => array(
 					'light'  => 'Light',
 					'dark'   => 'Dark',
@@ -113,12 +113,23 @@ class Menu extends Widget_Base {
 			'menu_type',
 			[
 				'label'   => __( 'Type', 'cl-elementor' ),
-				'type'    => \Elementor\Controls_Manager::SELECT,
+				'type'    => Controls_Manager::SELECT,
 				'options' => array(
 					'mobile'   => 'Mobile',
 					'hybrid'   => 'Hybrid',
 					'text'  => 'Text',
 				),
+			]
+		);
+
+		$this->add_control(
+			'show_submenu', [
+				'label' => __( 'Show Submenu?', 'plugin-domain' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'your-plugin' ),
+				'label_off' => __( 'No', 'your-plugin' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
 			]
 		);
 
@@ -318,7 +329,7 @@ class Menu extends Widget_Base {
 			'main_underline',
 			[
 				'label' => esc_html__( 'Underline on hover/current?', 'plugin-name' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Yes', 'your-plugin' ),
 				'label_off' => esc_html__( 'No', 'your-plugin' ),
 				'return_value' => 'no',
@@ -364,7 +375,7 @@ class Menu extends Widget_Base {
 			'special_last',
 			[
 				'label' => esc_html__( 'Special Last Item', 'plugin-name' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Yes', 'your-plugin' ),
 				'label_off' => esc_html__( 'No', 'your-plugin' ),
 				'return_value' => 'yes',
@@ -461,7 +472,7 @@ class Menu extends Widget_Base {
 			'submenu_width',
 			[
 				'label'          => __( 'Submenu Width', 'elementor' ),
-				'type'           => \Elementor\Controls_Manager::SLIDER,
+				'type'           => Controls_Manager::SLIDER,
 				'default'        => [
 					'unit' => '%',
 				],
@@ -637,7 +648,7 @@ class Menu extends Widget_Base {
 			'hamburger_width',
 			[
 				'label'          => __( 'Hamburger Size', 'elementor' ),
-				'type'           => \Elementor\Controls_Manager::SLIDER,
+				'type'           => Controls_Manager::SLIDER,
 				'default'        => [
 					'unit' => 'px',
 				],
@@ -687,7 +698,7 @@ class Menu extends Widget_Base {
 		$theme        = isset( $settings['theme'] ) ? $settings['theme'] : 'light';
 		
 		if ( ! empty( $nav_menu_loc ) ): ?>
-			<div class="nav-menu nav-menu-<?php echo $theme . ' ' . ($settings['main_underline'] ? 'hover-underline' : ''); ?>">
+			<div class="nav-menu nav-menu-<?php echo $theme . ' ' . ($settings['main_underline'] ? 'hover-underline' : ''); ?> <?php echo ($settings['show_submenu'] == 'yes') ? '' : 'no-submenu'; ?>">
 				
 				<?php if ($settings['menu_type'] === 'mobile') : ?>
 					<a class="navbar-toggle always-on">

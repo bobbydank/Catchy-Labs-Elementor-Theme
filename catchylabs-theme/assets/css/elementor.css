@@ -298,3 +298,21 @@ body.elementor-editor-active .elementor-element.cols-w-auto > .e-con-inner > .el
    display: -ms-inline-flexbox !important;
    display: inline-flex !important;
 }
+
+/* Image 
+   ========================================================================== */
+
+.img-normal img {mix-blend-mode: normal;}
+.img-multiply img {mix-blend-mode: multiply;}
+.img-screen img {mix-blend-mode: screen;}
+.img-overlay img {mix-blend-mode: overlay;}
+.img-darken img {mix-blend-mode: darken;}
+.img-lighten img {mix-blend-mode: lighten;}
+.img-color-dodge img {mix-blend-mode: color-dodge;}
+.img-color-burn img {mix-blend-mode: color-burn;}
+.img-difference img {mix-blend-mode: difference;}
+.img-exclusion img {mix-blend-mode: exclusion;}
+.img-hue img {mix-blend-mode: hue;}
+.img-saturation img {mix-blend-mode: saturation;}
+.img-color img {mix-blend-mode: color;}
+.img-luminosity img {mix-blend-mode: luminosity;}

@@ -173,7 +173,7 @@ class Breadcrumbs extends \Elementor\Widget_Base {
 					'px' => [
 						'min' => 0,
 						'max' => 1000,
-						'step' => 5,
+						'step' => 1,
 					],
 					'%' => [
 						'min' => 0,
