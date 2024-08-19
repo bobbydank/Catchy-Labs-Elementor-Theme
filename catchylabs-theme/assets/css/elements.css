@@ -302,6 +302,8 @@ footer.fixed {
 	position: relative;
 	cursor: pointer;
 	display:flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .cl-dropper-title > p {
@@ -360,6 +362,18 @@ body.elementor-editor-active .cl-drop-down {
 
 body.elementor-editor-active .cl-drop-down:not(.active) {
 	background-color:lightgray;
+}
+
+.cl-dropper-title.on.off .icon-closed {
+	display:none;
+}
+
+.cl-dropper-title.off:not(.on) .icon-open {
+	display:none;
+}
+
+.cl-dropper-title svg {
+	display:block;
 }
 
 /* Image Comparison

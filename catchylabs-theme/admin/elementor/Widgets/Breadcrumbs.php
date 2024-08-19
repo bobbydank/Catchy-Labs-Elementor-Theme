@@ -295,9 +295,7 @@ class Breadcrumbs extends \Elementor\Widget_Base {
 					$this->add_link_attributes( 'link', $item['link'] ); 
 					?>
 
-						<a <?php $this->print_render_attribute_string( 'link' ); ?>>
-							<?php echo $item['title'] ?>
-						</a>
+						<a <?php $this->print_render_attribute_string( 'link' ); ?>><?php echo $item['title'] ?></a>
 
 					<?php
 				}
