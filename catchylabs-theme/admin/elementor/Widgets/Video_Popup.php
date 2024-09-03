@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
 use Elementor\Utils;
+use Elementor\Group_Control_Image_Size;
 
 /**
  * Class Menu
@@ -72,64 +73,73 @@ class Video_Popup extends Widget_Base {
 	 * @access protected
 	 */
 	protected function _register_controls() {
-    $this->start_controls_section(
-      'content_section',
-      [
-        'label' => __( 'Settings', 'cl-elementor' ),
-        'tab'   => Controls_Manager::TAB_CONTENT,
-      ]
-    );
+		$this->start_controls_section(
+			'content_section',
+			[
+				'label' => __( 'Settings', 'cl-elementor' ),
+				'tab'   => Controls_Manager::TAB_CONTENT,
+			]
+		);
 
-    $this->add_control(
-		'image',
-		[
-			'label' => __( 'Choose Image', 'plugin-domain' ),
-			'type' => Controls_Manager::MEDIA,
-			'default' => [
-				'url' => Utils::get_placeholder_image_src(),
-			],
-		]
-	);
+		$this->add_control(
+			'image',
+			[
+				'label' => __( 'Choose Image', 'plugin-domain' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+			]
+		);
 
-    $this->add_group_control(
-		\Elementor\Group_Control_Image_Size::get_type(),
-		[
-			'name' => 'thumbnail', // // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `thumbnail_size` and `thumbnail_custom_dimension`.
-			'exclude' => [ 'custom' ],
-			'include' => [],
-			'default' => 'large',
-		]
-	);
+		$this->add_group_control(
+			Group_Control_Image_Size::get_type(),
+			[
+				'name' => 'thumbnail', // // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `thumbnail_size` and `thumbnail_custom_dimension`.
+				'exclude' => [ 'custom' ],
+				'include' => [],
+				'default' => 'large',
+			]
+		);
 
-    $this->add_control(
-      'youtube_url', [
-        'label' => __( 'Youtube Url', 'plugin-domain' ),
-        'type' => Controls_Manager::TEXT,
-        'default' => __( '' , 'plugin-domain' ),
-        'label_block' => true,
-      ]
-    );
+		$this->add_control(
+			'youtube_url', [
+				'label' => __( 'Youtube Url', 'plugin-domain' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( '' , 'plugin-domain' ),
+				'label_block' => true,
+			]
+		);
 
-	$this->add_control(
-		'width', [
-			'label' => __( 'Width', 'plugin-domain' ),
-			'type' => Controls_Manager::NUMBER,
-			'default' => __( '' , 'plugin-domain' ),
-			'label_block' => true,
-		]
-	);
+		$this->add_control(
+            'title', [
+                'label' => __( 'Video Title', 'plugin-domain' ),
+                'type' => Controls_Manager::TEXT,
+                'default' => __( '' , 'plugin-domain' ),
+                'label_block' => true,
+            ]
+        );
 
-	$this->add_control(
-		'height', [
-		  'label' => __( 'Height', 'plugin-domain' ),
-		  'type' => Controls_Manager::NUMBER,
-		  'default' => __( '' , 'plugin-domain' ),
-		  'label_block' => true,
-		]
-	);
+		$this->add_control(
+			'width', [
+				'label' => __( 'Width', 'plugin-domain' ),
+				'type' => Controls_Manager::NUMBER,
+				'default' => __( '' , 'plugin-domain' ),
+				'label_block' => true,
+			]
+		);
 
-    $this->end_controls_section();
-  }
+		$this->add_control(
+			'height', [
+				'label' => __( 'Height', 'plugin-domain' ),
+				'type' => Controls_Manager::NUMBER,
+				'default' => __( '' , 'plugin-domain' ),
+				'label_block' => true,
+			]
+		);
+
+		$this->end_controls_section();
+  	}
 
     /**
 	 * Render widget output on the frontend.
@@ -141,19 +151,39 @@ class Video_Popup extends Widget_Base {
 
         $settings = $this->get_settings_for_display();
 
-        /*$url = $settings['youtube_url'];
-        if ( strpos($url, 'https://www.youtube.com/watch?v=') !== false ) {
-          $url = str_replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/', $url);
-        }*/
-		//width='.$settings['width'].';height='.$settings['height'].
-
 		$img = wp_get_attachment_image_src( $settings['image']['id'], $settings['thumbnail_size']);
 		$image_alt = get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', TRUE);
+
+		$title = $settings['title'];
+		if ( !empty($title) ) {
+			$title = 'data-title="'.$title.'"';
+		}
+
+		if (!empty($settings['youtube_url'])) {
+			$patterns = [
+				// Match the youtu.be short URLs
+				'/https:\/\/youtu\.be\/([a-zA-Z0-9_-]+)/',
+				// Match the full YouTube URLs with or without additional parameters
+				'/https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)(?:&[^\s]*)?/',
+				// Match the full YouTube URLs with embed form already in place (for completeness)
+				'/https:\/\/www\.youtube\.com\/embed\/([a-zA-Z0-9_-]+)/'
+			];
+		
+			// Replacement format to convert to the embed URL
+			$replacement = 'https://www.youtube.com/watch?v=$1';
+		
+			// Replace the URLs in the content using all patterns
+			foreach ($patterns as $pattern) {
+				if ( $url = preg_replace($pattern, $replacement, $settings['youtube_url']) ) {
+					break;
+				}
+			}
+		}
         ?>
 
 <div class="cl-video-popup">
-  <a href="<?php echo $settings['youtube_url']; ?>" <?php echo wp_is_mobile() ? 'target="_blank"' : 'class="popup-video"'; ?>>
-    <img src="<?php echo $img[0] ?>" alt="<?php echo $image_alt ?>" />
+  <a href="<?php echo $url; ?>" <?php echo wp_is_mobile() ? 'target="_blank"' : 'class="popup-video"'; ?> <?php echo $title; ?>>
+    <img src="<?php echo $img[0] ?>" alt="<?php echo (!empty($settings['title'])) ? $settings['title'] : $image_alt; ?>" />
   </a>
 </div>
 

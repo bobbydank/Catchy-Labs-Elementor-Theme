@@ -91,7 +91,7 @@ class Sitemap extends Widget_Base {
         $this->start_controls_section(
             'section_styling_post_title',
             [
-                'label' => __( 'Post Title', 'cl-elementor' ),
+                'label' => __( 'Colors', 'cl-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -236,6 +236,18 @@ class Sitemap extends Widget_Base {
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} #sitemapNav ul ul ul li a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'secondary_line_color',
+            [
+                'label' => __( 'Secondary Line Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} #sitemapNav ul:before, {{WRAPPER}} #sitemapNav ul:after, {{WRAPPER}} #sitemapNav ul li:before, {{WRAPPER}} #sitemapNav ul li:after' => 'border-color: {{VALUE}};',
                 ],
             ]
         );

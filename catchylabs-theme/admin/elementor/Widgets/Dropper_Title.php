@@ -239,6 +239,30 @@ class Dropper_Title extends Widget_Base {
 		);
 
 		$this->add_control(
+			'open_text_color',
+			[
+				'label'     => __( 'Active Text Color', 'cl-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'std'       => '#fff',
+				'selectors' => [
+					'{{WRAPPER}} .cl-dropper-title.on p' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->add_control(
+			'open_text_bg_color',
+			[
+				'label'     => __( 'Active Text BG Color', 'cl-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'std'       => '#fff',
+				'selectors' => [
+					'{{WRAPPER}} .cl-dropper-title.on p' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
 			'line_color',
 			[
 				'label'     => __( 'Line Color', 'cl-elementor' ),
@@ -423,7 +447,7 @@ class Dropper_Title extends Widget_Base {
 		//print_r($settings);
         ?>
 		
-        <div class="cl-dropper-title <?php echo $settings['starting_position'] ?>" data-id="<?php echo $settings['dropper_id']; ?>">
+        <div class="cl-dropper-title <?php echo ($settings['starting_position'] === 'on') ? 'off on' : 'off' ?>" data-id="<?php echo $settings['dropper_id']; ?>">
 			<?php if ( $settings['line'] === 'on' && $settings['content_align'] == 'end' ) : ?>
 				<div class="line"></div>
 			<?php endif; ?>

@@ -68,13 +68,38 @@ $(document).ready(function () {
 	}
 
 	//modal opener
-	$('.cl-elementor-modal-opener a').on('click', function(event) {
-        event.preventDefault(); // Prevent the default action
-		
-        var hash = this.hash; // Get the hash from the clicked link
-        var currentUrl = window.location.href.split('#')[0]; // Get the current URL without any hash
-        window.location.href = currentUrl + hash; // Append the hash to the current URL and navigate
+	$('a').on('click', function(event) {
+        var href = $(this).attr('href');
+
+        if (href && href.indexOf('#') !== -1) {
+            event.preventDefault();
+
+            var hash = this.hash; // Get the hash from the clicked link
+			var currentUrl = window.location.href.split('#')[0]; // Get the current URL without any hash
+			window.location.href = currentUrl + hash; // Append the hash to the current URL and navigate
+        }
     });
+	var modals = $('.cl-elementor-modal');
+    if (modals.length > 0) {
+        // Create a new div with the ID 'modal-container' and append it to the body
+        var $modalContainer = $('<div id="modal-container"></div>');
+		
+		// Find the div.page-content and get its classes
+        var pageContentClasses = $('.page-content').find('> div').attr('class');
+
+        // Add these classes to the modal-container
+        if (pageContentClasses) {
+            $modalContainer.addClass(pageContentClasses);
+        }
+		
+		// Append the modal-container to the body
+        $('body').append($modalContainer);
+
+        // Move each cl-elementor-modal into the new container
+        modals.each(function() {
+            $(this).appendTo($modalContainer);
+        });
+    }
 });
     
 function main_nav_resizing() {

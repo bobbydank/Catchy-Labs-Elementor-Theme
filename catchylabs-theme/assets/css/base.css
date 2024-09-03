@@ -718,9 +718,15 @@ body:not([class*="elementor-page-"]) main ol li {
  */
 /* Basic responsive layout
    ========================================================================== */
+
 .site-header, body:not([class*="elementor-page-"]) .site-main {
     margin-right: auto;
     margin-left: auto;
+}
+
+body[class*="elementor-page-"] main .post-head,
+body[class*="elementor-page-"] main .post-discussion {
+    display:none;
 }
 
 @media (max-width: 575px) {

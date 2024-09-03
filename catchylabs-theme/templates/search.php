@@ -10,15 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <main class="site-main" role="main">
-	<?php if ( ! cl_elementor_is_page_title_hidden() ) : ?>
-        <header class="page-header">
+    <div class="page-content">
+		<?php if ( ! cl_elementor_is_page_title_hidden() ) : ?>
             <h1 class="entry-title">
 				<?php esc_html_e( 'Search results for: ', 'cl-elementor' ); ?>
                 <span><?php echo get_search_query(); ?></span>
             </h1>
-        </header>
-	<?php endif; ?>
-    <div class="page-content">
+		<?php endif; ?>
+
 		<?php if ( have_posts() ) : ?>
 			<?php
 			while ( have_posts() ) :

@@ -348,7 +348,8 @@ footer.fixed {
 	transform: rotate(0deg);
 }
 
-.cl-drop-down, .elementor-element.cl-drop-down {
+.cl-drop-down, .elementor-element.cl-drop-down,
+body.elementor-editor-active .cl-drop-down.elementor-edit-hidden {
 	display:none;
 }
 
@@ -361,7 +362,8 @@ body.elementor-editor-active .cl-drop-down {
 }
 
 body.elementor-editor-active .cl-drop-down:not(.active) {
-	background-color:lightgray;
+	background-image: repeating-linear-gradient(45deg, transparent, transparent 32px, #e1e1e1 32px, #e1e1e1 64px);
+	background-color: #f1f1f1;
 }
 
 .cl-dropper-title.on.off .icon-closed {
@@ -577,6 +579,11 @@ body.elementor-editor-active .cl-drop-down:not(.active) {
 /* Elementor Modal
    ========================================================================== */
 
+#modal-container {
+	position:relative;
+	z-index:10000000;
+}
+
 .cl-elementor-modal {
 	visibility: hidden !important;
     position: fixed !important;
@@ -604,6 +611,8 @@ body.elementor-editor-active .cl-elementor-modal {
 	pointer-events: auto !important;
 	opacity:1 !important;
 	padding:50px 0 !important;
+	background-image: repeating-linear-gradient(45deg, transparent, transparent 32px, #e1e1e1 32px, #e1e1e1 64px);
+	background-color: #f1f1f1;
 }
 
 body.elementor-editor-active .cl-elementor-modal .e-con-inner {

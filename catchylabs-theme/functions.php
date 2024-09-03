@@ -138,7 +138,7 @@ add_action('wp_enqueue_scripts', 'cl_load_scripts');
 /*
  *
  */
-function cl_load_custom_wp_admin_style(){
+function cl_load_custom_wp_admin_style() {
 	$ver = time();
 
     if ( is_admin() ) {

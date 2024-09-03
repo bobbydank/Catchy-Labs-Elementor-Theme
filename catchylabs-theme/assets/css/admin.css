@@ -5,3 +5,9 @@
 select.option-builder-ui-select {min-width:218px !important;}
 
 .toplevel_page_mpfe-dashboard {display:none;}
+
+body.wp-admin #wpwrap #adminmenumain #adminmenuwrap li, 
+body.wp-admin #wpwrap #adminmenumain #adminmenuwrap li a,
+body.wp-admin #wpwrap #adminmenumain #adminmenuwrap li a div {
+    background-color: transparent !important;
+}
