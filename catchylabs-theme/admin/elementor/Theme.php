@@ -25,6 +25,7 @@ use CL\Elementor\Theme\Widgets\Post_Feed;
 use CL\Elementor\Theme\Widgets\Hover_FAQ;
 use CL\Elementor\Theme\Widgets\Breadcrumbs;
 use CL\Elementor\Theme\Widgets\Button;
+use CL\Elementor\Theme\Widgets\Standing_Gallery;
 
 /**
  * Class Theme
@@ -68,6 +69,7 @@ class Theme extends Base {
 		$this->add_elementor_widget( Hover_FAQ::class );
 		$this->add_elementor_widget( Breadcrumbs::class );
 		$this->add_elementor_widget( Button::class );
+		$this->add_elementor_widget( Standing_Gallery::class );
 
 		// Register shortcodes
 		$this->add_shortcode( 'year', array( $this, 'do_shortcode_year' ) );

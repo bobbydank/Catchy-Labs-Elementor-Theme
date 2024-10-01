@@ -527,13 +527,6 @@ class Button extends \Elementor\Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .elementor-button-content-wrapper' => 'flex-direction: {{VALUE}};',
 				],
-				'condition' => array_merge(
-					$args['section_condition'],
-					[
-						'text!' => '',
-						'selected_icon[value]!' => '',
-					]
-				),
 			]
 		);
 
@@ -585,7 +578,8 @@ class Button extends \Elementor\Widget_Base {
 				'range'          => [
 					'px' => [
 						'min' => 1,
-						'max' => 1000,
+						'max' => 100,
+						'step' => 0.1,
                     ],
                     '%' => [
                         'min' => 1,

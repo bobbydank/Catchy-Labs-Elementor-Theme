@@ -348,6 +348,55 @@ class Dropper_Title extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
+			'icon_align',
+			[
+				'label' => esc_html__( 'Icon Position', 'elementor' ),
+				'type' => Controls_Manager::CHOOSE,
+				'default' => 'row',
+				'options' => [
+					'row' => [
+						'title' => esc_html__( 'Start', 'elementor' ),
+						'icon' => "eicon-h-align-left",
+					],
+					'row-reverse' => [
+						'title' => esc_html__( 'End', 'elementor' ),
+						'icon' => "eicon-h-align-right",
+					],
+				],
+				'selectors_dictionary' => [
+					'left' => 'row-reverse',
+					'right' => 'row',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .cl-dropper-title' => 'flex-direction: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'icon_indent',
+			[
+				'label' => esc_html__( 'Icon Spacing', 'elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'max' => 100,
+					],
+					'em' => [
+						'max' => 5,
+					],
+					'rem' => [
+						'max' => 5,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .cl-dropper-title' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
 			'icon_width',
 			[
 				'label'          => __( 'Icon Width', 'elementor' ),

@@ -584,6 +584,25 @@ body.elementor-editor-active .cl-drop-down:not(.active) {
 	z-index:10000000;
 }
 
+#modal-container .cl-elementor-modal {
+	background-color: transparent !important;
+}
+
+#modal-container .cl-elementor-modal > div > * {
+	z-index: 500;
+}
+
+#modal-container .cl-elementor-modal > .cl-modal-closer {
+	background-color: #31313182;
+	position: absolute;
+	top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+	cursor: pointer;
+	z-index: 10;
+}
+
 .cl-elementor-modal {
 	visibility: hidden !important;
     position: fixed !important;
@@ -621,11 +640,18 @@ body.elementor-editor-active .cl-elementor-modal .e-con-inner {
 	left: unset !important;
 }
 
-.cl-elementor-modal:target {
+.cl-elementor-modal:target, 
+.cl-elementor-modal.mobile-active {
     opacity: 1 !important;
     pointer-events: auto !important;
     visibility: visible !important;
     z-index: 8999 !important; 
+}
+
+.cl-elementor-modal.mobile-active {
+	display:flex !important;
+    align-items: center !important;
+    justify-content:center !important;
 }
 
 @media (max-width:768px) {
@@ -661,7 +687,133 @@ body.elementor-editor-active footer .cl-elementor-modal {
 
 .cl-better-button .elementor-button-icon svg {
 	height:auto;
-	width:104%;
-	margin:-1px;
+	width:100%;
 	display:block;
+}
+
+.cl-better-button .elementor-button-content-wrapper {
+	align-items:center;
+}
+
+/* Dual Hover Container
+   ========================================================================== */
+
+body:not(.elementor-editor-active) .cl-dual-hover-container {
+	position:relative;
+	overflow:hidden;
+}
+
+body:not(.elementor-editor-active) .cl-dual-hover-container #normal {
+	z-index:100;
+	height: 100%;
+}
+
+body:not(.elementor-editor-active) .cl-dual-hover-container #hover {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	height:100%;
+	width:100%;
+	z-index:50;
+	opacity:0;
+	transition:opacity 0.5s ease;
+}
+
+body:not(.elementor-editor-active) .cl-dual-hover-container:hover #hover,
+body:not(.elementor-editor-active) .cl-dual-hover-container #hover.active {
+	z-index:101;
+	opacity:1;
+}
+
+body:not(.elementor-editor-active) .cl-dual-hover-container #normal .open,
+body:not(.elementor-editor-active) .cl-dual-hover-container #hover .close {
+	cursor:pointer;
+}
+
+/* Standing Gallery
+   ========================================================================== */
+
+.cl-standing-gallery .main-image {
+	margin:0 auto;
+	max-width:100%;
+	width:800px;
+}
+
+.cl-standing-gallery .main-image img {
+	display:block;
+	margin:0 auto;
+	width:100%;
+}
+
+body.elementor-editor-active .cl-standing-gallery .main-image img:not(:first-child) {
+	display:none !important;
+}
+
+.cl-standing-gallery .nav-arrows {
+	
+}
+
+body.elementor-editor-active .cl-standing-gallery .nav-image > *:nth-child(n+5) {
+	display:none;
+}
+
+.cl-standing-gallery .nav-image img:not(.arrow) {
+	width:100%;
+	height:230px;
+	object-fit: contain;
+	object-position: center;
+}
+
+.cl-standing-gallery .nav-image.static-nav,
+body.elementor-editor-active .cl-standing-gallery .nav-image {
+    display: flex;
+    justify-content: space-between; /* or center, depending on how you want it to look */
+}
+
+.cl-standing-gallery .nav-image .slick-list {
+	padding:0 !important;
+	width:90% !important;
+	margin:0 auto;
+	position:relative;
+	z-index:800;
+}
+
+.cl-standing-gallery .nav-image .slick-arrow {
+	position:absolute;
+	top:50%;
+	transform: translatey(-50%);
+	border:none;
+	color:#141414;
+	width:65px;
+	height:100px;
+	background:transparent !important;
+	z-index:801;
+}
+
+.cl-standing-gallery .nav-image .slick-arrow img {
+	width:100%;
+}
+
+.cl-standing-gallery .nav-image .slick-prev {
+	left:0;	
+}
+
+.cl-standing-gallery .nav-image .slick-next {
+	right:0;
+}
+
+@media (max-width:768px) {
+	.cl-standing-gallery .nav-image .slick-list {
+		width:75% !important;
+	}
+	
+	.cl-standing-gallery .nav-image .slick-prev {
+		left:-20px;	
+	}
+	
+	.cl-standing-gallery .nav-image .slick-next {
+		right:-20px;
+	}
 }
