@@ -458,6 +458,21 @@ class Menu extends Widget_Base {
 			]
 		);
 
+		$this->add_responsive_control(
+			'special_border_radius',
+			[
+				'label'      => __( 'Special Border Radius', 'elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .nav-menu .navbar .menu > li:last-child' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => array(
+					'special_last' => 'yes',
+				),
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(

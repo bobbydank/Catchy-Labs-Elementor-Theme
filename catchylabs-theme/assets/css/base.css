@@ -1345,19 +1345,14 @@ footer .default-footer .social li a:hover {
 /* Full Menu
     ========================================================================== */
 
-#full-menu {display:block; overflow:hidden; background-color: var(--primary, #333); position:fixed; width:0px; top:0; left:0; height:100vh; z-index: 10000000000000; transition:all 0.5s;}
-#full-menu.open {width:80vw;}
-.full-menu-container {display:flex; justify-content:flex-start; height:100vh; overflow-y: auto;}
+#full-menu {display:none; overflow:hidden; background-color: rgba(0,0,0,0.8); position:fixed; width:100%; top:0; left:0; right:0; min-height:100vh; z-index: 10001; transition:all 0.5s;}
+#full-menu.open {display:block;}
+.full-menu-container {margin:0 auto; max-width:600px; width: 90%; padding-top:100px;}
 
-.full-menu-left,
-.full-menu-right {position: relative;}
-
-.full-menu-left {width:60%; z-index:1000;}
-@media (max-width:767px){
-    .full-menu-left {
-        width: 100%;        
-    }
+#full-menu ul ul {
+    display:none;
 }
+
 #full-menu .logo {max-width:300px; padding:50px 0 100px 50px;}
 @media (max-width:767px) {
     #full-menu .logo {
@@ -1365,16 +1360,15 @@ footer .default-footer .social li a:hover {
     }
 } 
 #full-menu .menu {
-    text-align:left;
-    margin-left:75px;
-    margin-top:5vh;
-    width:55vw;
+    text-align:center;
+    width:100%;
 }
 #full-menu .menu li {
-    position:relative;
     margin:5px 0 10px;
-    padding:0 0 10px;
-    border-bottom:solid thin #fff;
+    padding:10px 0 10px;
+    background-color: rgba(217,217,217,0.2);
+    border-radius: 25px;
+    position:relative;
 }
 #full-menu .menu li .sub-menu {
     display:none;

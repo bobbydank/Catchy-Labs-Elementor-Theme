@@ -120,6 +120,9 @@
 
 .b3-posts-grid .post-link img {
     width:100%;
+    max-height:250px;
+    object-fit: cover;
+    object-position: center;
 }
 
 @media (min-width:767px) {

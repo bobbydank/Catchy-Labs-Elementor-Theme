@@ -8,7 +8,7 @@ TODO: A proper readme.md
 
 ```
 cd wp-content/themes/
-zip -r catchylabs-theme-1.0.13.zip catchylabs-theme/ -x "catchylabs-theme/.git/*" -x "*.DS_Store"
+zip -r catchylabs-theme-1.0.16.zip catchylabs-theme/ -x "catchylabs-theme/.git/*" -x "*.DS_Store"
 zip -r catchylabs-theme-child.zip catchylabs-theme-child/ -x "catchylabs-theme-child/.git/*" -x "*.DS_Store"
 ```
 
