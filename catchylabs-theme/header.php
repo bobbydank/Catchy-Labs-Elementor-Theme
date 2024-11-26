@@ -34,7 +34,9 @@ $description = get_bloginfo('description');
 			echo '<style type="text/css">main {padding-top:'.$pt.'px;}</style>';
 		}
 		echo cl_elementor_get_theme_option('head_tags');
-		echo cl_elementor_get_meta('page_specific_tags', $post->ID);
+		if (isset($post)) {
+			echo cl_elementor_get_meta('page_specific_tags', $post->ID);
+		}
 	?>
 </head>
 <body <?php body_class($extraClass); ?>>

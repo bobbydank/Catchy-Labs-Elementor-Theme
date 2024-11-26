@@ -8,6 +8,13 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+$template_id = cl_elementor_get_theme_option('default_404');
+if (is_numeric($template_id)) {
+	wp_redirect( get_permalink($template_id) );
+	exit;
+}
+
 ?>
 <main class="site-main four-oh-four" role="main">
 	<section>

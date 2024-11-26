@@ -1345,7 +1345,20 @@ footer .default-footer .social li a:hover {
 /* Full Menu
     ========================================================================== */
 
-#full-menu {display:none; overflow:hidden; background-color: rgba(0,0,0,0.8); position:fixed; width:100%; top:0; left:0; right:0; min-height:100vh; z-index: 10001; transition:all 0.5s;}
+#full-menu {
+    display:none; 
+    overflow-y:scroll; 
+    background-color: rgba(0,0,0,0.8); 
+    position:fixed; 
+    width:100%; 
+    top:0; 
+    left:0; 
+    right:0; 
+    min-height:100vh; 
+    height: 100%;
+    z-index: 10001; 
+    transition:all 0.5s;
+}
 #full-menu.open {display:block;}
 .full-menu-container {margin:0 auto; max-width:600px; width: 90%; padding-top:100px;}
 
@@ -1373,7 +1386,6 @@ footer .default-footer .social li a:hover {
 #full-menu .menu li .sub-menu {
     display:none;
     padding-top:10px;
-    border-top:solid thin #fff;
 }
 #full-menu .menu li a {
     z-index:100001;
@@ -1383,11 +1395,6 @@ footer .default-footer .social li a:hover {
     display:block;
     color: white;
     text-decoration: none;    
-}
-
-@media (max-width:500px) {
-    #full-menu.open {width:80vw;}      
-    #full-menu .menu {margin-left:5vw;}
 }
 
 #full-menu.special_last .menu li:last-child a {
