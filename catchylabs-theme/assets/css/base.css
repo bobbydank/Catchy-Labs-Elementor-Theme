@@ -1340,7 +1340,10 @@ footer .default-footer .social li a:hover {
    ========================================================================== */
 
 .four-oh-four {text-align:center;}
-.four-oh-four section {padding:50px 0 150px;}
+.four-oh-four:not(.elementor-content) section {padding:50px 0 150px;}
+body .site-main.four-oh-four {
+    max-width:100%;
+}
    
 /* Full Menu
     ========================================================================== */

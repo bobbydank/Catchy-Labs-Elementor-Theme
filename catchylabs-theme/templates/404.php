@@ -27,7 +27,7 @@ if (is_numeric($template_id)) {
 		if (cl_is_elementor_page($template_id)) {
 			// Display Elementor content
 			?>
-			<main class="site-main four-oh-four" role="main">
+			<main class="site-main four-oh-four elementor-content" role="main">
 				<section>
 					<?php cl_elementor_the_content( $template_id ); ?>
 				</section>
