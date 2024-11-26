@@ -193,3 +193,14 @@ function cl_check_for_theme_update($checked_data) {
     return $checked_data;
 }
 add_filter('pre_set_site_transient_update_themes', 'cl_check_for_theme_update');
+
+/**
+ * 
+ */
+// Function to check if Elementor is used
+function cl_is_elementor_page($post_id) {
+	if (class_exists('Elementor\Plugin')) {
+		return \Elementor\Plugin::$instance->db->is_built_with_elementor($post_id);
+	}
+	return false;
+}
