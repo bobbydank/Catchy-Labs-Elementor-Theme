@@ -194,13 +194,15 @@ function cl_check_for_theme_update($checked_data) {
 }
 add_filter('pre_set_site_transient_update_themes', 'cl_check_for_theme_update');
 
-/**
- * 
- */
-// Function to check if Elementor is used
-function cl_is_elementor_page($post_id) {
-	if (class_exists('Elementor\Plugin')) {
-		return \Elementor\Plugin::$instance->db->is_built_with_elementor($post_id);
-	}
-	return false;
+function cl_theme_slug_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Blog Sidebar', 'textdomain' ),
+		'id'            => 'blog_sidebar',
+		'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'textdomain' ),
+		'before_widget' => '<li id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</li>',
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => '</h3>',
+	) );
 }
+add_action( 'widgets_init', 'cl_theme_slug_widgets_init' );

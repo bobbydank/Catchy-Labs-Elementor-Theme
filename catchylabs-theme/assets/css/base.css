@@ -1709,3 +1709,98 @@ Intertek badge
     display:none;
 }
 
+/* Blog Default
+   ========================================================================== */
+
+   body .site-main.blog-single {
+    width:100%;
+    max-width: 100% !important;
+}
+
+.blog-default {
+    width: 100%;
+    max-width:1400px;
+    padding:30px 20px;
+    margin:0 auto;
+}
+
+.blog-default time {
+    background-color: #666666;
+    display: inline-block;
+    padding:5px 10px;
+    color:white;
+    font-size:65%;
+}
+
+.blog-default h1.page-title {
+    font-weight: bold;
+    line-height: 1.5em;
+    margin-bottom: 30px;
+}
+
+.blog-default h2 {
+    margin-top:40px;
+    font-size: 120%;
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+.blog-default a {
+    text-decoration: underline;
+}
+
+.blog-default .blog-default-sidebar .blog-recent {
+    padding:20px;
+    background-color: #333;
+    color:white;
+}
+
+.blog-default .blog-default-sidebar h3 {
+    text-transform: uppercase;
+    color:white;
+    font-size:20px;
+    font-weight: bold;
+}
+
+.blog-default .blog-default-sidebar .blog-recent ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.blog-default .blog-default-sidebar .blog-recent li {
+    list-style: none;
+    margin-bottom: 10px;
+    line-height: 1.2em;
+}
+
+.blog-default .blog-default-sidebar a {
+    color:white;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.blog-default .blog-default-sidebar a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width:769px) {
+    .blog-default {
+        display:flex;
+        flex-direction: row-reverse;
+        gap:20px;
+    }
+
+    .blog-default .blog-default-content {
+        width:70%;
+    }
+
+    .blog-default .blog-default-content > .inner {
+        padding: 50px;
+        background-color: #eee;
+    }
+
+    .blog-default .blog-default-sidebar {
+        width:28%;
+    }
+}

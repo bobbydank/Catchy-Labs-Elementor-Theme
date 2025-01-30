@@ -338,7 +338,7 @@ class Review_Slider extends Widget_Base {
 								<div class="cl-star-rating" style="--rating: <?php echo $item['rating']['size'].$item['rating']['unit'] ?>;"></div>
 							<?php endif; ?>
 							<?php echo $item['review'] ?>
-							<?php echo $button; ?>
+							<?php //echo $button; ?>
 
 							<?php if ($item['title_top'] === 'bottom') : ?>
 								<h3><?php echo $item['name'] ?></h3>

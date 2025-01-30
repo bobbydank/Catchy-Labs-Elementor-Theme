@@ -29,6 +29,17 @@ function cl_elementor_get_theme_option( $key, $default = null ) {
 }
 
 /**
+ * 
+ */
+// Function to check if Elementor is used
+function cl_is_elementor_page($post_id) {
+	if (class_exists('Elementor\Plugin')) {
+		return \Elementor\Plugin::$instance->db->is_built_with_elementor($post_id);
+	}
+	return false;
+}
+
+/**
  * Print the content
  *
  * @param null $post_id
