@@ -588,7 +588,7 @@ body.elementor-editor-active .cl-drop-down:not(.active) {
 	background-color: transparent !important;
 }
 
-#modal-container .cl-elementor-modal > div > * {
+#modal-container .cl-elementor-modal div:not(.cl-modal-close) {
 	z-index: 500;
 }
 
