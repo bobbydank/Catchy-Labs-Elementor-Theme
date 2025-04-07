@@ -1382,7 +1382,7 @@ body .site-main.four-oh-four {
 #full-menu .menu li {
     margin:5px 0 10px;
     padding:10px 0 10px;
-    background-color: rgba(217,217,217,0.2);
+    background-color: rgba(255,255,255,0.8);
     border-radius: 25px;
     position:relative;
 }
@@ -1390,13 +1390,17 @@ body .site-main.four-oh-four {
     display:none;
     padding-top:10px;
 }
+#full-menu .menu li .sub-menu li {
+    padding: 0;
+    background-color: transparent;
+}
 #full-menu .menu li a {
     z-index:100001;
-    font-size:18px;
+    font-size:22px;
     font-weight:900;
     line-height:2;
     display:block;
-    color: white;
+    color: black;
     text-decoration: none;    
 }
 
@@ -1416,6 +1420,10 @@ body .site-main.four-oh-four {
     text-decoration: none ;
     z-index:100002;
 
+}
+
+#full-menu .plus span {
+    background-color: black;
 }
 
 #full-menu .close-menu {}
@@ -1712,7 +1720,7 @@ Intertek badge
 /* Blog Default
    ========================================================================== */
 
-   body .site-main.blog-single {
+body .site-main.blog-single {
     width:100%;
     max-width: 100% !important;
 }
@@ -1787,7 +1795,7 @@ Intertek badge
 @media (min-width:769px) {
     .blog-default {
         display:flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         gap:20px;
     }
 

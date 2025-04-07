@@ -18,7 +18,8 @@
     transition: all 0.3s;
   }
   
-  .cl-simple-modal:target {
+  .cl-simple-modal:target,
+  body.elementor-editor-active .cl-simple-modal {
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
