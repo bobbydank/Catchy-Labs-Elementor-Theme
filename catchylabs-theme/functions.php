@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function cl_elementor_load_textdomain() {
     load_theme_textdomain( 'cl-elementor', get_template_directory() . '/languages' );
 }
-add_action( 'after_setup_theme', 'cl_elementor_load_textdomain' );
+add_action( 'init', 'cl_elementor_load_textdomain' );
 
 define( 'CL_ELEMENTOR_VERSION', '1.0.0' );
 define( 'CL_ELEMENTOR_PATH', trailingslashit( get_template_directory() ) . 'admin/' );
