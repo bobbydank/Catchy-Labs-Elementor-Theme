@@ -3,6 +3,8 @@
 namespace CL\Elementor\Theme\Widgets;
 
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
@@ -88,36 +90,26 @@ class Menu extends Widget_Base {
 		);
 
 		$this->add_control(
-			'nav_menu_loc',
-			[
-				'label'   => __( 'Menu Location', 'cl-elementor' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => $locations,
-			]
-		);
-
-		$this->add_control(
-			'theme',
-			[
-				'label'   => __( 'Theme', 'cl-elementor' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => array(
-					'light'  => 'Light',
-					'dark'   => 'Dark',
-					'custom' => 'Custom',
-				),
-			]
-		);
-
-		$this->add_control(
 			'menu_type',
 			[
 				'label'   => __( 'Type', 'cl-elementor' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
-					'mobile'   => 'Mobile',
-					'hybrid'   => 'Hybrid',
-					'text'  => 'Text',
+					'text'      => 'Text',
+					'hybrid'    => 'Hybrid',
+					'mobile'    => 'Mobile',	
+				),
+			]
+		);
+
+		$this->add_control(
+			'nav_menu_loc',
+			[
+				'label'   => __( 'Menu Location', 'cl-elementor' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => $locations,
+				'condition' => array(
+					'menu_type!' => 'mobile',
 				),
 			]
 		);
@@ -216,7 +208,11 @@ class Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#000',
 				'selectors' => [
-					'{{WRAPPER}} .nav-menu' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .nav-menu .menu > li a:hover, 
+					 {{WRAPPER}} .nav-menu .menu > li.current_page_item > a, 
+					 {{WRAPPER}} .nav-menu .menu > li.current_page_ancestor > a,
+					 {{WRAPPER}} .nav-menu .menu > li a:hover, 
+					 {{WRAPPER}} .nav-menu .menu > li.current-menu-parent > a' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -344,7 +340,7 @@ class Menu extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}} .nav-menu .navbar .menu > li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .nav-menu .navbar .menu > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -356,8 +352,40 @@ class Menu extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}} .nav-menu .navbar .menu > li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .nav-menu .navbar .menu > li > a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'nav_border',
+				'selector' => '{{WRAPPER}} .nav-menu .navbar .menu > li > a',
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			'nav_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .nav-menu .navbar .menu > li > a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow:hidden;',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'nav_box_shadow',
+				'exclude' => [
+					'box_shadow_position',
+				],
+				'selector' => '{{WRAPPER}} .nav-menu .navbar .menu > li > a',
 			]
 		);
 
@@ -665,6 +693,7 @@ class Menu extends Widget_Base {
 				'label'          => __( 'Hamburger Size', 'elementor' ),
 				'type'           => Controls_Manager::SLIDER,
 				'default'        => [
+					'size' => '24',
 					'unit' => 'px',
 				],
 				'tablet_default' => [
@@ -673,11 +702,22 @@ class Menu extends Widget_Base {
 				'mobile_default' => [
 					'unit' => 'px',
 				],
-				'size_units'     => [ 'px' ],
+				'size_units'     => [ 'px', 'em', 'rem' ],
 				'range'          => [
 					'px' => [
 						'min' => 1,
 						'max' => 1000,
+						'step' => 1
+					],
+					'em' => [
+						'min' => 0,
+						'max' => 50,
+						'step' => 0.1
+					],
+					'rem' => [
+						'min' => 0,
+						'max' => 50,
+						'step' => 0.1
 					]
 				],
 				'selectors'      => [
@@ -698,6 +738,62 @@ class Menu extends Widget_Base {
 			]
 		);
 
+		$this->add_responsive_control(
+			'hamburger_padding',
+			[
+				'label'      => __( 'Padding', 'elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .nav-menu .navbar-toggle' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'hamburger_margin',
+			[
+				'label'      => __( 'Margin', 'elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%', 'rem' ],
+				'selectors'  => [
+					'{{WRAPPER}} .nav-menu .navbar-toggle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'hamburger_border',
+				'selector' => '{{WRAPPER}} .nav-menu .navbar-toggle',
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			'hamburger_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .nav-menu .navbar-toggle' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'hamburger_box_shadow',
+				'exclude' => [
+					'box_shadow_position',
+				],
+				'selector' => '{{WRAPPER}} .nav-menu .navbar .menu > li',
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -712,7 +808,9 @@ class Menu extends Widget_Base {
 		$nav_menu_loc = isset( $settings['nav_menu_loc'] ) ? $settings['nav_menu_loc'] : null;
 		$theme        = isset( $settings['theme'] ) ? $settings['theme'] : 'light';
 		
-		if ( ! empty( $nav_menu_loc ) ): ?>
+		if ( empty( $nav_menu_loc ) && $settings['menu_type'] !== 'mobile' ): ?>
+			<p><?php _e( 'Please select nav menu location.' ); ?></p>
+		<?php else: ?>
 			<div class="nav-menu nav-menu-<?php echo $theme . ' ' . ($settings['main_underline'] ? 'hover-underline' : ''); ?> <?php echo ($settings['show_submenu'] == 'yes') ? '' : 'no-submenu'; ?>">
 				
 				<?php if ($settings['menu_type'] === 'mobile') : ?>
@@ -740,8 +838,6 @@ class Menu extends Widget_Base {
 					</nav>
 				<?php endif; ?>
 			</div>
-		<?php else: ?>
-            <p><?php _e( 'Please select nav menu location.' ); ?></p>
 		<?php endif; 
 	}
 

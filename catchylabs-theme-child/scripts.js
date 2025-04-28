@@ -6,6 +6,8 @@ $(window).on('load', function () {
     
 $(document).ready(function () {
     /*
+	$("<p class='disclaimer'>* </p>").insertBefore('.wpforms-recaptcha-container');
+
     Sample Slick JS Script
     https://kenwheeler.github.io/slick/
 

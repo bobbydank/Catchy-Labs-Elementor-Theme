@@ -233,7 +233,7 @@ class Dropper_Title extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .cl-dropper-title p' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .cl-dropper-title' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -245,7 +245,8 @@ class Dropper_Title extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .cl-dropper-title.on p' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .cl-dropper-title.on p,
+					 {{WRAPPER}} .cl-dropper-title:hover p' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -257,7 +258,8 @@ class Dropper_Title extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'std'       => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .cl-dropper-title.on p' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .cl-dropper-title.on,
+					 {{WRAPPER}} .cl-dropper-title:hover' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
