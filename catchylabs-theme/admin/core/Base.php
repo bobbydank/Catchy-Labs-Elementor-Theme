@@ -80,13 +80,16 @@ abstract class Base {
 	 */
 	public function __construct() {
 		$this->framework = new Framework();
+		
+		add_action( 'init', array( $this, 'setup_init' ));
 		add_action( 'after_setup_theme', array( $this, 'setup_theme' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_enqueue_scripts' ), 10 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'backend_enqueue_scripts' ), 10 );
 		add_action( 'elementor/widgets/register', array( $this, 'register_new_widgets') );
 		//add_action( 'elementor/widgets/widgets_registered', array( $this, 'register_elementor_widgets' ) );
 		add_filter( 'opb_type_select_choices', array( $this, 'filter_header_footer_templates' ), 10, 2 );
-
+		
+		/*
 		//construct social options
 		$socials = array();
 		foreach (Utils::get_social_channels() as $x) {
@@ -108,6 +111,7 @@ abstract class Base {
 			);
 		}
 		$this->theme_options_fields = array_merge( $this->theme_options_fields, $socials );
+		*/
 	}
 
 	/**
@@ -134,11 +138,17 @@ abstract class Base {
 	}
 
 	/**
+	 * 
+	 */
+	public function setup_init() {
+		
+	}
+
+	/**
 	 * Setup theme options
 	 */
 	public function setup_theme() {
-
-		load_theme_textdomain( 'cl-elementor', CL_ELEMENTOR_PATH . 'languages' );
+		
 
 		// Register the nav menus
 		if ( ! empty( $this->nav_menus ) ) {
@@ -713,6 +723,14 @@ abstract class Base {
 	 * Setup the theme options
 	 */
 	protected function setup_theme_options() {
+		// Hook the theme options setup to after_setup_theme to ensure text domain is loaded
+		add_action('after_setup_theme', array($this, 'init_theme_options'), 20);
+	}
+	
+	/**
+	 * Initialize theme options after text domain is loaded
+	 */
+	public function init_theme_options() {
 		$this->prepare_theme_options();
 		$this->create_theme_metaboxes();
 		$this->create_theme_options();

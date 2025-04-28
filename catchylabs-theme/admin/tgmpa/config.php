@@ -54,8 +54,8 @@ function cl_register_required_plugins() {
 		   	'required'                 => false, // If false, the plugin is only 'recommended' instead of required
 		),
 		array(
-			'name'                     => esc_html__('Easy WP SMTP'), // The plugin name
-		   	'slug'                     => 'easy-wp-smtp', // The plugin slug (typically the folder name)
+			'name'                     => esc_html__('Fluent SMTP'), // The plugin name
+		   	'slug'                     => 'fluent-smtp', // The plugin slug (typically the folder name)
 		   	'required'                 => false, // If false, the plugin is only 'recommended' instead of required
 		),
 		array(
@@ -83,11 +83,6 @@ function cl_register_required_plugins() {
 			'slug'                     => 'wordfence', // The plugin slug (typically the folder name)
 			'required'                 => false, // If false, the plugin is only 'recommended' instead of required
 		),
-		array(
-			'name'                     => esc_html__('WP Fastest Cache'), // The plugin name
-			'slug'                     => 'wp-fastest-cache', // The plugin slug (typically the folder name)
-			'required'                 => false, // If false, the plugin is only 'recommended' instead of required
-		)
 	);
 	$config = array(
 		'default_path' => '', // Default absolute path to pre-packaged plugins.

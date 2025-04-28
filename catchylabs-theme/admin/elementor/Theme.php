@@ -37,16 +37,29 @@ class Theme extends Base {
 	 * Theme constructor.
 	 */
 	public function __construct() {
-
 		parent::__construct();
 
 		// Register Theme options
 		$this->setup_theme_options();
 
-		// Register menus
-		$this->add_nav_menu( 'menu-1', __( 'Primary', 'cl-elementor' ) );
+		// Register menus - use a hook to delay text domain usage
+		add_action('after_setup_theme', array($this, 'register_theme_menus'));
 
 		// Register Elementor widgets
+		$this->register_elementor_widgets();
+	}
+	
+	/**
+	 * Register theme menus after text domain is loaded
+	 */
+	public function register_theme_menus() {
+		$this->add_nav_menu( 'menu-1', __( 'Primary', 'cl-elementor' ) );
+	}
+	
+	/**
+	 * Register Elementor widgets
+	 */
+	public function register_elementor_widgets() {
 		$this->add_elementor_widget( Menu::class );
 		$this->add_elementor_widget( Title::class );
 		$this->add_elementor_widget( Sitemap::class );
