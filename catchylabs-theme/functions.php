@@ -75,16 +75,18 @@ if ( ! isset( $content_width ) ) {
  */
 function cl_enqueue_elementor_editor_styles() {
     // Check if we are in the Elementor editor
-    if ( \Elementor\Plugin::$instance->editor->is_edit_mode() || isset( $_GET['action'] ) && $_GET['action'] === 'elementor' ) {
-        // Enqueue your custom stylesheet
-        wp_enqueue_style(
-            'custom-elementor-editor-style', // Unique handle for the stylesheet
-            get_stylesheet_directory_uri() . '/css/elementor-editor.css', // Path to your stylesheet
-            [], // Dependencies (empty array if none)
-            '1.0.0', // Version number (optional, for cache busting)
-            'all' // Media type
-        );
-    }
+	if (function_exists('\Elementor\Plugin')) {
+		if ( \Elementor\Plugin::$instance->editor->is_edit_mode() || isset( $_GET['action'] ) && $_GET['action'] === 'elementor' ) {
+			// Enqueue your custom stylesheet
+			wp_enqueue_style(
+				'custom-elementor-editor-style', // Unique handle for the stylesheet
+				get_stylesheet_directory_uri() . '/css/elementor-editor.css', // Path to your stylesheet
+				[], // Dependencies (empty array if none)
+				'1.0.0', // Version number (optional, for cache busting)
+				'all' // Media type
+			);
+		}
+	}
 }
 add_action( 'wp_enqueue_scripts', 'cl_enqueue_elementor_editor_styles' );
 add_action( 'admin_enqueue_scripts', 'cl_enqueue_elementor_editor_styles' );
