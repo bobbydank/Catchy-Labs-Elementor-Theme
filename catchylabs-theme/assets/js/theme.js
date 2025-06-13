@@ -159,6 +159,12 @@ $(document).ready(function () {
 			$(this).append('<a href="#modal-close" class="cl-modal-closer"></a>');
 			$(this).appendTo($modalContainer);
 		});
+
+		document.addEventListener('keydown', function(event) {
+			if (event.key === 'Escape') {
+				window.location.hash = 'close';
+			}
+		});
 	}
 
 	//standing gallery
@@ -168,7 +174,7 @@ $(document).ready(function () {
 
 		// Initialize variables for slick arrows
 		var $prevArrow = $gallery.find('.nav-arrows .left-icon');
-		console.log($prevArrow);
+		//console.log($prevArrow);
 		var $nextArrow = $gallery.find('.nav-arrows .right-icon');
 
 		// Get the autoplay speed from the data attribute of the current gallery

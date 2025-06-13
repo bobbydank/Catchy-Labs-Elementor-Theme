@@ -655,6 +655,7 @@ body.elementor-editor-active .cl-elementor-modal .e-con-inner {
 }
 
 @media (max-width:768px) {
+	/*
 	.cl-elementor-modal {
 		display:none !important;
 		visibility: visible !important;
@@ -667,6 +668,7 @@ body.elementor-editor-active .cl-elementor-modal .e-con-inner {
 		opacity:1 !important;
 		padding:0 !important;
 	}
+		*/
 
 	body.elementor-editor-active .cl-elementor-modal {
 		display:block !important;
