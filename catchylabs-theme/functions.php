@@ -126,6 +126,7 @@ function cl_load_scripts () {
 
 		wp_enqueue_script('cl_slider', get_template_directory_uri() . '/assets/js/slider.js', array('jquery'), $ver, true);
 		wp_enqueue_script('cl_elementor_addons', get_template_directory_uri() . '/assets/js/elementor-addons/main.js', array('jquery'), $ver, true);
+		wp_enqueue_script('cl_elementor_project_modal', get_template_directory_uri() . '/assets/js/elementor-addons/project-modal.js', array('jquery'), $ver, true);
 		wp_enqueue_script('cl_theme', get_template_directory_uri() . '/assets/js/theme.js', array('jquery'), $ver, true);
 
 		/***************************** 
@@ -158,6 +159,7 @@ function cl_load_scripts () {
 		wp_enqueue_style( 'cl_eleadds_video_popup', get_template_directory_uri().'/assets/css/elementor-addons/video-popup.css', array(), $ver, false );
 		wp_enqueue_style( 'cl_eleadds_post_feed', get_template_directory_uri().'/assets/css/elementor-addons/post-feed.css', array(), $ver, false );
 		wp_enqueue_style( 'cl_eleadds_sitemap', get_template_directory_uri().'/assets/css/elementor-addons/sitemap.css', array(), $ver, false );
+		wp_enqueue_style( 'cl_eleadds_project_modal', get_template_directory_uri().'/assets/css/elementor-addons/project-modal.css', array(), $ver, false );
 
 		wp_enqueue_style( 'cl_styles', get_stylesheet_uri(), array(), $ver, false );
   	}
@@ -235,3 +237,16 @@ function cl_theme_slug_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'cl_theme_slug_widgets_init' );
+
+function cl_redirect_to_homepage_after_login( $redirect_to, $request, $user ) {
+    // Check if user is logged in and has a specific role
+    if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+        // Redirect non-admin users to the homepage
+        if ( ! in_array( 'administrator', $user->roles ) ) {
+            return home_url();
+        }
+    }
+    // Admins go to the default redirect (admin area)
+    return $redirect_to;
+}
+add_filter( 'login_redirect', 'cl_redirect_to_homepage_after_login', 10, 3 );

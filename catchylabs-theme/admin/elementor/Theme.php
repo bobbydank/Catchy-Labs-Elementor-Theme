@@ -26,6 +26,7 @@ use CL\Elementor\Theme\Widgets\Hover_FAQ;
 use CL\Elementor\Theme\Widgets\Breadcrumbs;
 use CL\Elementor\Theme\Widgets\Button;
 use CL\Elementor\Theme\Widgets\Standing_Gallery;
+use CL\Elementor\Theme\Widgets\Project_Modal;
 
 /**
  * Class Theme
@@ -83,6 +84,7 @@ class Theme extends Base {
 		$this->add_elementor_widget( Breadcrumbs::class );
 		$this->add_elementor_widget( Button::class );
 		$this->add_elementor_widget( Standing_Gallery::class );
+		$this->add_elementor_widget( Project_Modal::class );
 
 		// Register shortcodes
 		$this->add_shortcode( 'year', array( $this, 'do_shortcode_year' ) );
@@ -97,7 +99,8 @@ class Theme extends Base {
 	}
 
 	public function do_shortcode_username() {
-		global $current_user; wp_get_current_user();
+		global $current_user; 
+		wp_get_current_user();
 		return $current_user->display_name;
 	}
 

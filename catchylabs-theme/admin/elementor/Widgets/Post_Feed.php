@@ -290,6 +290,15 @@ class Post_Feed extends Widget_Base {
         );
 
         $this->add_control(
+            'show_divider',
+            [
+                'label'     => __('Show Divider', 'cl-elementor'),
+                'type'      => Controls_Manager::SWITCHER,
+                'default'   => 'yes',
+            ]
+        );
+
+        $this->add_control(
 			'placeholder_image',
 			[
 			  'label' => __( 'Placeholder Featured Image', 'cl-elementor' ),
@@ -306,7 +315,7 @@ class Post_Feed extends Widget_Base {
         $this->start_controls_section(
             'section_styling_blog_sticky',
             [
-                'label' => __( 'Right List Posts Style', 'cl-elementor' ),
+                'label' => __( 'List Posts Style', 'cl-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -318,7 +327,19 @@ class Post_Feed extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .b3-posts-stick .column-right > .content-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .b3-posts-list .post ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'stick_list_margin',
+            [
+                'label' => __( 'Padding List Posts', 'cl-elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts-list .post ' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -332,26 +353,6 @@ class Post_Feed extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .b3-posts-stick .column-right > .content-inner' => 'background-color: {{VALUE}};',
                 ]
-            ]
-        );
-
-        $this->add_control(
-            'stick_list_post_title_color',
-            [
-                'label' => __( 'List Posts Title Color', 'cl-elementor' ),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} .post-block-small .post-content .content-inner .entry-title a' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'stick_list_post_title_typography',
-                'selector' => '{{WRAPPER}} .post-block-small .post-content .content-inner .entry-title a',
             ]
         );
 
@@ -497,7 +498,7 @@ class Post_Feed extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .b3-posts .entry-content .entry-title a, {{WRAPPER}} .post-block-small .post-content .content-inner .entry-title a' => 'color: {{VALUE}}!important;',
+                    '{{WRAPPER}} .b3-posts .content-inner .entry-title, {{WRAPPER}} .b3-posts .content-inner .entry-title a' => 'color: {{VALUE}}!important;',
                 ],
             ]
         );
@@ -509,18 +510,21 @@ class Post_Feed extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .b3-posts .entry-content .entry-title a:hover, {{WRAPPER}} .post-block-small .post-content .content-inner .entry-title a:hover' => 'color: {{VALUE}}!important;',
+                    '{{WRAPPER}} .b3-posts .content-inner .entry-title:hover, {{WRAPPER}} .b3-posts .content-inner .entry-title a:hover' => 'color: {{VALUE}}!important;',
                 ],
             ]
         );
 
         $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'post_box_title_typography',
-                'selector' => '{{WRAPPER}} .b3-posts .entry-content .entry-title a',
-            ]
-        );
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'post_box_title_typography',
+				'global'   => [
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				],
+				'selector' => '{{WRAPPER}} .b3-posts .content-inner .entry-title, {{WRAPPER}} .b3-posts .content-inner .entry-title a',
+			]
+		);
 
         $this->add_control(
             'post_box_meta_color',
@@ -543,7 +547,7 @@ class Post_Feed extends Widget_Base {
                 'label' => __( 'Post Description', 'cl-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
                 'condition' => [
-                    'layout' => ['grid', 'carousel']
+                    'show_date' => 'yes'
                 ],
             ]
         );
@@ -555,7 +559,7 @@ class Post_Feed extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .b3-posts .entry-content .entry-description' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .b3-posts .content-inner .entry-meta' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -564,9 +568,155 @@ class Post_Feed extends Widget_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'post_box_description_typography',
-                'selector' => '{{WRAPPER}} .b3-posts .entry-content .entry-description',
+                'selector' => '{{WRAPPER}} .b3-posts .content-inner .entry-meta',
             ]
         );
+
+        $this->end_controls_section();
+
+        // Styling read more button
+        $this->start_controls_section(
+            'section_styling_read_more_button',
+            [
+                'label' => __( 'Read More Button', 'cl-elementor' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_read_more' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'read_more_typography',
+                'selector' => '{{WRAPPER}} .b3-posts .content-inner .btn',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'read_more_padding',
+            [
+                'label' => __( 'Padding', 'cl-elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts .content-inner .btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'read_more_margin',
+            [
+                'label' => __( 'Margin', 'cl-elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts .content-inner .btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'read_more_border',
+                'selector' => '{{WRAPPER}} .b3-posts .content-inner .btn',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'read_more_border_radius',
+            [
+                'label' => __( 'Border Radius', 'cl-elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts .content-inner .btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs( 'read_more_style_tabs' );
+
+        $this->start_controls_tab(
+            'read_more_normal_tab',
+            [
+                'label' => __( 'Normal', 'cl-elementor' ),
+            ]
+        );
+
+        $this->add_control(
+            'read_more_color',
+            [
+                'label' => __( 'Text Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts .content-inner .btn' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'read_more_background_color',
+            [
+                'label' => __( 'Background Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts .content-inner .btn' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'read_more_hover_tab',
+            [
+                'label' => __( 'Hover', 'cl-elementor' ),
+            ]
+        );
+
+        $this->add_control(
+            'read_more_hover_color',
+            [
+                'label' => __( 'Text Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts .content-inner .btn:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'read_more_hover_background_color',
+            [
+                'label' => __( 'Background Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts .content-inner .btn:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'read_more_hover_border_color',
+            [
+                'label' => __( 'Border Color', 'cl-elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .b3-posts .content-inner .btn:hover' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'read_more_border_border!' => '',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
 
         $this->end_controls_section();
         

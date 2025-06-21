@@ -33,6 +33,10 @@ $description = get_bloginfo('description');
 		if ( cl_elementor_get_theme_option('header_fixed') === 'on' && $pt > 0) {
 			echo '<style type="text/css">main {padding-top:'.$pt.'px;}</style>';
 		}
+		$pt = intval(cl_elementor_get_theme_option('home_header_main_padding'));
+		if ( cl_elementor_get_theme_option('home_header_fixed') === 'on' && $pt > 0 && is_front_page()) {
+			echo '<style type="text/css">main {padding-top:'.$pt.'px;}</style>';
+		}
 		echo cl_elementor_get_theme_option('head_tags');
 		if (isset($post)) {
 			echo cl_elementor_get_meta('page_specific_tags', $post->ID);

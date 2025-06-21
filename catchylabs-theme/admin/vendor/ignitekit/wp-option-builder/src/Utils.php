@@ -330,7 +330,7 @@ class Utils {
 					$input_safe[ $key ] = sanitize_text_field( $value );
 				}
 			}
-		} elseif ( 'numeric-slider' === $type ) {
+		} elseif ( 'numeric-slider' === $type || 'numeric_slider' === $type  ) {
 			$input_safe = '';
 
 			if ( ! empty( $input ) ) {

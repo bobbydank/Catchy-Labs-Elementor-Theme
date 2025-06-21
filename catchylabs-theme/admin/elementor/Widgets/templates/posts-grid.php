@@ -29,7 +29,9 @@
                 <?php endif; ?>
 
                 <div class="post-content">
-                    <h3 class="entry-title"><?php the_title(); ?></h3> 
+                    <div class="content-inner">
+                        <h3 class="entry-title"><?php the_title(); ?></h3>
+                    </div>
                 </div>
             </a>
 

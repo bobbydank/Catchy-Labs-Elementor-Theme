@@ -15,15 +15,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 /*
  *
  */
-function cl_planck_button($atts) {
+function cl_button($atts) {
 	$vars = shortcode_atts( array(
-    'whiteIcons' => 0,
     'url'        => '#',
     'title'      => 'Contact Us',
     'target'     => '_self',
-    'shadowbox'  => '',
     'white'      => 0,
-    'align'      => 'left'
+    'id'         => 'scroll-btn',
+    'align'      => 'left',
+    'icon'       => 'fa-arrow-right'
  	), $atts );
 
   $shadowbox = '';
@@ -38,28 +38,26 @@ function cl_planck_button($atts) {
 
   ob_start(); ?>
 
-  <span class="planck-button <?php echo $vars['align']; ?> <?php if ($vars['whiteIcons']) : echo 'white-icons'; endif; ?> <?php if ($vars['white']) : echo 'white-icons'; endif; ?>">
-    <a class="<?php if ($vars['white']) : echo 'white'; endif; ?>"
-			 href="<?php echo esc_url($vars['url']); ?>"
-			 title="<?php echo esc_attr($vars['title']); ?>"
-			 target="<?php echo esc_attr($vars['target']); ?>"
-			 <?php echo esc_attr($shadowbox); ?>
+  <div class="button-container <?php echo esc_attr($vars['align']); ?>">
+    <a 
+      href="<?php echo esc_url($vars['url']); ?>"
+			title="<?php echo esc_attr($vars['title']); ?>"
+			target="<?php echo esc_attr($vars['target']); ?>" 
+      class="cl-button <?php if ($vars['white']) : echo 'white'; endif; ?> show" 
+      id="<?php echo esc_attr($vars['id']); ?>"
     >
-      <div class="title">
-        <?php echo esc_attr($vars['title']); ?>
-      </div>
-      <div class="arrow">
-        <i class="fa-solid fa-angle-right"></i>
+      <div>
+        <?php echo esc_attr($vars['title']); ?> <i class="fa-solid <?php echo esc_attr($vars['icon']) ?>"></i>
       </div>
     </a>
-  </span>
+  </div>
 
   <?php
   $html = ob_get_contents();
   ob_end_clean();
   return $html;
 }
-add_shortcode('planck-button', 'cl_planck_button');
+add_shortcode('cl-button', 'cl_button');
 
 /*
  *

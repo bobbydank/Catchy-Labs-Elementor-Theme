@@ -21,7 +21,9 @@
 
         <div <?php post_class( 'site-main' ); ?>>
 	        <div class="page-content">
-		        <h1 class="blog-title"><?php the_title(); ?></h1>
+                <div class="content-inner">
+		            <h3 class="entry-title"><?php the_title(); ?></h3>
+                </div>
                 <div class="page-subhead">
                     <p>Published on: <?php the_time('M d, Y'); ?></p>
                     <p><?php echo cl_calculate_reading_time( get_the_ID() ); ?></p>

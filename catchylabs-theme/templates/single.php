@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Check if Elementor is active
 $template_id = get_the_ID();
+$layout = cl_elementor_get_theme_option('blog_layout');
+$blog_layout = $layout ? $layout : 'default';
 ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
@@ -22,7 +24,7 @@ $template_id = get_the_ID();
             // Elementor content
             the_content();
         } else { 
-			get_template_part( 'templates/partials/blog', 'default' );
+			get_template_part( 'templates/partials/blog', $blog_layout );
 		} ?>
     </div>
 </main>

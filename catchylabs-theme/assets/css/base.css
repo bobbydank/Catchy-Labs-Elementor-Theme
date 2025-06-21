@@ -18,10 +18,10 @@ html {
    ========================================================================== */
    
 body {
-    margin: 0;
+    margin: 0;/*
     font-family:var(--base-font, 'Verdana');
     font-size: var(--base-font-size, 20px);
-    font-weight: var(--base-font-w, normal);
+    font-weight: var(--base-font-w, normal);*/
     line-height: 1.5;
     color: var(--text);
     background-color: #fff;
@@ -31,8 +31,9 @@ body {
 
 b,
 strong {
-    font-family:var(--base-font-strong, 'Verdana');
-    font-weight:var(--base-font-strong-w, bold);
+    /*font-family:var(--base-font-strong, 'Verdana');
+    font-weight:var(--base-font-strong-w, bold);*/
+    font-weight:bold;
 }
 
 /**
@@ -43,42 +44,43 @@ strong {
 h1, h2, h3, h4, h5, h6 {
     margin-top: .5rem;
     margin-bottom: 1rem;
-    font-family: var(--accent-font, 'Garamond');
+    /*font-family: var(--accent-font, 'Garamond');*/
     font-weight: var(--accent-font-w, normal);
     line-height: 1.2;
     color: inherit;
 }
 
 h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
-    font-family:var(--accent-font-strong, 'Garamond');
+    /*font-family:var(--accent-font-strong, 'Garamond');*/
     font-weight:var(--accent-font-strong-w, bold);
 }
 
 h1 {
-    font-size: 2.0rem;
+    font-size: 3.0rem;
 }
 
 h2 {
-    font-size: 1.75rem;
+    font-size: 2.75rem;
 }
 
 h3 {
-    font-size: 1.50rem;
+    font-size: 2.00rem;
 }
 
 h4 {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
 }
 
 h5 {
-    font-size: 1rem;
+    font-size: 1.65rem;
 }
 
 h6 {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 p {
+    font-size:1.2rem;
     margin-top: 0;
     margin-bottom: .9rem;
 }
@@ -688,7 +690,7 @@ li {
     margin-bottom: 0;
     border: 0;
     outline: 0;
-    font-size: 100%;
+    font-size: 1.2rem;
     vertical-align: baseline;
     background: transparent;
 }
@@ -1380,8 +1382,8 @@ body .site-main.four-oh-four {
     width:100%;
 }
 #full-menu .menu li {
-    margin:5px 0 10px;
-    padding:10px 0 10px;
+    margin:2px 0 5px;
+    padding:4px 0 8px;
     background-color: rgba(255,255,255,0.8);
     border-radius: 25px;
     position:relative;
@@ -1413,6 +1415,7 @@ body .site-main.four-oh-four {
 
 #full-menu .close {
     color: white;
+    font-size: 30px;
     text-align: right;
     position:absolute;
     top:50px;
@@ -1811,4 +1814,111 @@ body .site-main.blog-single {
     .blog-default .blog-default-sidebar {
         width:28%;
     }
+}
+
+.linear-layout {
+    max-width:1000px;
+    margin:0 auto 75px;
+}
+
+.linear-layout .page-subhead {
+    text-align: center;
+}
+
+.site-main.type-post .linear-layout .page-subhead p {
+    font-size: 85%;
+    opacity: 0.9;
+}
+
+.site-main.type-post .linear-layout .blog-title {
+    margin-top:20px;
+    text-transform: uppercase;
+    line-height: 1.3;
+    font-weight: 400;
+}
+ 
+ @media (min-width:768px) {
+    .linear-layout .page-subhead {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       padding-bottom:75px;
+    }
+ 
+    .linear-layout .page-subhead > p {
+       flex:1;
+    }
+ 
+    .linear-layout .page-subhead p:first-child {
+       text-align: left;
+    }
+ 
+    .linear-layout .page-subhead p:last-child {
+       text-align: right;
+    }
+ 
+    .site-main.type-post .linear-layout .blog-title {
+       margin-top: 50px;
+       font-size: 4rem;
+    }
+}
+ 
+.linear-layout h2,
+.linear-layout h3,
+.linear-layout h4,
+.linear-layout h5 {
+    font-weight: 700;
+    font-family: var(--accent-font);
+    text-transform: uppercase;
+}
+
+.linear-layout h2 {
+    margin:50px 0 20px;
+}
+
+.linear-layout h3 {
+    margin:40px 0 20px;
+}
+
+.linear-layout h4 {
+    margin:30px 0 20px;
+}
+
+.linear-layout h5 {
+    margin:20px 0; 
+}
+
+.linear-layout .comments-area {
+    margin-top:100px;
+}
+
+/* Code
+   ========================================================================== */
+
+.page-content pre {
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px;
+    overflow-x: auto; /* This will add a horizontal scrollbar if the code is too wide */
+    margin-bottom: 30px;
+}
+
+.page-content code {
+    font-family: 'Courier New', monospace; /* You can use any monospace font you like */
+    font-size: 14px;
+    line-height: 1.6;
+    border-radius: 5px;
+    padding:5px;
+    background-color: #333;
+    color:white;
+}
+
+.page-content pre code {
+    display: block;
+    padding: 0;
+    background-color: transparent;
+}
+
+.page-content code.language-bash {
+    color: lightgreen; /* Different color for bash commands */
 }

@@ -220,8 +220,8 @@ abstract class Base {
 				'title' => __( 'Footer', 'cl-elementor' ),
 			),
 			array(
-				'id'    => 'social',
-				'title' => __( 'Social', 'cl-elementor' ),
+				'id'    => 'blog',
+				'title' => __( 'Blog', 'cl-elementor' ),
 			),
 			array(
 				'id'    => 'libraries',
@@ -427,6 +427,38 @@ abstract class Base {
 				'choices'      => array(),
 				'condition'    => 'header_fixed:is(on)',
 			),
+			array(
+				'id'           => 'home_header_fixed',
+				'label'        => __( 'Fix Home Header', 'cl-elementor' ),
+				'desc'         => sprintf( __( 'Fix the home page header to the top?', 'cl-elementor' ) ),
+				'std'          => 'off',
+				'type'         => 'on-off',
+				'section'      => 'header',
+				'rows'         => '',
+				'post_type'    => '',
+				'taxonomy'     => '',
+				'min_max_step' => '',
+				'class'        => '',
+				'operator'     => 'and',
+				'choices'      => array(),
+				'condition'    => '',
+			),
+			array(
+				'id'           => 'home_header_main_padding',
+				'label'        => __( 'Home Main Padding', 'cl-elementor' ),
+				'desc'         => sprintf( __( 'How much top padding does the content under the header need? (Pixels)', 'cl-elementor' ) ),
+				'std'          => '0',
+				'type'         => 'text',
+				'section'      => 'header',
+				'rows'         => '',
+				'post_type'    => '',
+				'taxonomy'     => '',
+				'min_max_step' => '',
+				'class'        => '',
+				'operator'     => 'and',
+				'choices'      => array(),
+				'condition'    => 'home_header_fixed:is(on)',
+			),
 			//footer
 			array(
 				'id'           => 'default_footer',
@@ -476,7 +508,26 @@ abstract class Base {
 				'choices'      => array(),
 				'condition'    => '',
 			),
-			//libraries
+			//blog
+			array(
+				'id'           => 'blog_layout',
+				'label'        => __( 'Blog Layout', 'cl-elementor' ),
+				'desc'         => sprintf( __( 'Select the layout for the blog.', 'cl-elementor' ) ),
+				'std'          => 'default',
+				'type'         => 'select',
+				'section'      => 'blog',
+				'rows'         => '',
+				'post_type'    => '',
+				'taxonomy'     => '',
+				'min_max_step' => '',
+				'class'        => '',
+				'operator'     => 'and',
+				'choices'      => array(
+					array('value' => 'default', 'label' => 'Default Layout'),
+					array('value' => 'linear', 'label' => 'Linear Layout')
+				),
+				'condition'    => '',
+			),
 			array(
 				'id'           => 'css_tailwind',
 				'label'        => __( 'Tailwind CSS', 'cl-elementor' ),
@@ -663,7 +714,7 @@ abstract class Base {
 				array(
 					'id'           => 'default_header',
 					'label'        => __( 'Default Header', 'cl-elementor' ),
-					'desc'         => sprintf( __( 'Select the default header for this site', 'cl-elementor' ) ),
+					'desc'         => sprintf( __( 'Select the default header for this page', 'cl-elementor' ) ),
 					'std'          => '',
 					'type'         => 'select',
 					'section'      => 'page_settings',
@@ -677,6 +728,39 @@ abstract class Base {
 					'condition'    => 'use_custom_header:is(on)',
 				),
 				array(
+					'id'           => 'page_header_position',
+					'label'        => __( 'Page Header Position', 'cl-elementor' ),
+					'desc'         => sprintf( __( 'How is the header position on this page?', 'cl-elementor' ) ),
+					'std'          => '',
+					'type'         => 'select',
+					'section'      => 'page_settings',
+					'rows'         => '',
+					'post_type'    => '',
+					'taxonomy'     => '',
+					'min_max_step' => '',
+					'class'        => '',
+					'operator'     => 'and',
+					'choices'      => array(
+						array(
+							'value' => 'settings', 
+							'label' => 'Use site settings'
+						),
+						array(
+							'value' => 'relative', 
+							'label' => 'Relative Position'
+						),
+						array(
+							'value' => 'absolute', 
+							'label' => 'Absolute Position'
+						),
+						array(
+							'value' => 'fixed', 
+							'label' => 'Fixed Position'
+						),
+					),
+					'condition'    => '',
+				),
+				array(
 					'label' => __( 'Use custom footer', 'cl-elementor' ),
 					'id'    => 'use_custom_footer',
 					'type'  => 'on-off',
@@ -686,7 +770,7 @@ abstract class Base {
 				array(
 					'id'           => 'default_footer',
 					'label'        => __( 'Default Footer', 'cl-elementor' ),
-					'desc'         => sprintf( __( 'Select the default footer for this site', 'cl-elementor' ) ),
+					'desc'         => sprintf( __( 'Select the default footer for this page', 'cl-elementor' ) ),
 					'std'          => '',
 					'type'         => 'select',
 					'section'      => 'page_settings',

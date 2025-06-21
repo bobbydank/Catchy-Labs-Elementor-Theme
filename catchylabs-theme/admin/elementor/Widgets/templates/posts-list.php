@@ -19,7 +19,7 @@
         set_query_var( 'layout', $settings['layout'] );
         ?>
 
-            <div class="post post-block-small">      
+            <div class="post post-block-small <?php echo ($settings['show_divider'] == 'yes') ? '' : 'no-divider'; ?>">      
                 <div class="post-content">
                     <?php if ( has_post_thumbnail() && $settings['show_featured_image'] == 'yes' ) : ?>
                         <div class="post-thumbnail">
@@ -50,7 +50,7 @@
                             </div>
                         <?php endif; ?>
                         <?php if ($settings['show_content'] == 'yes') : ?>
-                            <?php echo '<p class="the-excerpt">'.cl_custom_excerpt(get_the_content(), $settings['excerpt_length']['size']).'</p>'; ?>
+                            <?php echo '<p class="the-excerpt">'.cl_custom_excerpt(get_the_content(), $settings['excerpt_length']['size']).' ...</p>'; ?>
                         <?php endif; ?>
                         <?php if ($settings['show_read_more'] == 'yes') : ?>
                             <a class="btn" href="<?php the_permalink(); ?>">
