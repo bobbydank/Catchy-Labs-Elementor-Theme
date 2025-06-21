@@ -18,10 +18,10 @@ html {
    ========================================================================== */
    
 body {
-    margin: 0;/*
+    margin: 0;
     font-family:var(--base-font, 'Verdana');
     font-size: var(--base-font-size, 20px);
-    font-weight: var(--base-font-w, normal);*/
+    font-weight: var(--base-font-w, normal);
     line-height: 1.5;
     color: var(--text);
     background-color: #fff;
@@ -31,8 +31,8 @@ body {
 
 b,
 strong {
-    /*font-family:var(--base-font-strong, 'Verdana');
-    font-weight:var(--base-font-strong-w, bold);*/
+    font-family:var(--base-font-strong, 'Verdana');
+    font-weight:var(--base-font-strong-w, bold);
     font-weight:bold;
 }
 
@@ -44,14 +44,14 @@ strong {
 h1, h2, h3, h4, h5, h6 {
     margin-top: .5rem;
     margin-bottom: 1rem;
-    /*font-family: var(--accent-font, 'Garamond');*/
+    font-family: var(--accent-font, 'Garamond');
     font-weight: var(--accent-font-w, normal);
     line-height: 1.2;
     color: inherit;
 }
 
 h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
-    /*font-family:var(--accent-font-strong, 'Garamond');*/
+    font-family:var(--accent-font-strong, 'Garamond');
     font-weight:var(--accent-font-strong-w, bold);
 }
 
