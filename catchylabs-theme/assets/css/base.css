@@ -80,7 +80,6 @@ h6 {
 }
 
 p {
-    font-size:1.2rem;
     margin-top: 0;
     margin-bottom: .9rem;
 }
@@ -690,7 +689,7 @@ li {
     margin-bottom: 0;
     border: 0;
     outline: 0;
-    font-size: 1.2rem;
+    font-size: 100%;
     vertical-align: baseline;
     background: transparent;
 }
