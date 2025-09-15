@@ -145,6 +145,122 @@ $(document).ready(function () {
 		  $('#search-form-overlay').fadeOut();
 		}
 	});
+
+	// Post Feed Filters - Custom Dropdown
+	if ($('.post-feed-filters').length) {
+		// Handle dropdown toggle
+		$('.dropdown-toggle').on('click', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			
+			const $dropdown = $(this).closest('.custom-dropdown');
+			const $menu = $dropdown.find('.dropdown-menu');
+			const $toggle = $(this);
+			
+			// Close other dropdowns
+			$('.custom-dropdown').not($dropdown).find('.dropdown-menu').removeClass('show');
+			$('.dropdown-toggle').not($toggle).removeClass('active');
+			
+			// Toggle current dropdown
+			$menu.toggleClass('show');
+			$toggle.toggleClass('active');
+		});
+
+		// Close dropdown when clicking outside
+		$(document).on('click', function(e) {
+			if (!$(e.target).closest('.custom-dropdown').length) {
+				$('.dropdown-menu').removeClass('show');
+				$('.dropdown-toggle').removeClass('active');
+			}
+		});
+
+		// Handle checkbox changes
+		$('.checkbox-option input[type="checkbox"]').on('change', function() {
+			const $dropdown = $(this).closest('.custom-dropdown');
+			const taxonomy = $dropdown.data('taxonomy');
+			updateDropdownText($dropdown);
+		});
+
+		// Select All functionality
+		$('.select-all-btn').on('click', function(e) {
+			e.preventDefault();
+			const $dropdown = $(this).closest('.custom-dropdown');
+			$dropdown.find('.checkbox-option input[type="checkbox"]').prop('checked', true);
+			updateDropdownText($dropdown);
+		});
+
+		// Clear All functionality
+		$('.clear-all-btn').on('click', function(e) {
+			e.preventDefault();
+			const $dropdown = $(this).closest('.custom-dropdown');
+			$dropdown.find('.checkbox-option input[type="checkbox"]').prop('checked', false);
+			updateDropdownText($dropdown);
+		});
+
+		// Function to update dropdown text
+		function updateDropdownText($dropdown) {
+			const $text = $dropdown.find('.dropdown-text');
+			const $checkboxes = $dropdown.find('.checkbox-option input[type="checkbox"]:checked');
+			const taxonomy = $dropdown.data('taxonomy');
+			const taxonomyLabel = $dropdown.closest('.filter-group').find('> label').text().replace(':', '');
+			
+			if ($checkboxes.length === 0) {
+				$text.text('All ' + taxonomyLabel);
+			} else if ($checkboxes.length === 1) {
+				// Get the term name from the data attribute
+				const $option = $checkboxes.first().closest('.checkbox-option');
+				const termName = $option.data('term-name');
+				$text.text(termName);
+			} else {
+				$text.text($checkboxes.length + ' selected');
+			}
+		}
+
+		// Initialize dropdown text on page load
+		$('.custom-dropdown').each(function() {
+			updateDropdownText($(this));
+		});
+
+		// Add loading state to apply button
+		$('.apply-filters-btn').on('click', function(e) {
+			const $btn = $(this);
+			const $form = $btn.closest('form');
+			const originalText = $btn.text();
+			
+			// Check if any checkboxes are checked
+			const checkedBoxes = $form.find('input[type="checkbox"]:checked');
+			console.log('Checked boxes:', checkedBoxes.length);
+			
+			// Don't prevent default - let the form submit naturally
+			$btn.prop('disabled', true).text('Applying...');
+			
+			// Submit the form
+			$form.submit();
+		});
+
+		// Also handle form submission directly
+		$('.filter-form').on('submit', function(e) {
+			console.log('Form submitting...');
+			const checkedBoxes = $(this).find('input[type="checkbox"]:checked');
+			console.log('Checked boxes on submit:', checkedBoxes.length);
+			
+			// If no checkboxes are checked, we still want to submit to clear filters
+			return true;
+		});
+
+		// Keyboard support
+		$('.dropdown-toggle').on('keydown', function(e) {
+			if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
+				$(this).click();
+			}
+		});
+
+		// Prevent dropdown from closing when clicking inside
+		$('.dropdown-menu').on('click', function(e) {
+			e.stopPropagation();
+		});
+	}
 });
     
 })(jQuery);

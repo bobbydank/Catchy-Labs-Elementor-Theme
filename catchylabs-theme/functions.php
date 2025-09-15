@@ -161,7 +161,7 @@ function cl_load_scripts () {
 		wp_enqueue_style( 'cl_eleadds_sitemap', get_template_directory_uri().'/assets/css/elementor-addons/sitemap.css', array(), $ver, false );
 		wp_enqueue_style( 'cl_eleadds_project_modal', get_template_directory_uri().'/assets/css/elementor-addons/project-modal.css', array(), $ver, false );
 
-		wp_enqueue_style( 'cl_styles', get_stylesheet_uri(), array(), $ver, false );
+		wp_enqueue_style( 'cl_styles', get_template_directory_uri().'/style.css', array(), $ver, false );
   	}
 }
 add_action('wp_enqueue_scripts', 'cl_load_scripts');

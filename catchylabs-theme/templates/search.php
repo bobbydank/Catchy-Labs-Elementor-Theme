@@ -19,14 +19,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php endif; ?>
 
 		<?php if ( have_posts() ) : ?>
-			<?php
-			while ( have_posts() ) :
-				the_post();
-				printf( '<h2><a href="%s">%s</a></h2>', esc_url( get_permalink() ), esc_html( get_the_title() ) );
-				the_post_thumbnail();
-				the_excerpt();
-			endwhile;
-			?>
+			<?php while ( have_posts() ) : the_post(); ?>
+				<div class="search-result">
+					<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+					<?php echo '<p class="the-excerpt">'.cl_custom_excerpt(get_the_content(), 30).' ...</p>'; ?>
+					<a class="btn" href="<?php the_permalink(); ?>">
+						Read More &raquo;
+					</a>
+				</div>
+			<?php endwhile; ?>
 		<?php else : ?>
             <p><?php esc_html_e( 'It seems we can\'t find what you\'re looking for.', 'cl-elementor' ); ?></p>
 		<?php endif; ?>

@@ -136,7 +136,7 @@ class Search extends Widget_Base {
 				'label' => esc_html__( 'Icon Color', 'plugin-name' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .cl-search-icon' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .cl-search-icon' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				],
 				'condition' => array(
 					'search_type' => 'icon',
