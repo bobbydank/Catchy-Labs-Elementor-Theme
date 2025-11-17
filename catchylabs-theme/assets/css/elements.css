@@ -620,7 +620,7 @@ body.elementor-editor-active .cl-drop-down:not(.active) {
     transition: all 0.3s !important;
 }
 
-body.elementor-editor-active .cl-elementor-modal {
+body.elementor-editor-active .cl-elementor-modal{
 	visibility: visible !important;
 	position: relative !important;
 	top: unset !important;
@@ -632,6 +632,12 @@ body.elementor-editor-active .cl-elementor-modal {
 	padding:50px 0 !important;
 	background-image: repeating-linear-gradient(45deg, transparent, transparent 32px, #e1e1e1 32px, #e1e1e1 64px);
 	background-color: #f1f1f1;
+}
+
+body.elementor-editor-active .cl-elementor-modal.elementor-edit-hidden {
+	display:none !important;
+	height:0px !important;
+	overflow: hidden !important;
 }
 
 body.elementor-editor-active .cl-elementor-modal .e-con-inner {

@@ -9,6 +9,10 @@
 
 <div class="b3-posts">
     <?php 
+    // Render taxonomy filters if enabled
+    $this->render_taxonomy_filters($settings);
+    ?>
+    <?php 
     global $post;
     $count = 0;
     while ( $query->have_posts() ) : 

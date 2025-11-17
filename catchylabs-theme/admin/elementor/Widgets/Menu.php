@@ -579,7 +579,7 @@ class Menu extends Widget_Base {
 					'{{WRAPPER}} .nav-menu .sub-menu > li a:hover, 
 					 {{WRAPPER}} .nav-menu .sub-menu > li.current_page_item > a, 
 					 {{WRAPPER}} .nav-menu .sub-menu > li.current_page_ancestor > a,
-					 {{WRAPPER}} .nav-menu .sub-menu > li a:hover, 
+					 {{WRAPPER}} .nav-menu .sub-menu > li > a:hover, 
 					 {{WRAPPER}} .nav-menu .sub-menu > li.current-menu-parent > a' => 'color: {{VALUE}};',
 				],
 			]
@@ -620,7 +620,7 @@ class Menu extends Widget_Base {
 				'std'       => '#000',
 				'selectors' => [
 					'{{WRAPPER}} .nav-menu .sub-menu > li > a:hover, 
-					 {{WRAPPER}} .nav-menu .sub-menu > li.current-menu-item > a, 
+					 {{WRAPPER}} .nav-menu .sub-menu > li.current_page_item > a, 
 					 {{WRAPPER}} .nav-menu .sub-menu > li.current_page_ancestor > a,
 					 {{WRAPPER}} .nav-menu .sub-menu > li > a:hover, 
 					 {{WRAPPER}} .nav-menu .sub-menu > li.current-menu-parent > a' => 'background-color: {{VALUE}};',

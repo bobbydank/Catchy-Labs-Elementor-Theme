@@ -296,7 +296,7 @@ class Project_Modal extends Widget_Base {
 		$img = \Elementor\Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' );
 
 		//echo '<pre>'.print_r($settings['project_link'], true).'</pre>';
-		$target = $follow = '';
+		$target = $follow = $url = '';
 		$url = 'href="'.$settings['project_link']['url'].'"';
 		if ($settings['project_link']['is_external']) {
 			$target = 'target="_blank"';

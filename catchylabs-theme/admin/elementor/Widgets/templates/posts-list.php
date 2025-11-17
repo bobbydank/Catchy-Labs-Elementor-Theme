@@ -8,6 +8,10 @@
 ?>
   
 <div class="b3-posts-list clearfix b3-posts <?php echo $settings['list_layout']; ?>">
+    <?php 
+    // Render taxonomy filters if enabled
+    $this->render_taxonomy_filters($settings);
+    ?>
     <div class="b3-content-items"> 
     <?php
     global $post;
@@ -53,9 +57,9 @@
                             <?php echo '<p class="the-excerpt">'.cl_custom_excerpt(get_the_content(), $settings['excerpt_length']['size']).' ...</p>'; ?>
                         <?php endif; ?>
                         <?php if ($settings['show_read_more'] == 'yes') : ?>
-                            <a class="btn" href="<?php the_permalink(); ?>">
+                            <div class="btn">
                                 Read More &raquo;
-                            </a>
+                            </div>
                         <?php endif; ?>
                     </div>    
                 </div>   

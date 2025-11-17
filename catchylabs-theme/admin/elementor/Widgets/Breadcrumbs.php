@@ -292,10 +292,19 @@ class Breadcrumbs extends \Elementor\Widget_Base {
 						$x++;
 					}
 
+					$target = $follow = $url = '';
+					$url = 'href="'.$item['link']['url'].'"';
+					if ($item['link']['is_external']) {
+						$target = 'target="_blank"';
+					}
+					if ($item['link']['nofollow']) {
+						$follow = 'rel="nofollow"';
+					}
+
 					$this->add_link_attributes( 'link', $item['link'] ); 
 					?>
 
-						<a <?php $this->print_render_attribute_string( 'link' ); ?>><?php echo $item['title'] ?></a>
+						<a <?php echo $url .' '. $target .' '.$follow; ?>><?php echo $item['title'] ?></a>
 
 					<?php
 				}

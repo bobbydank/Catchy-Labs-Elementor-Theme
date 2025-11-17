@@ -8,6 +8,10 @@
 ?>
   
 <div class="b3-posts-full clearfix b3-posts">
+    <?php 
+    // Render taxonomy filters if enabled
+    $this->render_taxonomy_filters($settings);
+    ?>
     <div class="b3-content-items"> 
     <?php
     global $post;
